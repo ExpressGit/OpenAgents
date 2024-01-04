@@ -1897,8 +1897,8 @@ const Home = ({
       }}
     >
       <Head>
-        <title>OpenAgents</title>
-        <meta name="description" content="OpenAgents" />
+        <title>HYSW</title>
+        <meta name="description" content="HYSW" />
         <meta
           name="viewport"
           content="height=device-height ,width=device-width, initial-scale=1, user-scalable=no"

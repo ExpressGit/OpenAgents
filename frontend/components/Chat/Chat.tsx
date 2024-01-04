@@ -82,9 +82,9 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
 
   const tooltips = {
     Agent:
-      'OpenAgents empowers you to transform your human Lang(uage) into X(utable) actions, and help you with real-world tasks, e.g., data-related.',
+      'open agents empowers you to transform your human Lang(uage) into X(utable) actions, and help you with real-world tasks, e.g., data-related.',
     Plugins:
-      'Plugins are tools designed to help OpenAgents access up-to-date information, run computations, or use third-party services.',
+      'Plugins are tools designed to help open agents access up-to-date information, run computations, or use third-party services.',
     Temperature:
       'Temperature controls randomness. Lowering it results in less random completions. As it approaches zero, the model will become deterministic and repetitive.',
   };
