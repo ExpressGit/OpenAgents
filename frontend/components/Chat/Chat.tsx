@@ -390,7 +390,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                             <a
                               className="underline"
                               target="_blank"
-                              href="https://docs.xlang.ai/user-manual/web-agent-setup"
+                              href=""
                             >
                               here
                             </a>{' '}

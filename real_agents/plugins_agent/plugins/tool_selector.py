@@ -69,7 +69,8 @@ class ToolSelector:
     def _init_embedding(self, mode_args: dict):
         embedding = mode_args.get("embedding", HuggingFaceInstructEmbeddings)
         if embedding == HuggingFaceInstructEmbeddings:
-            model_name = mode_args.get("model_name", "hkunlp/instructor-large")
+            # model_name = mode_args.get("model_name", "hkunlp/instructor-large")
+            model_name = mode_args.get("model_name", "hkunlp/instructor-base")
             embed_instruction = mode_args.get("embed_instruction", DEFAULT_TOOL_INSTRUCTION)
             query_instruction = mode_args.get("query_instruction", DEFAULT_QUERY_INSTRUCTION)
             self.embedding = HuggingFaceInstructEmbeddings(

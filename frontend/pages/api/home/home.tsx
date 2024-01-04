@@ -1936,7 +1936,7 @@ const Home = ({
                     <span className="font-[700]">Performance Limitations:&nbsp;</span>This chat interface is a prototype of our ongoing research preview and is not produced by a professional development team. Consequently, it may have limitations in its performance. We appreciate your understanding and patience as we continue to improve it.
                   </Typography>
                   <Typography variant="body1" className='font-[Montserrat] mt-5' align='right' gutterBottom>
-                    XLang Team
+                    HYSW Team
                   </Typography>
                 </div>
                 <IconButton

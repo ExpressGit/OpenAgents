@@ -2,9 +2,9 @@
 
 # Install and setup Conda virtual environment
 echo "Setting up the conda environment..."
-conda create -n openagents python=3.10 -y
+# conda create -n openagents python=3.10 -y
 conda activate openagents
-pip install -r backend/requirements.txt
+# pip install -r requirements.txt
 
 # Check if it's a macOS or Linux environment
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -28,24 +28,31 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     # Linux
 
-    # MongoDB setup for Linux
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-    sudo apt-get update
-    sudo apt-get install -y mongodb-org
+     sudo tee  /etc/yum.repos.d/mongodb-org-7.0.repo <<EOL
+[mongodb-org-7.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/7/mongodb-org/7.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+EOL
+    sudo yum install -y mongodb-org
+    sudo systemctl daemon-reload
     sudo systemctl start mongod
+    #mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
+    sudo systemctl enable mongod
 
     # MongoDB collection creation
     echo "Creating MongoDB collections..."
     mongosh --eval 'db = db.getSiblingDB("xlang"); db.createCollection("user"); db.createCollection("message"); db.createCollection("conversation"); db.createCollection("folder"); db.getCollectionNames();'
 
     # Redis setup for Linux
-    echo "Setting up Redis for Linux..."
-    curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install redis -y
-    sudo systemctl start redis-server &
+    # echo "Setting up Redis for Linux..."
+    # sudo yum install -y epel-release
+    # sudo yum update
+    # sudo yum install -y redis
+    # sudo systemctl start redis &
+    # sudo systemctl enable redis
 fi
 
 # Setting up environment variables
