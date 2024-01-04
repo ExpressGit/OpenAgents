@@ -74,7 +74,7 @@ const Sidebar = <T,>({
   return isOpen ? (
     <div style={disableStyle} className="bg-[#F3F3F3]">
       <div
-        className={`fixed rounded-3xl rounded-l-none top-0 ${side}-0 z-40 flex h-full w-[260px] flex-none flex-col space-y-2 bg-[#031425] p-2 text-[13px] sm:relative sm:top-0`}
+        className={`fixed rounded-3xl rounded-l-none top-0 ${side}-0 z-40 flex h-full w-[260px] flex-none flex-col space-y-2 bg-[#2766f5] p-2 text-[13px] sm:relative sm:top-0`}
       >
         <div className="flex items-center leading-10 h-10 pt-1 pl-4">
           <a href="" target="_blank" rel="noreferrer">
