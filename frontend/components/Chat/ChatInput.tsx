@@ -266,7 +266,7 @@ export const ChatInput = ({
           rel="noreferrer"
           className="underline"
         >
-          HYSW Team
+          天机 Team
         </a>
         .
       </div>
