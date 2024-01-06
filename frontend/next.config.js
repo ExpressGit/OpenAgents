@@ -13,7 +13,8 @@ const nextConfig = {
 
     return config;
   },
-  output: buildWithDocker ? 'standalone' : undefined,
+  // output: buildWithDocker ? 'standalone' : undefined,
+  output:'export',
 };
 
 module.exports = nextConfig;
