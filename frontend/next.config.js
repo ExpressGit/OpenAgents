@@ -1,6 +1,6 @@
 const { i18n } = require('./next-i18next.config');
 const buildWithDocker = process.env.DOCKER === 'true';
-const isExport = process.env.NODE_ENV === 'production' && process.env.EXPORT === 'true';
+const isExport = process.env.NODE_ENV === 'production';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   i18n,
