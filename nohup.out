@@ -1,0 +1,1435 @@
+Usage: flask run [OPTIONS]
+Try 'flask run --help' for help.
+
+Error: Could not locate a Flask application. Use the 'flask --app' option, 'FLASK_APP' environment variable, or a 'wsgi.py' or 'app.py' file in the current directory.
+Dependencies for InstructorEmbedding not found. The auto selection feature of plugins agent will return random elements.
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:00<00:08,  1.69it/s] 38%|███▊      | 6/16 [00:00<00:00, 11.01it/s] 75%|███████▌  | 12/16 [00:00<00:00, 20.84it/s]100%|██████████| 16/16 [00:00<00:00, 24.11it/s]100%|██████████| 16/16 [00:00<00:00, 17.14it/s]
+/root/OpenAgents/real_agents/plugins_agent/plugins/DreamInterpreter/openapi.yaml and DreamInterpreter/paths/__init__.py do not match. Load the later.
+/root/OpenAgents/real_agents/plugins_agent/plugins/XWeather/openapi.yaml and XWeather/paths/__init__.py do not match. Load the later.
+ * Serving Flask app 'backend.main.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://10.0.4.5:8000
+[33mPress CTRL+C to quit[0m
+220.196.160.96 - - [04/Jan/2024 21:36:43] "[33mGET / HTTP/1.1[0m" 404 -
+180.101.244.12 - - [04/Jan/2024 21:36:44] "[33mGET / HTTP/1.1[0m" 404 -
+84.54.51.33 - - [04/Jan/2024 21:39:20] "[33mCONNECT google.com:443 HTTP/1.1[0m" 404 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "OPTIONS /api/conversations/get_conversation_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "OPTIONS /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "OPTIONS /api/conversations/get_folder_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "OPTIONS /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "OPTIONS /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "POST /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "POST /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "POST /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:48:40] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:49:10] "[35m[1mPOST /api/conversations/get_conversation_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 21:49:10] "[35m[1mPOST /api/conversations/get_folder_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "OPTIONS /api/conversations/get_conversation_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "OPTIONS /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "OPTIONS /api/conversations/get_folder_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "OPTIONS /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "OPTIONS /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "POST /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "POST /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "POST /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:00] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:58:30] "[35m[1mPOST /api/conversations/get_folder_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 21:58:30] "[35m[1mPOST /api/conversations/get_conversation_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 21:58:51] "OPTIONS /api/conversations/register_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:59:21] "[35m[1mPOST /api/conversations/register_conversation HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 21:59:21] "OPTIONS /api/chat_xlang_plugin HTTP/1.1" 200 -
+2024-01-04 21:59:21 | DEBUG - DefaultUser++None->/chat Request json:{'user_intent': '你好', 'chat_id': None, 'parent_message_id': -1, 'selected_plugins': ['AUTO'], 'code_interpreter_languages': [{'id': '0c135359-af7e-473b-8425-1393d2943b57', 'prettyNameForHuman': 'Python Code Generation', 'nameForHuman': 'Python', 'name': 'PythonCodeBuilder', 'icon': 'data:image/png;base64,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', 'description': 'Using Python as the programming language', 'type': 'language'}], 'code_interpreter_tools': [{'id': '8f8e8dbc-ae5b-4950-9f4f-7f5238978806', 'prettyNameForHuman': 'Data Profiling', 'nameForHuman': 'Data Profiling', 'name': 'DataProfiling', 'icon': 'data:image/png;base64,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', 'description': 'Intelligent profiling for your data', 'type': 'tool'}], 'api_call': None, 'is_regenerate': False, 'llm_name': 'gpt-3.5-turbo-16k', 'temperature': 0.7, 'api_key': {'openai': '', 'anthropic': ''}}
+2024-01-04 21:59:21 | DEBUG - ++-> get_activated_message_list:[]
+171.83.6.230 - - [04/Jan/2024 21:59:21] "POST /api/chat_xlang_plugin HTTP/1.1" 200 -
+
+
+[1m> Entering new AgentExecutor chain...[0m
+2024-01-04 21:59:21 | TRACE - ++-> :
+================<prompt>================
+System: You are XLang Plugins Agent, a friendly and intuitive assistant developed by the XLang Team to guide you through every aspects of your work and your daily life. XLang Agent is always at your fingertips through our interactive chat system.
+
+You can aware of what plugins you have, and use the plugins properly in right order to finish what user wants.
+
+Today is 2024-01-04, and you should adapt the input to fit into the date, for example, seasonal information, or today's date as coordinate, etc.
+
+To make your response informative, always speak includes the following information in MARKDOWN format when responding a message, that is:
+1. Natural language explanation, that make explain the API output in a human readable way;
+2. Organized information such as bullet points or MARKDOWN tables, followed by the links to the items (that in the API output), news etc. if API output contains the information;
+3. The links should in MARKDOWN format and have value in it. If reference information is provided in the API output, like links to the items, news etc. Your explanation MUST provide the links on each items and links can be clicked on when API output contains the information. The links better attach on some natural language explanation through MARKDOWN syntax, for example, - [Renewable Energy - Center for Climate and Energy Solutions](https://www.c2es.org/content/renewable-energy/);
+4. If there are image we would like to display, please use MARKDOWN syntax to display it, for example, ![image](https://www.c2es.org/content/renewable-energy/);
+5. Try to speak more and show all the information you got in a organized way, that will make you a better assistant, especially when you are giving the final answer.
+
+PLUGINS
+------
+The plugins you can use are:
+Name: ZAPIER
+Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+OpenAPI information:
+	Endpoint: /api/v1/search/actions/
+	Name: Zapier Natural Language Actions (NLA) API (Dynamic) - Beta
+	Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+		Summary: List Directory Actions
+		Description: Search through all actions Zapier supports, even if they are not exposed.
+	
+	Because new actions may have been added by the user, you should call this
+	endpoint with `include_exposed=true` to get the latest list of exposed actions.
+		Input: 
+			`query` (string, optional): None.
+			`include_exposed` (boolean, optional): None.
+			`count` (integer, optional): None.
+	
+	Endpoint: /api/v1/preview-a-zap/
+		Summary: Preview A Zap
+		Description: (Beta!) Given a natural language description of a multistep Zap, return a possible definition of the Zap.
+		Input: 
+			`description_of_zap` (string, optional): A detailed description of the multi-step Zap the user wants to make. Eg: 'When I get a Typeform response for 'Support Form', create a new row in my 'Inbound Support' Google Sheet.'.
+	
+	Endpoint: /api/v1/configuration-link/
+		Summary: Get Configuration Link
+		Description: Provides a link to configure more actions. Alternatively, searching through apps and actions will provide more specific configuration links.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/exposed/
+		Summary: List Exposed Actions
+		Description: List all the currently exposed actions for the given account.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/execution-log/{execution_log_id}/
+		Summary: Get Execution Log Endpoint
+		Description: Get the execution log for a given execution log id.
+		Input: 
+			`execution_log_id` (string, required): None.
+	
+	
+Name: NBA_STATS
+Description: Find and aggregate basketball stats.
+OpenAPI information:
+	Endpoint: /basketball_stats
+	Name: Basketball Stats
+	Description: Find and aggregate basketball stats.
+		Summary: Get the stats for a relevant basketball query.
+		Description: None
+		Input: 
+			`natural_language_query` (string, optional): A query related to basketball statistics..
+	
+Name: JOBSEARCH
+Description: API for searching and retrieving job information
+OpenAPI information:
+	Endpoint: /jobs
+	Name: Jobs API
+	Description: API for searching and retrieving job information
+		Summary: Get a list of jobs. Output as table. Job details can be found at jobsearch.vencio.de/jobdetails/{hashId}
+		Description: None
+		Input: 
+			`jobTitle` (string, optional): Job title.
+			`employerName` (string, optional): Employer name.
+			`city` (string, optional): City.
+			`country` (string, optional): Country.
+			`entryDateInDays` (integer, optional): Entry date in days.
+			`publishedAtInDays` (integer, optional): Published at in days.
+	
+Name: MAPS
+Description: A Maps app that takes latitude and longitude coordinates and generates a map with a marker on the given spot.
+OpenAPI information:
+	Endpoint: /
+	Name: Maps
+	Description: A Maps app that takes latitude and longitude coordinates and generates a map with a marker on the given spot.
+		Summary: Generates a map with a marker on a given latitude and longitude coordinates
+		Description: Generates a map with a marker on a given latitude and longitude coordinates
+		Input: 
+			`latlng` (string, required): The latitude and longitude coordinates to generate a map for.
+	
+Name: COURSERA
+Description: Find recommendation for courses, specializations, and degrees on Coursera.
+OpenAPI information:
+	Endpoint: /api/rest/v1/search
+	Name: Search API
+	Description: Find recommendation for courses, specializations, and degrees on Coursera.
+		Summary: A public API that searches the Coursera catalog for products (e.g. courses) that are relevant to the provided query string.
+		Description: None
+		Input: 
+			`query` (string, optional): None.
+	
+
+RESPONSE FORMAT INSTRUCTIONS
+----------------------------
+
+When you use tools or generate final answer, please output a response in one of two formats:
+**Option 1: Explain and Use plugin**
+If the response involves using a plugin, you can start with a natural language explanation[Optional], plus exactly one plugin calling[MUST], and ends with no more words. The plugin calling format should be a markdown code snippet with the following JSON schema:
+
+```json
+{
+    "action": string wrapped with "", // The action to take. Must be one in the list [ZAPIER, NBA_STATS, JOBSEARCH, MAPS, COURSERA]
+    "action_input": string wrapped with "" // Query to be input to the action plugin. Pass as much information as possible to the plugin from the history of the conversation.
+}
+```
+NEVER EVER EVER make up a plugin not in [ZAPIER, NBA_STATS, JOBSEARCH, MAPS, COURSERA]
+You MUST pass as much information as possible to the plugin from the history of the conversation. It could be natural language or structured language like jsonl, csv, etc. BUT MUST in a single line.
+(Please note that ONLY ONE plugin should be used per response.)
+
+**Option #2: **
+If you want to respond directly to the human without using a plugin, provide a plain natural language response. However, if you initially generated a natural language response and then decide to use a plugin, make sure to include the plugin action and input after the initial response.
+
+Begin.
+
+Human: 你好
+AI: 
+================</prompt>================
+
+Traceback (most recent call last):
+  File "/root/OpenAgents/backend/utils/streaming.py", line 165, in _wrap_agent_caller
+    _ = interaction_executor(inputs, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 620, in _call
+    next_step_output = self._take_next_step(
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 532, in _take_next_step
+    output = self.agent.plan(
+  File "/root/OpenAgents/real_agents/plugins_agent/plugin.py", line 171, in plan
+    full_output = self.llm_chain.predict(**full_inputs)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 210, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 73, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 90, in generate
+    return self.llm.generate_prompt(prompts, stop, callbacks=run_manager.get_child() if run_manager else None)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 143, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 91, in generate
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 83, in generate
+    results = [
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 84, in <listcomp>
+    self._generate(m, stop=stop, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 301, in _generate
+    for stream_resp in self.completion_with_retry(messages=message_dicts,
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 254, in completion_with_retry
+    return _completion_with_retry(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 252, in _completion_with_retry
+    return self.client.create(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 149, in create
+    ) = cls.__prepare_create_request(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 106, in __prepare_create_request
+    requestor = api_requestor.APIRequestor(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_requestor.py", line 138, in __init__
+    self.api_key = key or util.default_api_key()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/util.py", line 186, in default_api_key
+    raise openai.error.AuthenticationError(
+openai.error.AuthenticationError: No API key provided. You can set your API key in code using 'openai.api_key = <API-KEY>', or you can set the environment variable OPENAI_API_KEY=<API-KEY>). If your API key is stored in a file, you can point the openai module at it with 'openai.api_key_path = <PATH>'. You can generate API keys in the OpenAI web interface. See https://platform.openai.com/account/api-keys for details.
+171.83.6.230 - - [04/Jan/2024 21:59:21] "OPTIONS /api/conversations/update_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:59:22] "POST /api/conversations/update_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:59:26] "OPTIONS /api/chat_xlang_plugin HTTP/1.1" 200 -
+2024-01-04 21:59:27 | DEBUG - DefaultUser++None->/chat Request json:{'user_intent': '你好', 'chat_id': None, 'parent_message_id': -1, 'selected_plugins': ['AUTO'], 'code_interpreter_languages': [{'id': '0c135359-af7e-473b-8425-1393d2943b57', 'prettyNameForHuman': 'Python Code Generation', 'nameForHuman': 'Python', 'name': 'PythonCodeBuilder', 'icon': 'data:image/png;base64,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', 'description': 'Using Python as the programming language', 'type': 'language'}], 'code_interpreter_tools': [{'id': '8f8e8dbc-ae5b-4950-9f4f-7f5238978806', 'prettyNameForHuman': 'Data Profiling', 'nameForHuman': 'Data Profiling', 'name': 'DataProfiling', 'icon': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAMoElEQVR4nO2be3RV1Z3HP/s87s29ISQ0tEJIipIoDx8wrYOlIIYusFRG6rPYWa7OaG1LgekM1vERUQSla1ntAAptdVQcsGjHUamtChFiCFIfHS0RJZDwUoQk5B3IzX2cs/f8cXKTe5NLcu/JNTpr5rvWXvfefc7ev/373t/+/X5773Pg/zhEr+9f6lX3RUMQOJ3ODqPKGsATwBV8sQloB/4R2JXujnOBVkD9Lygr06m40fUpgAjAWVOLGTWtGGmlU8wgIMAKBKh5dh1WZwBAprN7o3fFqGlz+NqdJVidjnChpVNc6hA6BBtCHN6yYWgIkFYEqxOsICAVobYmx/A+Jwgdgk1NKGlHq4YBI2NuCQGn3PbfhwBHKiAt3l52CycqXgX1OTIAoBSRttbor8XATTFXB+UYExIgNAi1tvLpji1ETrW56fezhL+rRDESmEM6CYhCM0wAZkwvpri4mEjkc7aELggh6Ojo4Mmn1hMIDM4v9EtAFMXFs7n/gbsJBtyKSS90HerrT/Psc09HCXCNpAiIRCIEAxAI9CY6HTlT6lal6xqdnQFUGnxTUgT0hmk6sTEdvlHXBeGwSosybpAyAaYpKC3dym8fW0s4HB70AMaPn8Tye1eRmZmFlAOToOsaXi9kZPgQotsCI27lp0yApgnW//rfeKP8dbcy41Cxq4xrr7mBGTOmEwolJkAIgcfjKFtf30h1dRV7Kt+Pnf/TgKuBKqAGsBN2lAApEyClYvGiW9F1PW0WcMEFF54xwng8GrYNZWVl/G7zBip2lVFbe6L3bfO6ShD4EHgeeAboc2NvpExAJKK4/PK5XH753DT5AAiHVQLzF/h8gsrKD1l5fwlbt/0pzk/oukBK5YxBF2ArgAzg4q7yz8BDwHr6mSKunGAkEo0Gg48CltWXRSEEXq/gPzZupKRkKS2tzQDkZHu5YlYB82aPZfRIP9ctLKW5NQRX58O3R8NfmqHiJOxvB8gDVgOzgR8BtYnkuyLAMDQ8Hjct+0JKQTAYXek68HoFa9auZtk9t6GUxNAFt/z9RG798WTOLcwGXaOxrgNN6/oDcjwwNRemjIAbx8KbjfDUITh0GhTzgNeA+cAnfXRJdcC6Ljh48CBb/vCfafEBRUXjufqq69E0DaXA59PYuHFTt/JfyfXx2IMzuWreOLAkkaCNrssYKwSkgrCEoA2agO+MhvOy4MfvQnMYYDLwe2AuEJfbp0yAYQiW3ftzXnvt5UEpHotzzi7kkkumAlBZ+RF33PWzbuVfevLbfPMbeUQCSUY6XUBTGNYciCofxTeAB4GFsZWpTwHlrA3ef/8vWJbr8NuNs8eOY8yYMUgJStksX3EHbW2tmIbG4w/OTE15Q0DAhns+gLcaAbiyIJ+QbVN6ohbgFuA5oLy7SaoDDoUlixct5YYFP8C2kw63Z0RW1nB8vgx0HXaUVfD69lcBuHnBeL47b1xqyrfbsKxH+Svyx/DcrMs4cbqDv/3Tq7SGwzpwF1BB1wLKlRO0bUlubq6bpn2glNOfYWhs2vQESipyhnv414VTUFaSizy965/vpfyzxTPx6zpFI3K46dxCVn9UBTALuAjYA+Bqw0vTNAyDlIumOcrGFikluq5RV99Ixa4yAL4z66sUFmZjRZIk4JSVUPnhpomUEqTkHwoL8WoagImz+w24TIU7OjrYU/nfRCKp+YC8vHzGnzcB245XzDDgwP59nDxZB8CVc8aCrqHriQnQdIGux+QgLx2DkHNvH+UBJSWTcrKZkJNNZXMLwIxu2SlpgLMYunf5bTy14bepNmV41nBKt73FpEmT4sKYpsHBQ9XOgHSNUV/201jXER/qYqDrgoamIDKaGfajPDgZhmkYXDhiRJSAcYAXCLnyAe6ROHMUAhoa6gGwpeS6n5T2JDlngJSK1raeMDcvfwybEygfKyTf74v+ysbZVkudgEhYsXLFw1xzzQ0pT4Exefmcd96EhP9stC+lcNLbFHDFQMp3wdT06Fe9q7hYDSpFZmYmxZddlmpTpOSMZp2VNRwAQwh+OmE8uV4vKondouGmyQ/PLRpQeYCWcDexnTgrR3dhUEqJZaUeQM60epQSvlowFgBbKW4sPIepeXmQbJ5h2wMqj5RUt3cfH9QBAXBJgK5rNDU1pZwIRZOe3lHAtmH8hPPxejMIhYKUHq9l6llnIa30nM9pQtDY2Rl1gACVuE2EvF6NtY+s5pFHf4mV4gDPHjuOZza9yOjRedh2jzlYlmLcOYVMnHA+eyrf44WPP+b2C8/H1LT07BXqOqUnaqnv7IzWlEa/uLKAN3eXU19fl3K7pqZGjh8/Tn7+mDgClFIMyzS55uob2FP5HpXNLfzxk2NcWzgONUgrEEIQtiweqdofrToGbI/+SJkAy1I8sPJXXPz1S1JeDhcVjWfKlK8ldIShMCxYcCPrf/Mr6uvruOevlXwrbzQjvN6B53c/EIbO43s/4p2GxmjV4ziPAgAuCLBtRVFRESV3laQ8GCkhGEy8BW7bkoKCUSz9lxLuvOtnVLW1seTtd9k4cwa6ED1JTwrQDINdx2u5+/090apqnC2ybriaApYl6d8yeycxyQ0+GFT86JaFvPHGNraVvsLmw0fIMg3WXjIVr2Egk3S6mhCg6+w6UcuC8granRwjjHOw2hJ3b1I9Jgld1/B4NAxD9CoaXu/AopRSGIbJukef4KKL/gaAxw7UMH97GR+1tKAZBpqmIRIkiQJHcc0wCCvFug/38Xfby6h1HJ8CbiVm7keRtlTYMAQHD9WwYmUJrS3N8YMTgrlzr+SnC/9pwNBuWZJRo0bx3OY/cNMPv8877+ym9EQt01/Zyk1FhfygaBzn5+TgMQzimJCSk52dbK+tY33Vfv58siF6JQT8nF6m3z1u1xr3gscjePHF3/Pyy/+V8PoHe//K966/kdzc3D55QG+Ew5KCggJeeP4V7ltRwoanH6ctHGbNvirW7z/ApJxsLsjJIT/Tj0fTaQmHqGk/RWVzC3U9oQ6cg5KlwLYzyRoUAbHmqOv0JEaGDlNGQ4YJR1vg01aEECklTuGwZNiwbNasXs9V372ORx59mPKd2wmHw1Q2t8QmNYlwFHgS+DXQ3N+NrgkwDI3W1nZCoSDg7OZ2BDqci1leeOxaKBgBq3bA2l2x53hJw9k0geLiWcyYMYu9e/fw+vbXePud3Rw6VMORIwejIbIFx8NXAq8DZQygeLceKY8K57hqZ8VOFi+5mdOn2wFnOgY6Ys7qLemUJA48B0IoJBFCMHnyFC7++hSkgqNHj3PpZZNpbm4C+A1wt5u+XR6MwM6dO/j448NJtxFC4PP58fvBtp2IYFmOqScDpRSRiCISiUYbb6xVuT6gcD0FNGd/Db/Hw5Lp38Tv81F+oJryQ4cS3h8IdPDLh1aSmZmJUgohBJfOmMX06ZfGpcXJQqk44lyf0Q06CmSaJsvnzMY/ciTmS1v6ISDAo+seiqvb9MyTvLV7L1lZ2YNKdweDQSdCCghEIhAOE+nHywuh4c3JJeNLIzF8zkNegUAHnZ3BhInNUGHIngM1s3OY/cxu5u+o4tzvL3GEa5qr6JBODNmmqBAaGblfwfflEZj+YUMldkAM6a6wsm2U3ceBJYSmaZhm4mu6Dl6vNy3WM8Tb4slhoMMXTRO0tram5Xj+C0mAaQpWrLyTf39iXbJN9IFvSQxXTtA0Qdd7ZBqaBrrurMN7Kp0Sc8AhDAPNAKH1iPV6vWhxoxDYNuzb90EqQ6pOWYnoMHtXaIaJ4QM9w0+i+GSagpf/uI3nn/8dAG3BIPM3PI3HNDkc3XY6FYKfvNCzGAIip9qoWDwfI8PDqa4Msr29jeX33c6q+x/Gnzks7kEpXXeGNnHiRdx22y+wbYuMDB9VVZWsWXMfnZ3dafcqYLNbAqIYCTQA6qypxWry0vvUxJtvV4bPrwB1x+3LVWeHUk0NtjrdrlRx8Zy0vgaz9dU31el2p/+mBqnaWpSaeem3FKCmTStWNTVhdeSIUlu3fqCKiibGtn1gsIpHLUDhHBtT/2459e+Wn7GBlIoli27FGKLnBKWUCKGxd+97LF58PceOHYleWgUsG6z8KAFtwBbi3xoTwAh6+Ymhe07QgWl6qa7+kCVLvpd25aGHAAvnLYzYxz5ygT/jvEsYh8/6OcFYfPrpURYtuo5PPuleeaZNeYh3ggpojPlt03V8ZJomGX74bDLnviQaRk+UOXq0JvZSWpWH/vOA7jhXXr6de5ZZQ/bGiKYJDh852Ls67coPhJF8cV6mHLS3PxP6s4BW+jrGoYaNc5R172clYCDFPu8XqiVJbm7+P1zifwAk1JWn2ZZ6qAAAAABJRU5ErkJggg==', 'description': 'Intelligent profiling for your data', 'type': 'tool'}], 'api_call': None, 'is_regenerate': True, 'llm_name': 'gpt-3.5-turbo-16k', 'temperature': 0.7, 'api_key': {'openai': '', 'anthropic': ''}}
+2024-01-04 21:59:27 | DEBUG - ++-> get_activated_message_list:[]
+171.83.6.230 - - [04/Jan/2024 21:59:27] "POST /api/chat_xlang_plugin HTTP/1.1" 200 -
+
+
+[1m> Entering new AgentExecutor chain...[0m
+2024-01-04 21:59:27 | TRACE - ++-> :
+================<prompt>================
+System: You are XLang Plugins Agent, a friendly and intuitive assistant developed by the XLang Team to guide you through every aspects of your work and your daily life. XLang Agent is always at your fingertips through our interactive chat system.
+
+You can aware of what plugins you have, and use the plugins properly in right order to finish what user wants.
+
+Today is 2024-01-04, and you should adapt the input to fit into the date, for example, seasonal information, or today's date as coordinate, etc.
+
+To make your response informative, always speak includes the following information in MARKDOWN format when responding a message, that is:
+1. Natural language explanation, that make explain the API output in a human readable way;
+2. Organized information such as bullet points or MARKDOWN tables, followed by the links to the items (that in the API output), news etc. if API output contains the information;
+3. The links should in MARKDOWN format and have value in it. If reference information is provided in the API output, like links to the items, news etc. Your explanation MUST provide the links on each items and links can be clicked on when API output contains the information. The links better attach on some natural language explanation through MARKDOWN syntax, for example, - [Renewable Energy - Center for Climate and Energy Solutions](https://www.c2es.org/content/renewable-energy/);
+4. If there are image we would like to display, please use MARKDOWN syntax to display it, for example, ![image](https://www.c2es.org/content/renewable-energy/);
+5. Try to speak more and show all the information you got in a organized way, that will make you a better assistant, especially when you are giving the final answer.
+
+PLUGINS
+------
+The plugins you can use are:
+Name: CREATE_QR_CODE
+Description: Create a QR code for any text or url.
+OpenAPI information:
+	Endpoint: /create-qr-code
+	Name: QR Code API
+	Description: Create a QR code for any text or url.
+		Summary: Create a QR code
+		Description: None
+		Input: 
+			`data` (string, optional): The data to encode in the QR code..
+			`size` (string, optional): The size of the QR code..
+			`alt` (string, optional): The alt text for the QR code image..
+			`title` (string, optional): The title for the QR code image..
+	
+Name: SHOW_ME
+Description: Create and edit diagrams directly in chat.
+OpenAPI information:
+	Endpoint: /render
+	Name: Show Me
+	Description: Create and edit diagrams directly in chat.
+		Summary: Taking a diagram, renders it and returns a link to the rendered image. Always request the diagram guidelines endpoint before requesting this endpoint
+		Description: None
+		Input: 
+			`openApiSchemaVersion` (string, optional): None.Examples:1.0
+			`diagramLanguage` (string, optional): None.Examples:blockdiag,bpmn,bytefield,seqdiag,actdiag,nwdiag,packetdiag,rackdiag,c4-with-plantuml,d2,dbml,ditaa,erd,excalidraw,graphviz,mermaid,nomnoml,pikchr,plantuml,structurizr,svgbob,umlet,vega,vegalite,wavedrom,wireviz
+			`diagramType` (string, optional): None.Examples:sequence,use-case,class,object,activity,component,deployment,state,timing,graph,entity-relationship,user-journey,gantt,pie-chart,requirement,gitgraph,mindmap,timeline,block,network,json,yaml,salt-wireframe,rack,grid,dbml,ascii,digital-timing,line-chart,bar-chart,histogram
+			`topic` (string, optional): None.
+			`d2Theme` (string, optional): None.
+			`diagram` (string, optional): None.
+			`mermaid` (string, optional): None.
+	
+	Endpoint: /diagram-guidelines
+		Summary: Diagram guidelines and themes to help rendering more effective diagrams
+		Description: None
+		Input: 
+			`diagramGuidelines` (string, required): None.Examples:mermaid_graph,mermaid_sequence,mermaid_class,mermaid_state,mermaid_entity-relationship,mermaid_user-journey,mermaid_gantt,mermaid_pie-chart,mermaid_requirement,mermaid_gitgraph,mermaid_mindmap,mermaid_timeline,plantuml_sequence,plantuml_use-case,plantuml_class,plantuml_object,plantuml_activity,plantuml_component,plantuml_deployment,plantuml_state,plantuml_timing,plantuml_entity-relationship,plantuml_gantt,plantuml_mindmap,plantuml_network,plantuml_json,plantuml_yaml,plantuml_salt-wireframe,d2_sequence,d2_class,d2_graph,d2_entity-relationship,d2_grid,nomnoml_class,nomnoml_activity,nomnoml_graph,nomnoml_entity-relationship,graphviz_graph,graphviz_entity-relationship,graphviz_mindmap,actdiag_activity,blockdiag_block,nwdiag_network,rackdiag_rack,dbml_dbml,erd_entity-relationship,ditaa_ascii,svgbob_ascii,wavedrom_digital-timing,vegalite_bar-chart,vegalite_histogram,vegalite_line-chart,vegalite_pie-chart
+	
+	Endpoint: /show-carousel
+		Summary: show the carousel of diagram images
+		Description: None
+		Input: 
+			`showCarousel` (string, required): None.Examples:yes
+	
+	
+Name: ZAPIER
+Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+OpenAPI information:
+	Endpoint: /api/v1/search/actions/
+	Name: Zapier Natural Language Actions (NLA) API (Dynamic) - Beta
+	Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+		Summary: List Directory Actions
+		Description: Search through all actions Zapier supports, even if they are not exposed.
+	
+	Because new actions may have been added by the user, you should call this
+	endpoint with `include_exposed=true` to get the latest list of exposed actions.
+		Input: 
+			`query` (string, optional): None.
+			`include_exposed` (boolean, optional): None.
+			`count` (integer, optional): None.
+	
+	Endpoint: /api/v1/preview-a-zap/
+		Summary: Preview A Zap
+		Description: (Beta!) Given a natural language description of a multistep Zap, return a possible definition of the Zap.
+		Input: 
+			`description_of_zap` (string, optional): A detailed description of the multi-step Zap the user wants to make. Eg: 'When I get a Typeform response for 'Support Form', create a new row in my 'Inbound Support' Google Sheet.'.
+	
+	Endpoint: /api/v1/configuration-link/
+		Summary: Get Configuration Link
+		Description: Provides a link to configure more actions. Alternatively, searching through apps and actions will provide more specific configuration links.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/exposed/
+		Summary: List Exposed Actions
+		Description: List all the currently exposed actions for the given account.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/execution-log/{execution_log_id}/
+		Summary: Get Execution Log Endpoint
+		Description: Get the execution log for a given execution log id.
+		Input: 
+			`execution_log_id` (string, required): None.
+	
+	
+Name: SPEAK
+Description: Learn how to say anything in another language with Speak, your AI-powered language tutor.
+OpenAPI information:
+	Endpoint: /v1/public/openai/translate
+	Name: Speak
+	Description: Learn how to say anything in another language with Speak, your AI-powered language tutor.
+		Summary: Translate and explain how to say a specific phrase or word in another language.
+		Description: None
+		Input: 
+			`phrase_to_translate` (string, optional): Phrase or concept to translate into the foreign language and explain further..
+			`learning_language` (string, optional): The foreign language that the user is learning and asking about. Always use the full name of the language (e.g. Spanish, French)..
+			`native_language` (string, optional): The user's native language. Infer this value from the language the user asked their question in. Always use the full name of the language (e.g. Spanish, French)..
+			`additional_context` (string, optional): A description of any additional context in the user's question that could affect the explanation - e.g. setting, scenario, situation, tone, speaking style and formality, usage notes, or any other qualifiers..
+			`full_query` (string, optional): Full text of the user's question..
+	
+	Endpoint: /v1/public/openai/explain-phrase
+		Summary: Explain the meaning and usage of a specific foreign language phrase that the user is asking about.
+		Description: None
+		Input: 
+			`foreign_phrase` (string, optional): Foreign language phrase or word that the user wants an explanation for..
+			`learning_language` (string, optional): The language that the user is asking their language question about. The value can be inferred from question - e.g. for "Somebody said no mames to me, what does that mean", the value should be "Spanish" because "no mames" is a Spanish phrase. Always use the full name of the language (e.g. Spanish, French)..
+			`native_language` (string, optional): The user's native language. Infer this value from the language the user asked their question in. Always use the full name of the language (e.g. Spanish, French)..
+			`additional_context` (string, optional): A description of any additional context in the user's question that could affect the explanation - e.g. setting, scenario, situation, tone, speaking style and formality, usage notes, or any other qualifiers..
+			`full_query` (string, optional): Full text of the user's question..
+	
+	Endpoint: /v1/public/openai/explain-task
+		Summary: Explain the best way to say or do something in a specific situation or context with a foreign language. Use this endpoint when the user asks more general or high-level questions.
+		Description: None
+		Input: 
+			`task_description` (string, optional): Description of the task that the user wants to accomplish or do. For example, "tell the waiter they messed up my order" or "compliment someone on their shirt".
+			`learning_language` (string, optional): The foreign language that the user is learning and asking about. The value can be inferred from question - for example, if the user asks "how do i ask a girl out in mexico city", the value should be "Spanish" because of Mexico City. Always use the full name of the language (e.g. Spanish, French)..
+			`native_language` (string, optional): The user's native language. Infer this value from the language the user asked their question in. Always use the full name of the language (e.g. Spanish, French)..
+			`additional_context` (string, optional): A description of any additional context in the user's question that could affect the explanation - e.g. setting, scenario, situation, tone, speaking style and formality, usage notes, or any other qualifiers..
+			`full_query` (string, optional): Full text of the user's question..
+	
+	
+Name: NBA_STATS
+Description: Find and aggregate basketball stats.
+OpenAPI information:
+	Endpoint: /basketball_stats
+	Name: Basketball Stats
+	Description: Find and aggregate basketball stats.
+		Summary: Get the stats for a relevant basketball query.
+		Description: None
+		Input: 
+			`natural_language_query` (string, optional): A query related to basketball statistics..
+	
+
+RESPONSE FORMAT INSTRUCTIONS
+----------------------------
+
+When you use tools or generate final answer, please output a response in one of two formats:
+**Option 1: Explain and Use plugin**
+If the response involves using a plugin, you can start with a natural language explanation[Optional], plus exactly one plugin calling[MUST], and ends with no more words. The plugin calling format should be a markdown code snippet with the following JSON schema:
+
+```json
+{
+    "action": string wrapped with "", // The action to take. Must be one in the list [CREATE_QR_CODE, SHOW_ME, ZAPIER, SPEAK, NBA_STATS]
+    "action_input": string wrapped with "" // Query to be input to the action plugin. Pass as much information as possible to the plugin from the history of the conversation.
+}
+```
+NEVER EVER EVER make up a plugin not in [CREATE_QR_CODE, SHOW_ME, ZAPIER, SPEAK, NBA_STATS]
+You MUST pass as much information as possible to the plugin from the history of the conversation. It could be natural language or structured language like jsonl, csv, etc. BUT MUST in a single line.
+(Please note that ONLY ONE plugin should be used per response.)
+
+**Option #2: **
+If you want to respond directly to the human without using a plugin, provide a plain natural language response. However, if you initially generated a natural language response and then decide to use a plugin, make sure to include the plugin action and input after the initial response.
+
+Begin.
+
+Human: 你好
+AI: 
+================</prompt>================
+
+Traceback (most recent call last):
+  File "/root/OpenAgents/backend/utils/streaming.py", line 165, in _wrap_agent_caller
+    _ = interaction_executor(inputs, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 620, in _call
+    next_step_output = self._take_next_step(
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 532, in _take_next_step
+    output = self.agent.plan(
+  File "/root/OpenAgents/real_agents/plugins_agent/plugin.py", line 171, in plan
+    full_output = self.llm_chain.predict(**full_inputs)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 210, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 73, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 90, in generate
+    return self.llm.generate_prompt(prompts, stop, callbacks=run_manager.get_child() if run_manager else None)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 143, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 91, in generate
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 83, in generate
+    results = [
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 84, in <listcomp>
+    self._generate(m, stop=stop, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 301, in _generate
+    for stream_resp in self.completion_with_retry(messages=message_dicts,
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 254, in completion_with_retry
+    return _completion_with_retry(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 252, in _completion_with_retry
+    return self.client.create(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 149, in create
+    ) = cls.__prepare_create_request(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 106, in __prepare_create_request
+    requestor = api_requestor.APIRequestor(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_requestor.py", line 138, in __init__
+    self.api_key = key or util.default_api_key()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/util.py", line 186, in default_api_key
+    raise openai.error.AuthenticationError(
+openai.error.AuthenticationError: No API key provided. You can set your API key in code using 'openai.api_key = <API-KEY>', or you can set the environment variable OPENAI_API_KEY=<API-KEY>). If your API key is stored in a file, you can point the openai module at it with 'openai.api_key_path = <PATH>'. You can generate API keys in the OpenAI web interface. See https://platform.openai.com/account/api-keys for details.
+171.83.6.230 - - [04/Jan/2024 21:59:48] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 21:59:48] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:00:19] "OPTIONS /api/conversations/register_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:00:25] "OPTIONS /api/conversations/register_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:00:49] "[35m[1mPOST /api/conversations/register_conversation HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:00:56] "[35m[1mPOST /api/conversations/register_conversation HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "OPTIONS /api/conversations/get_conversation_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "OPTIONS /api/conversations/get_folder_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "OPTIONS /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "OPTIONS /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "OPTIONS /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "POST /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "POST /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "POST /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:35] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:36] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:05:46] "OPTIONS /api/conversations/register_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:06:06] "[35m[1mPOST /api/conversations/get_conversation_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:06:06] "[35m[1mPOST /api/conversations/get_folder_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:06:16] "[35m[1mPOST /api/conversations/register_conversation HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:06:16] "OPTIONS /api/chat_xlang_plugin HTTP/1.1" 200 -
+2024-01-04 22:06:16 | DEBUG - DefaultUser++None->/chat Request json:{'user_intent': '你好', 'chat_id': None, 'parent_message_id': -1, 'selected_plugins': ['AUTO'], 'code_interpreter_languages': [{'id': '0c135359-af7e-473b-8425-1393d2943b57', 'prettyNameForHuman': 'Python Code Generation', 'nameForHuman': 'Python', 'name': 'PythonCodeBuilder', 'icon': 'data:image/png;base64,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', 'description': 'Using Python as the programming language', 'type': 'language'}], 'code_interpreter_tools': [{'id': '8f8e8dbc-ae5b-4950-9f4f-7f5238978806', 'prettyNameForHuman': 'Data Profiling', 'nameForHuman': 'Data Profiling', 'name': 'DataProfiling', 'icon': 'data:image/png;base64,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', 'description': 'Intelligent profiling for your data', 'type': 'tool'}], 'api_call': None, 'is_regenerate': False, 'llm_name': 'gpt-3.5-turbo-16k', 'temperature': 0.7, 'api_key': {'openai': '', 'anthropic': ''}}
+2024-01-04 22:06:16 | DEBUG - ++-> get_activated_message_list:[]
+171.83.6.230 - - [04/Jan/2024 22:06:16] "POST /api/chat_xlang_plugin HTTP/1.1" 200 -
+
+
+[1m> Entering new AgentExecutor chain...[0m
+2024-01-04 22:06:16 | TRACE - ++-> :
+================<prompt>================
+System: You are XLang Plugins Agent, a friendly and intuitive assistant developed by the XLang Team to guide you through every aspects of your work and your daily life. XLang Agent is always at your fingertips through our interactive chat system.
+
+You can aware of what plugins you have, and use the plugins properly in right order to finish what user wants.
+
+Today is 2024-01-04, and you should adapt the input to fit into the date, for example, seasonal information, or today's date as coordinate, etc.
+
+To make your response informative, always speak includes the following information in MARKDOWN format when responding a message, that is:
+1. Natural language explanation, that make explain the API output in a human readable way;
+2. Organized information such as bullet points or MARKDOWN tables, followed by the links to the items (that in the API output), news etc. if API output contains the information;
+3. The links should in MARKDOWN format and have value in it. If reference information is provided in the API output, like links to the items, news etc. Your explanation MUST provide the links on each items and links can be clicked on when API output contains the information. The links better attach on some natural language explanation through MARKDOWN syntax, for example, - [Renewable Energy - Center for Climate and Energy Solutions](https://www.c2es.org/content/renewable-energy/);
+4. If there are image we would like to display, please use MARKDOWN syntax to display it, for example, ![image](https://www.c2es.org/content/renewable-energy/);
+5. Try to speak more and show all the information you got in a organized way, that will make you a better assistant, especially when you are giving the final answer.
+
+PLUGINS
+------
+The plugins you can use are:
+Name: ZAPIER
+Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+OpenAPI information:
+	Endpoint: /api/v1/search/actions/
+	Name: Zapier Natural Language Actions (NLA) API (Dynamic) - Beta
+	Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+		Summary: List Directory Actions
+		Description: Search through all actions Zapier supports, even if they are not exposed.
+	
+	Because new actions may have been added by the user, you should call this
+	endpoint with `include_exposed=true` to get the latest list of exposed actions.
+		Input: 
+			`query` (string, optional): None.
+			`include_exposed` (boolean, optional): None.
+			`count` (integer, optional): None.
+	
+	Endpoint: /api/v1/preview-a-zap/
+		Summary: Preview A Zap
+		Description: (Beta!) Given a natural language description of a multistep Zap, return a possible definition of the Zap.
+		Input: 
+			`description_of_zap` (string, optional): A detailed description of the multi-step Zap the user wants to make. Eg: 'When I get a Typeform response for 'Support Form', create a new row in my 'Inbound Support' Google Sheet.'.
+	
+	Endpoint: /api/v1/configuration-link/
+		Summary: Get Configuration Link
+		Description: Provides a link to configure more actions. Alternatively, searching through apps and actions will provide more specific configuration links.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/exposed/
+		Summary: List Exposed Actions
+		Description: List all the currently exposed actions for the given account.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/execution-log/{execution_log_id}/
+		Summary: Get Execution Log Endpoint
+		Description: Get the execution log for a given execution log id.
+		Input: 
+			`execution_log_id` (string, required): None.
+	
+	
+Name: COURSERA
+Description: Find recommendation for courses, specializations, and degrees on Coursera.
+OpenAPI information:
+	Endpoint: /api/rest/v1/search
+	Name: Search API
+	Description: Find recommendation for courses, specializations, and degrees on Coursera.
+		Summary: A public API that searches the Coursera catalog for products (e.g. courses) that are relevant to the provided query string.
+		Description: None
+		Input: 
+			`query` (string, optional): None.
+	
+Name: SPEAK
+Description: Learn how to say anything in another language with Speak, your AI-powered language tutor.
+OpenAPI information:
+	Endpoint: /v1/public/openai/translate
+	Name: Speak
+	Description: Learn how to say anything in another language with Speak, your AI-powered language tutor.
+		Summary: Translate and explain how to say a specific phrase or word in another language.
+		Description: None
+		Input: 
+			`phrase_to_translate` (string, optional): Phrase or concept to translate into the foreign language and explain further..
+			`learning_language` (string, optional): The foreign language that the user is learning and asking about. Always use the full name of the language (e.g. Spanish, French)..
+			`native_language` (string, optional): The user's native language. Infer this value from the language the user asked their question in. Always use the full name of the language (e.g. Spanish, French)..
+			`additional_context` (string, optional): A description of any additional context in the user's question that could affect the explanation - e.g. setting, scenario, situation, tone, speaking style and formality, usage notes, or any other qualifiers..
+			`full_query` (string, optional): Full text of the user's question..
+	
+	Endpoint: /v1/public/openai/explain-phrase
+		Summary: Explain the meaning and usage of a specific foreign language phrase that the user is asking about.
+		Description: None
+		Input: 
+			`foreign_phrase` (string, optional): Foreign language phrase or word that the user wants an explanation for..
+			`learning_language` (string, optional): The language that the user is asking their language question about. The value can be inferred from question - e.g. for "Somebody said no mames to me, what does that mean", the value should be "Spanish" because "no mames" is a Spanish phrase. Always use the full name of the language (e.g. Spanish, French)..
+			`native_language` (string, optional): The user's native language. Infer this value from the language the user asked their question in. Always use the full name of the language (e.g. Spanish, French)..
+			`additional_context` (string, optional): A description of any additional context in the user's question that could affect the explanation - e.g. setting, scenario, situation, tone, speaking style and formality, usage notes, or any other qualifiers..
+			`full_query` (string, optional): Full text of the user's question..
+	
+	Endpoint: /v1/public/openai/explain-task
+		Summary: Explain the best way to say or do something in a specific situation or context with a foreign language. Use this endpoint when the user asks more general or high-level questions.
+		Description: None
+		Input: 
+			`task_description` (string, optional): Description of the task that the user wants to accomplish or do. For example, "tell the waiter they messed up my order" or "compliment someone on their shirt".
+			`learning_language` (string, optional): The foreign language that the user is learning and asking about. The value can be inferred from question - for example, if the user asks "how do i ask a girl out in mexico city", the value should be "Spanish" because of Mexico City. Always use the full name of the language (e.g. Spanish, French)..
+			`native_language` (string, optional): The user's native language. Infer this value from the language the user asked their question in. Always use the full name of the language (e.g. Spanish, French)..
+			`additional_context` (string, optional): A description of any additional context in the user's question that could affect the explanation - e.g. setting, scenario, situation, tone, speaking style and formality, usage notes, or any other qualifiers..
+			`full_query` (string, optional): Full text of the user's question..
+	
+	
+Name: WOLFRAM
+Description: Access computation, math, curated knowledge & real-time data through Wolfram|Alpha and Wolfram Language.
+OpenAPI information:
+	Endpoint: /api/v1/cloud-plugin
+	Name: Wolfram
+	Description: Access computation, math, curated knowledge & real-time data through Wolfram|Alpha and Wolfram Language.
+		Summary: Evaluate Wolfram Language code
+		Description: None
+		Input: 
+			`input` (string, required): the input expression.
+	
+	Endpoint: /api/v1/llm-api
+		Summary: Get Wolfram|Alpha results
+		Description: None
+		Input: 
+			`input` (string, required): the input.
+			`assumption` (array, optional): the assumption to use, passed back from a previous query with the same input..
+	
+	
+Name: BIZTOC
+Description: Search BizToc for business & finance news.
+OpenAPI information:
+	Endpoint: /ai/news
+	Name: BizToc
+	Description: Search BizToc for business & finance news.
+		Summary: Retrieves the latest news whose content contains the query string.
+		Description: None
+		Input: 
+			`query` (string, optional): Used to query news articles on their title and body. For example, ?query=apple will return news stories that have 'apple' in their title or body..
+	
+
+RESPONSE FORMAT INSTRUCTIONS
+----------------------------
+
+When you use tools or generate final answer, please output a response in one of two formats:
+**Option 1: Explain and Use plugin**
+If the response involves using a plugin, you can start with a natural language explanation[Optional], plus exactly one plugin calling[MUST], and ends with no more words. The plugin calling format should be a markdown code snippet with the following JSON schema:
+
+```json
+{
+    "action": string wrapped with "", // The action to take. Must be one in the list [ZAPIER, COURSERA, SPEAK, WOLFRAM, BIZTOC]
+    "action_input": string wrapped with "" // Query to be input to the action plugin. Pass as much information as possible to the plugin from the history of the conversation.
+}
+```
+NEVER EVER EVER make up a plugin not in [ZAPIER, COURSERA, SPEAK, WOLFRAM, BIZTOC]
+You MUST pass as much information as possible to the plugin from the history of the conversation. It could be natural language or structured language like jsonl, csv, etc. BUT MUST in a single line.
+(Please note that ONLY ONE plugin should be used per response.)
+
+**Option #2: **
+If you want to respond directly to the human without using a plugin, provide a plain natural language response. However, if you initially generated a natural language response and then decide to use a plugin, make sure to include the plugin action and input after the initial response.
+
+Begin.
+
+Human: 你好
+AI: 
+================</prompt>================
+
+Traceback (most recent call last):
+  File "/root/OpenAgents/backend/utils/streaming.py", line 165, in _wrap_agent_caller
+    _ = interaction_executor(inputs, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 620, in _call
+    next_step_output = self._take_next_step(
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 532, in _take_next_step
+    output = self.agent.plan(
+  File "/root/OpenAgents/real_agents/plugins_agent/plugin.py", line 171, in plan
+    full_output = self.llm_chain.predict(**full_inputs)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 210, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 73, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 90, in generate
+    return self.llm.generate_prompt(prompts, stop, callbacks=run_manager.get_child() if run_manager else None)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 143, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 91, in generate
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 83, in generate
+    results = [
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 84, in <listcomp>
+    self._generate(m, stop=stop, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 301, in _generate
+    for stream_resp in self.completion_with_retry(messages=message_dicts,
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 254, in completion_with_retry
+    return _completion_with_retry(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 252, in _completion_with_retry
+    return self.client.create(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 149, in create
+    ) = cls.__prepare_create_request(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 106, in __prepare_create_request
+    requestor = api_requestor.APIRequestor(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_requestor.py", line 138, in __init__
+    self.api_key = key or util.default_api_key()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/util.py", line 186, in default_api_key
+    raise openai.error.AuthenticationError(
+openai.error.AuthenticationError: No API key provided. You can set your API key in code using 'openai.api_key = <API-KEY>', or you can set the environment variable OPENAI_API_KEY=<API-KEY>). If your API key is stored in a file, you can point the openai module at it with 'openai.api_key_path = <PATH>'. You can generate API keys in the OpenAI web interface. See https://platform.openai.com/account/api-keys for details.
+171.83.6.230 - - [04/Jan/2024 22:06:16] "OPTIONS /api/conversations/update_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:06:17] "POST /api/conversations/update_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "OPTIONS /api/conversations/get_folder_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "OPTIONS /api/conversations/get_conversation_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "OPTIONS /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "OPTIONS /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "OPTIONS /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "POST /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "POST /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "POST /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:17:37] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:18:08] "[35m[1mPOST /api/conversations/get_folder_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:18:08] "[35m[1mPOST /api/conversations/get_conversation_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:18:16] "OPTIONS /api/conversations/register_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:18:47] "[35m[1mPOST /api/conversations/register_conversation HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:18:47] "OPTIONS /api/chat_xlang_plugin HTTP/1.1" 200 -
+2024-01-04 22:18:47 | DEBUG - DefaultUser++None->/chat Request json:{'user_intent': '你好', 'chat_id': None, 'parent_message_id': -1, 'selected_plugins': ['AUTO'], 'code_interpreter_languages': [{'id': '0c135359-af7e-473b-8425-1393d2943b57', 'prettyNameForHuman': 'Python Code Generation', 'nameForHuman': 'Python', 'name': 'PythonCodeBuilder', 'icon': 'data:image/png;base64,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', 'description': 'Using Python as the programming language', 'type': 'language'}], 'code_interpreter_tools': [{'id': '8f8e8dbc-ae5b-4950-9f4f-7f5238978806', 'prettyNameForHuman': 'Data Profiling', 'nameForHuman': 'Data Profiling', 'name': 'DataProfiling', 'icon': 'data:image/png;base64,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', 'description': 'Intelligent profiling for your data', 'type': 'tool'}], 'api_call': None, 'is_regenerate': False, 'llm_name': 'gpt-3.5-turbo-16k', 'temperature': 0.7, 'api_key': {'openai': '', 'anthropic': ''}}
+2024-01-04 22:18:47 | DEBUG - ++-> get_activated_message_list:[]
+/root/OpenAgents/real_agents/plugins_agent/plugins/DreamInterpreter/openapi.yaml and DreamInterpreter/paths/__init__.py do not match. Load the later.
+171.83.6.230 - - [04/Jan/2024 22:18:47] "POST /api/chat_xlang_plugin HTTP/1.1" 200 -
+
+
+[1m> Entering new AgentExecutor chain...[0m
+2024-01-04 22:18:47 | TRACE - ++-> :
+================<prompt>================
+System: You are XLang Plugins Agent, a friendly and intuitive assistant developed by the XLang Team to guide you through every aspects of your work and your daily life. XLang Agent is always at your fingertips through our interactive chat system.
+
+You can aware of what plugins you have, and use the plugins properly in right order to finish what user wants.
+
+Today is 2024-01-04, and you should adapt the input to fit into the date, for example, seasonal information, or today's date as coordinate, etc.
+
+To make your response informative, always speak includes the following information in MARKDOWN format when responding a message, that is:
+1. Natural language explanation, that make explain the API output in a human readable way;
+2. Organized information such as bullet points or MARKDOWN tables, followed by the links to the items (that in the API output), news etc. if API output contains the information;
+3. The links should in MARKDOWN format and have value in it. If reference information is provided in the API output, like links to the items, news etc. Your explanation MUST provide the links on each items and links can be clicked on when API output contains the information. The links better attach on some natural language explanation through MARKDOWN syntax, for example, - [Renewable Energy - Center for Climate and Energy Solutions](https://www.c2es.org/content/renewable-energy/);
+4. If there are image we would like to display, please use MARKDOWN syntax to display it, for example, ![image](https://www.c2es.org/content/renewable-energy/);
+5. Try to speak more and show all the information you got in a organized way, that will make you a better assistant, especially when you are giving the final answer.
+
+PLUGINS
+------
+The plugins you can use are:
+Name: CREATE_QR_CODE
+Description: Create a QR code for any text or url.
+OpenAPI information:
+	Endpoint: /create-qr-code
+	Name: QR Code API
+	Description: Create a QR code for any text or url.
+		Summary: Create a QR code
+		Description: None
+		Input: 
+			`data` (string, optional): The data to encode in the QR code..
+			`size` (string, optional): The size of the QR code..
+			`alt` (string, optional): The alt text for the QR code image..
+			`title` (string, optional): The title for the QR code image..
+	
+Name: ZAPIER
+Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+OpenAPI information:
+	Endpoint: /api/v1/search/actions/
+	Name: Zapier Natural Language Actions (NLA) API (Dynamic) - Beta
+	Description: Zapier can talk to any of 20k+ actions the user has exposed. Actions are single tasks (EG: add a lead, find a doc), Zaps are workflows of actions. Start new chat to refresh actions. Markdown links are relative to https://zapier.com/.
+		Summary: List Directory Actions
+		Description: Search through all actions Zapier supports, even if they are not exposed.
+	
+	Because new actions may have been added by the user, you should call this
+	endpoint with `include_exposed=true` to get the latest list of exposed actions.
+		Input: 
+			`query` (string, optional): None.
+			`include_exposed` (boolean, optional): None.
+			`count` (integer, optional): None.
+	
+	Endpoint: /api/v1/preview-a-zap/
+		Summary: Preview A Zap
+		Description: (Beta!) Given a natural language description of a multistep Zap, return a possible definition of the Zap.
+		Input: 
+			`description_of_zap` (string, optional): A detailed description of the multi-step Zap the user wants to make. Eg: 'When I get a Typeform response for 'Support Form', create a new row in my 'Inbound Support' Google Sheet.'.
+	
+	Endpoint: /api/v1/configuration-link/
+		Summary: Get Configuration Link
+		Description: Provides a link to configure more actions. Alternatively, searching through apps and actions will provide more specific configuration links.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/exposed/
+		Summary: List Exposed Actions
+		Description: List all the currently exposed actions for the given account.
+		Input: 
+			None
+	
+	Endpoint: /api/v1/execution-log/{execution_log_id}/
+		Summary: Get Execution Log Endpoint
+		Description: Get the execution log for a given execution log id.
+		Input: 
+			`execution_log_id` (string, required): None.
+	
+	
+Name: MAPS
+Description: A Maps app that takes latitude and longitude coordinates and generates a map with a marker on the given spot.
+OpenAPI information:
+	Endpoint: /
+	Name: Maps
+	Description: A Maps app that takes latitude and longitude coordinates and generates a map with a marker on the given spot.
+		Summary: Generates a map with a marker on a given latitude and longitude coordinates
+		Description: Generates a map with a marker on a given latitude and longitude coordinates
+		Input: 
+			`latlng` (string, required): The latitude and longitude coordinates to generate a map for.
+	
+Name: DREAMINTERPRETER
+Description: Interprets your dreams using advanced techniques.
+OpenAPI information:
+	Endpoint: /getDream/{DreamText}
+	Name: BGNET Dream Interpreter
+	Description: Interprets your dreams using advanced techniques.
+		Summary: This endpoint interprets your dreams in the best way.
+		Description: This endpoint provides the best possible interpretation of a dream when a dream input is provided. In interpreting the dream, it utilizes sources including ancient texts, prophet's dreams, and books of all dream interpreters to interpret the dream as best as possible..
+		Input: 
+			`DreamText` (string, required): None.
+	
+	Endpoint: /api/data
+		Summary: Tester
+		Description: None
+		Input: 
+			`date` (string, optional): Date.
+	
+	
+Name: SHOW_ME
+Description: Create and edit diagrams directly in chat.
+OpenAPI information:
+	Endpoint: /render
+	Name: Show Me
+	Description: Create and edit diagrams directly in chat.
+		Summary: Taking a diagram, renders it and returns a link to the rendered image. Always request the diagram guidelines endpoint before requesting this endpoint
+		Description: None
+		Input: 
+			`openApiSchemaVersion` (string, optional): None.Examples:1.0
+			`diagramLanguage` (string, optional): None.Examples:blockdiag,bpmn,bytefield,seqdiag,actdiag,nwdiag,packetdiag,rackdiag,c4-with-plantuml,d2,dbml,ditaa,erd,excalidraw,graphviz,mermaid,nomnoml,pikchr,plantuml,structurizr,svgbob,umlet,vega,vegalite,wavedrom,wireviz
+			`diagramType` (string, optional): None.Examples:sequence,use-case,class,object,activity,component,deployment,state,timing,graph,entity-relationship,user-journey,gantt,pie-chart,requirement,gitgraph,mindmap,timeline,block,network,json,yaml,salt-wireframe,rack,grid,dbml,ascii,digital-timing,line-chart,bar-chart,histogram
+			`topic` (string, optional): None.
+			`d2Theme` (string, optional): None.
+			`diagram` (string, optional): None.
+			`mermaid` (string, optional): None.
+	
+	Endpoint: /diagram-guidelines
+		Summary: Diagram guidelines and themes to help rendering more effective diagrams
+		Description: None
+		Input: 
+			`diagramGuidelines` (string, required): None.Examples:mermaid_graph,mermaid_sequence,mermaid_class,mermaid_state,mermaid_entity-relationship,mermaid_user-journey,mermaid_gantt,mermaid_pie-chart,mermaid_requirement,mermaid_gitgraph,mermaid_mindmap,mermaid_timeline,plantuml_sequence,plantuml_use-case,plantuml_class,plantuml_object,plantuml_activity,plantuml_component,plantuml_deployment,plantuml_state,plantuml_timing,plantuml_entity-relationship,plantuml_gantt,plantuml_mindmap,plantuml_network,plantuml_json,plantuml_yaml,plantuml_salt-wireframe,d2_sequence,d2_class,d2_graph,d2_entity-relationship,d2_grid,nomnoml_class,nomnoml_activity,nomnoml_graph,nomnoml_entity-relationship,graphviz_graph,graphviz_entity-relationship,graphviz_mindmap,actdiag_activity,blockdiag_block,nwdiag_network,rackdiag_rack,dbml_dbml,erd_entity-relationship,ditaa_ascii,svgbob_ascii,wavedrom_digital-timing,vegalite_bar-chart,vegalite_histogram,vegalite_line-chart,vegalite_pie-chart
+	
+	Endpoint: /show-carousel
+		Summary: show the carousel of diagram images
+		Description: None
+		Input: 
+			`showCarousel` (string, required): None.Examples:yes
+	
+	
+
+RESPONSE FORMAT INSTRUCTIONS
+----------------------------
+
+When you use tools or generate final answer, please output a response in one of two formats:
+**Option 1: Explain and Use plugin**
+If the response involves using a plugin, you can start with a natural language explanation[Optional], plus exactly one plugin calling[MUST], and ends with no more words. The plugin calling format should be a markdown code snippet with the following JSON schema:
+
+```json
+{
+    "action": string wrapped with "", // The action to take. Must be one in the list [CREATE_QR_CODE, ZAPIER, MAPS, DREAMINTERPRETER, SHOW_ME]
+    "action_input": string wrapped with "" // Query to be input to the action plugin. Pass as much information as possible to the plugin from the history of the conversation.
+}
+```
+NEVER EVER EVER make up a plugin not in [CREATE_QR_CODE, ZAPIER, MAPS, DREAMINTERPRETER, SHOW_ME]
+You MUST pass as much information as possible to the plugin from the history of the conversation. It could be natural language or structured language like jsonl, csv, etc. BUT MUST in a single line.
+(Please note that ONLY ONE plugin should be used per response.)
+
+**Option #2: **
+If you want to respond directly to the human without using a plugin, provide a plain natural language response. However, if you initially generated a natural language response and then decide to use a plugin, make sure to include the plugin action and input after the initial response.
+
+Begin.
+
+Human: 你好
+AI: 
+================</prompt>================
+
+Traceback (most recent call last):
+  File "/root/OpenAgents/backend/utils/streaming.py", line 165, in _wrap_agent_caller
+    _ = interaction_executor(inputs, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 620, in _call
+    next_step_output = self._take_next_step(
+  File "/root/OpenAgents/real_agents/adapters/agent_helpers/agent.py", line 532, in _take_next_step
+    output = self.agent.plan(
+  File "/root/OpenAgents/real_agents/plugins_agent/plugin.py", line 171, in plan
+    full_output = self.llm_chain.predict(**full_inputs)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 210, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 140, in __call__
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chains/base.py", line 134, in __call__
+    self._call(inputs, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 73, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/llm.py", line 90, in generate
+    return self.llm.generate_prompt(prompts, stop, callbacks=run_manager.get_child() if run_manager else None)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 143, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 91, in generate
+    raise e
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 83, in generate
+    results = [
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/langchain/chat_models/base.py", line 84, in <listcomp>
+    self._generate(m, stop=stop, run_manager=run_manager)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 301, in _generate
+    for stream_resp in self.completion_with_retry(messages=message_dicts,
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 254, in completion_with_retry
+    return _completion_with_retry(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/root/OpenAgents/real_agents/adapters/models/openai.py", line 252, in _completion_with_retry
+    return self.client.create(**kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 149, in create
+    ) = cls.__prepare_create_request(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 106, in __prepare_create_request
+    requestor = api_requestor.APIRequestor(
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/api_requestor.py", line 138, in __init__
+    self.api_key = key or util.default_api_key()
+  File "/root/anaconda3/envs/openagents/lib/python3.10/site-packages/openai/util.py", line 186, in default_api_key
+    raise openai.error.AuthenticationError(
+openai.error.AuthenticationError: No API key provided. You can set your API key in code using 'openai.api_key = <API-KEY>', or you can set the environment variable OPENAI_API_KEY=<API-KEY>). If your API key is stored in a file, you can point the openai module at it with 'openai.api_key_path = <PATH>'. You can generate API keys in the OpenAI web interface. See https://platform.openai.com/account/api-keys for details.
+171.83.6.230 - - [04/Jan/2024 22:18:47] "OPTIONS /api/conversations/update_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:18:47] "POST /api/conversations/update_conversation HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "OPTIONS /api/conversations/get_conversation_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "OPTIONS /api/conversations/get_folder_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "OPTIONS /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "OPTIONS /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "OPTIONS /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "POST /api/data_tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "POST /api/llm_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "POST /api/tool_list HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:15] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:16] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+171.83.6.230 - - [04/Jan/2024 22:23:45] "[35m[1mPOST /api/conversations/get_conversation_list HTTP/1.1[0m" 500 -
+171.83.6.230 - - [04/Jan/2024 22:23:45] "[35m[1mPOST /api/conversations/get_folder_list HTTP/1.1[0m" 500 -
+59.83.208.103 - - [05/Jan/2024 00:02:19] "[33mGET / HTTP/1.1[0m" 404 -
+180.101.245.250 - - [05/Jan/2024 00:03:24] "[33mGET / HTTP/1.1[0m" 404 -
+146.190.250.234 - - [05/Jan/2024 01:40:24] code 400, message Bad request version ('À\x14À')
+146.190.250.234 - - [05/Jan/2024 01:40:24] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03ç\x0b©l\x08·\x96þc[»»q\x08¬Ó~Æ¶ÁÉÃ\x0bÓl\x01'\x88HÖ;¢\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+146.190.250.234 - - [05/Jan/2024 01:40:24] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03CïZ£°á\x1b¢A\x02Á-¶\x81\x18¥Ôd,ÞßIiû\x8a\x87g}\x81/¥¿\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+146.190.250.234 - - [05/Jan/2024 01:40:24] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03CïZ£°á\x1b¢A\x02Á-¶\x81\x18¥Ôd,ÞßIiû\x8a\x87g}\x81/¥¿\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+146.190.250.234 - - [05/Jan/2024 01:40:24] "[33mGET / HTTP/1.1[0m" 404 -
+146.190.250.234 - - [05/Jan/2024 01:40:25] code 400, message Bad request version ('À\x14À')
+146.190.250.234 - - [05/Jan/2024 01:40:25] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03e¤!\x0b7ç¤¶\x80O\x93f\x1a¦`:X¿æxOkçñ\x8dè\x1bQ\x7fß6g\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+84.54.51.33 - - [05/Jan/2024 04:04:34] "[33mCONNECT google.com:443 HTTP/1.1[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:39] "[33mGET http://43.159.41.149:8000/phpmyadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:39] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.4/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:39] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.3/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:39] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.10.0.2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.10.3/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.8.0.2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.10.2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.9.2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.0/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.7/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.1.2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/pma/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin3/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/myadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/MyAdmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/PHPMYADMIN/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/mysqladmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/SQL/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.5.5-pl1/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.5.5/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.5.4/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.5.7-pl1/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/admin/pma/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/web/phpMyAdmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/webadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/admin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/dbadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/mysql/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpMyAdmin2/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpma/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/sqlweb/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/webdb/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/websql/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/_phpMyAdmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/php/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/admin/phpmyadmin/scripts/setup.txt HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/db/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/sqlmanager/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/mysqlmanager/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpmanager/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/php-myadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/phpmy-admin/scripts/setup.php HTTP/1.0[0m" 404 -
+138.2.78.51 - - [05/Jan/2024 04:16:42] "[33mGET http://43.159.41.149:8000/mysql-admin/scripts/setup.php HTTP/1.0[0m" 404 -
+185.47.172.129 - - [05/Jan/2024 07:24:48] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00u\x01\x00\x00q\x03\x03jÐF\x18')
+185.47.172.129 - - [05/Jan/2024 07:24:48] "[35m[1m\x16\x03\x01\x00u\x01\x00\x00q\x03\x03jÐF\x18\x1eêzdÙ\x97\x0eÐ7öé\x17i´}}\x1ak+nú2\x8f[0m" HTTPStatus.BAD_REQUEST -
+137.184.152.112 - - [05/Jan/2024 07:53:45] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x82\x10&\x0200QùN@çY\x8dLÀ\x89¿ÒEÑÖd\x19e\x07O\x14\x00(ÞXÿ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+137.184.152.112 - - [05/Jan/2024 07:53:45] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x82\x10&\x0200QùN@çY\x8dLÀ\x89¿ÒEÑÖd\x19e\x07O\x14\x00(ÞXÿ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+137.184.152.112 - - [05/Jan/2024 07:53:46] code 400, message Bad request version ('À\x14À')
+137.184.152.112 - - [05/Jan/2024 07:53:46] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03é7Ä¨;\x87AqÓÔÞ\x83\x9a¯s\x0c63C\x0e°\x8a¾8ß|ó­,rôz\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+137.184.152.112 - - [05/Jan/2024 07:53:46] "[33mGET / HTTP/1.1[0m" 404 -
+137.184.152.112 - - [05/Jan/2024 07:53:47] code 400, message Bad request version ('À\x14À')
+137.184.152.112 - - [05/Jan/2024 07:53:47] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03é\x0dß\x1dk\x1d¯#v0\x08È\x8eÓ8\x1a§{Ðü\x03èÌ\x07Ï\x1dE\x18¡ö¨\x86\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:18:37] "[33mGET / HTTP/1.0[0m" 404 -
+111.172.251.178 - - [05/Jan/2024 09:18:45] code 400, message Bad HTTP/0.9 request type ('l\x00')
+111.172.251.178 - - [05/Jan/2024 09:18:45] "[35m[1ml\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:18:55] "[33mGET /nice%20ports,/Trinity.txt.bak HTTP/1.0[0m" 404 -
+111.172.251.178 - - [05/Jan/2024 09:19:02] code 400, message Bad request syntax ('\x04\x01\x00\x16\x7f\x00\x00\x01root\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:02] "[35m[1m\x04\x01\x00\x16\x7f\x00\x00\x01root\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:07] code 400, message Bad request syntax ('\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:07] "[35m[1m\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:07] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:07] "[35m[1m\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:07] code 400, message Bad request version ('\x00/\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:07] "[35m[1m\x16\x03\x00\x00i\x01\x00\x00e\x03\x03U\x1c§ärandom1random2random3random4\x00\x00\x0c\x00/\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:13] code 400, message Bad request syntax ('¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:13] "[35m[1m¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00¤\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:14] code 400, message Bad request syntax ('\x00\x01\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:14] "[35m[1m\x00\x01\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:20] code 400, message Bad request syntax ('TST\x06\x00\x00\x000.26.0\x07\x00\x00\x000.26.10')
+111.172.251.178 - - [05/Jan/2024 09:19:20] "[35m[1mTST\x06\x00\x00\x000.26.0\x07\x00\x00\x000.26.10[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:25] code 400, message Bad request syntax ('\x124\x00\x00\x00\x06E\x01g\x89\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:25] "[35m[1m\x124\x00\x00\x00\x06E\x01g\x89\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:25] code 400, message Bad request syntax ('\x03\x00\x00\x16\x11à\x124Vx\x00Á\x02\x01\x00Â\x02\x01\x02À\x01')
+111.172.251.178 - - [05/Jan/2024 09:19:25] "[35m[1m\x03\x00\x00\x16\x11à\x124Vx\x00Á\x02\x01\x00Â\x02\x01\x02À\x01[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:30] code 400, message Bad request syntax ('c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00ÁÞ¾Ñ\x00\x00\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:30] "[35m[1mc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00ÁÞ¾Ñ\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:35] code 400, message Bad HTTP/0.9 request type ('\x05d')
+111.172.251.178 - - [05/Jan/2024 09:19:35] "[35m[1m\x05d\x0bÄ\x124VxG\x17ÁÁ\x01<\x02\x06µv[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:41] code 400, message Bad request syntax ('\x05d\x05É\x03\x00\x04\x00½q')
+111.172.251.178 - - [05/Jan/2024 09:19:41] "[35m[1m\x05d\x05É\x03\x00\x04\x00½q[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:46] code 400, message Bad request syntax ('h\x04C\x00\x00\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:46] "[35m[1mh\x04C\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:46] code 400, message Bad HTTP/0.9 request type ('W\x00\x00\x00\x00\x11\x11\x07\x00\x00ÿÿ\x03\x00\x00þ\x03\x00\x00\x14\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:46] "[35m[1mW\x00\x00\x00\x00\x11\x11\x07\x00\x00ÿÿ\x03\x00\x00þ\x03\x00\x00\x14\x00\x1c\x08[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:51] code 400, message Bad request syntax ('\x00\x04\x01+\x1b\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:51] "[35m[1m\x00\x04\x01+\x1b\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:56] code 400, message Bad request version ('\x8d\x01\x00\x00\x00\x00\x00\x00\x00À¨\x13\x87\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x06\x87ÙÀ\x15×\x06W\x08Q\x00\x00\x00\x00\x00')
+111.172.251.178 - - [05/Jan/2024 09:19:56] "[35m[1mù¾´Ùversion\x00\x00\x00\x00\x00U\x00\x00\x00\x83ãÒ$@\x9c\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00ô÷\x1fc\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x003\x9e\x99Ò\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x8d\x01\x00\x00\x00\x00\x00\x00\x00À¨\x13\x87\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x06\x87ÙÀ\x15×\x06W\x08Q\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:56] code 400, message Bad HTTP/0.9 request type ('POST')
+111.172.251.178 - - [05/Jan/2024 09:19:56] "[35m[1mPOST /HTTP/1.1[0m" HTTPStatus.BAD_REQUEST -
+111.172.251.178 - - [05/Jan/2024 09:19:57] code 400, message Bad request syntax ('{"id":1,"method":"mining.subscribe","params":["NBMiner/40.1"]}')
+111.172.251.178 - - [05/Jan/2024 09:19:57] "[35m[1m{"id":1,"method":"mining.subscribe","params":["NBMiner/40.1"]}[0m" HTTPStatus.BAD_REQUEST -
+124.239.148.32 - - [05/Jan/2024 09:20:43] code 400, message Bad request version ('\x88.!\x00Ë[kÓÝ\x93½Ä\x00\x00VÀ,À+À0\x00\x9dÀ.À2\x00\x9f\x00£À/\x00\x9cÀ-À1\x00\x9e\x00¢À$À(\x00=À&À*\x00k\x00jÀ')
+124.239.148.32 - - [05/Jan/2024 09:20:43] "[35m[1m\x16\x03\x03\x01\x02\x01\x00\x00þ\x03\x03\x19¿Í×Å{±÷\x1c»\x9b{8\x18AyÝi\\\x0c\x88.!\x00Ë[kÓÝ\x93½Ä\x00\x00VÀ,À+À0\x00\x9dÀ.À2\x00\x9f\x00£À/\x00\x9cÀ-À1\x00\x9e\x00¢À$À(\x00=À&À*\x00k\x00jÀ[0m" HTTPStatus.BAD_REQUEST -
+124.239.148.32 - - [05/Jan/2024 09:20:43] "[33mGET / HTTP/1.1[0m" 404 -
+124.239.148.32 - - [05/Jan/2024 09:20:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+124.239.148.32 - - [05/Jan/2024 09:20:47] "[33mGET / HTTP/1.1[0m" 404 -
+124.239.148.32 - - [05/Jan/2024 09:20:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+124.239.148.32 - - [05/Jan/2024 09:20:57] "[33mGET /?cfcsam=5e3a1d40d984199a0d650be54dcb8b5bf7c7139f3b053e3f HTTP/1.1[0m" 404 -
+167.248.133.185 - - [05/Jan/2024 10:13:06] "[33mGET / HTTP/1.1[0m" 404 -
+167.248.133.185 - - [05/Jan/2024 10:13:09] "[33mGET / HTTP/1.1[0m" 404 -
+167.248.133.185 - - [05/Jan/2024 10:13:10] code 505, message Invalid HTTP version (2.0)
+167.248.133.185 - - [05/Jan/2024 10:13:10] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+205.210.31.109 - - [05/Jan/2024 11:07:18] "[33mGET / HTTP/1.1[0m" 404 -
+165.22.200.95 - - [05/Jan/2024 11:50:55] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03è-\x84\x91Rú\x07·îË\'Ó\x07a\x0f\'\x9c"¶g\x95w+\x8aa\x9aî3Ö\x7fj½\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+165.22.200.95 - - [05/Jan/2024 11:50:55] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03è-\x84\x91Rú\x07·îË'Ó\x07a\x0f'\x9c"¶g\x95w+\x8aa\x9aî3Ö\x7fj½\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+165.22.200.95 - - [05/Jan/2024 11:50:56] code 400, message Bad request version ('À\x14À')
+165.22.200.95 - - [05/Jan/2024 11:50:56] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03Q\x97¯ \x17@\x8be\x03È0\x10|\x8fMo\x1eR\x83ñ\x07\x9c´^fªéµË\x8a6â\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+165.22.200.95 - - [05/Jan/2024 11:50:56] "[33mGET / HTTP/1.1[0m" 404 -
+165.22.200.95 - - [05/Jan/2024 11:50:56] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x15<\x01´$\x88µ´õ\x87În')
+165.22.200.95 - - [05/Jan/2024 11:50:56] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x15<\x01´$\x88µ´õ\x87În[0m" HTTPStatus.BAD_REQUEST -
+167.94.145.59 - - [05/Jan/2024 13:06:04] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.145.59 - - [05/Jan/2024 13:06:08] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.145.59 - - [05/Jan/2024 13:06:09] code 505, message Invalid HTTP version (2.0)
+167.94.145.59 - - [05/Jan/2024 13:06:09] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+192.241.229.19 - - [05/Jan/2024 13:29:38] code 400, message Bad request version ('À\x14À')
+192.241.229.19 - - [05/Jan/2024 13:29:38] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x85\x8b\x02È\x11l7ÚÐÌÿ¼QO¯¦ã\x08?²4\x01\x8b\x1e·¦`\x12^v\x05ý\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+139.59.166.142 - - [05/Jan/2024 14:02:36] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03D\x9b')
+139.59.166.142 - - [05/Jan/2024 14:02:36] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03D\x9b\x0bL\x08Sò\x82\x17yý2ÑÔ[0m" HTTPStatus.BAD_REQUEST -
+139.59.166.142 - - [05/Jan/2024 14:02:36] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03¢k')
+139.59.166.142 - - [05/Jan/2024 14:02:36] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03¢k[0m" HTTPStatus.BAD_REQUEST -
+139.59.166.142 - - [05/Jan/2024 14:02:37] "[33mGET / HTTP/1.1[0m" 404 -
+139.59.166.142 - - [05/Jan/2024 14:02:37] code 400, message Bad request version ('À\x14À')
+139.59.166.142 - - [05/Jan/2024 14:02:37] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03ú\x87\x9bA\x01èá»\x0e:&ô\x1bÔØ\x8dÈ\x09\x0f\x9dình\x1exb\x040«Ûª\x14\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+180.149.125.173 - - [05/Jan/2024 14:57:41] "[33mGET /c/ HTTP/1.1[0m" 404 -
+212.70.149.142 - - [05/Jan/2024 16:40:53] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+212.70.149.142 - - [05/Jan/2024 16:40:53] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+212.70.149.142 - - [05/Jan/2024 16:48:22] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+212.70.149.142 - - [05/Jan/2024 16:48:22] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+212.70.149.146 - - [05/Jan/2024 17:16:44] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+212.70.149.146 - - [05/Jan/2024 17:16:44] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+212.70.149.146 - - [05/Jan/2024 17:49:28] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+212.70.149.146 - - [05/Jan/2024 17:49:28] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+212.70.149.146 - - [05/Jan/2024 18:20:23] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+212.70.149.146 - - [05/Jan/2024 18:20:23] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+103.203.57.20 - - [05/Jan/2024 20:51:04] "[33mGET / HTTP/1.1[0m" 404 -
+147.182.154.58 - - [05/Jan/2024 22:16:36] "[33mGET /aaa9 HTTP/1.1[0m" 404 -
+147.182.154.58 - - [05/Jan/2024 22:16:36] "[33mGET /aab8 HTTP/1.1[0m" 404 -
+147.182.154.58 - - [05/Jan/2024 22:16:37] "[33mGET / HTTP/1.1[0m" 404 -
+84.54.51.33 - - [05/Jan/2024 22:19:03] "[33mCONNECT google.com:443 HTTP/1.1[0m" 404 -
+64.62.197.27 - - [05/Jan/2024 22:29:40] "[33mGET / HTTP/1.1[0m" 404 -
+64.62.197.23 - - [05/Jan/2024 22:29:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+64.62.197.23 - - [05/Jan/2024 22:29:58] "[33mGET http://api.ipify.org/?format=json HTTP/1.1[0m" 404 -
+64.62.197.30 - - [05/Jan/2024 22:30:01] "[33mCONNECT www.shadowserver.org:443 HTTP/1.1[0m" 404 -
+192.241.207.74 - - [05/Jan/2024 22:32:05] code 400, message Bad request syntax ('MGLNDD_43.159.41.149_8000')
+192.241.207.74 - - [05/Jan/2024 22:32:05] "[35m[1mMGLNDD_43.159.41.149_8000[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:18:50] "[33mGET / HTTP/1.0[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:18:55] code 400, message Bad HTTP/0.9 request type ('l\x00')
+139.162.7.59 - - [05/Jan/2024 23:18:55] "[35m[1ml\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:18:55] "[33mGET /nice%20ports,/Trinity.txt.bak HTTP/1.0[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:18:55] code 400, message Bad request syntax ('\x05\x04\x00\x01\x02\x80\x05\x01\x00\x03')
+139.162.7.59 - - [05/Jan/2024 23:18:55] "[35m[1m\x05\x04\x00\x01\x02\x80\x05\x01\x00\x03[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:00] code 400, message Bad request syntax ('\x04\x01\x00\x16\x7f\x00\x00\x01root\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:00] "[35m[1m\x04\x01\x00\x16\x7f\x00\x00\x01root\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:00] "[33mOPTIONS / HTTP/1.0[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:00] code 400, message Bad request version ('RTSP/1.0')
+139.162.7.59 - - [05/Jan/2024 23:19:00] "[35m[1mOPTIONS / RTSP/1.0[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:05] code 400, message Bad request version ('\x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:05] "[35m[1m\x80\x00\x00(rþ\x1d\x13\x00\x00\x00\x00\x00\x00\x00\x02\x00\x01\x86 \x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:10] code 400, message Bad HTTP/0.9 request type ('\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:10] "[35m[1m\x00\x1e\x00\x06\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x07version\x04bind\x00\x00\x10\x00\x03[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:10] code 400, message Bad request syntax ('HELP')
+139.162.7.59 - - [05/Jan/2024 23:19:10] "[35m[1mHELP[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:10] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:10] "[35m[1m\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:10] code 400, message Bad request version ('\x00/\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:10] "[35m[1m\x16\x03\x00\x00i\x01\x00\x00e\x03\x03U\x1c§ärandom1random2random3random4\x00\x00\x0c\x00/\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:10] code 400, message Bad request syntax ('\x00\x00\x00qj\x81n0\x81k¡\x03\x02\x01\x05¢\x03\x02\x01')
+139.162.7.59 - - [05/Jan/2024 23:19:10] "[35m[1m\x00\x00\x00qj\x81n0\x81k¡\x03\x02\x01\x05¢\x03\x02\x01[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:15] code 400, message Bad request version ('0.12\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:15] "[35m[1m\x00\x00\x00¤ÿSMBr\x00\x00\x00\x00\x08\x01@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x06\x00\x00\x01\x00\x00\x81\x00\x02PC NETWORK PROGRAM 1.0\x00\x02MICROSOFT NETWORKS 1.03\x00\x02MICROSOFT NETWORKS 3.0\x00\x02LANMAN1.0\x00\x02LM1.2X002\x00\x02Samba\x00\x02NT LANMAN 1.0\x00\x02NT LM 0.12\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:15] code 400, message Bad request version ('SIP/2.0')
+139.162.7.59 - - [05/Jan/2024 23:19:15] "[35m[1mOPTIONS sip:nm SIP/2.0[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:15] "[33mGET / HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:15] "[33mGET /Portal/Portal.mwsl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:15] "[33mGET /docs/cplugError.html/ HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:16] code 400, message Bad request version ('\x00/\x00')
+139.162.7.59 - - [05/Jan/2024 23:19:16] "[35m[1m\x16\x03\x00\x00i\x01\x00\x00e\x03\x03U\x1c§ärandom1random2random3random4\x00\x00\x0c\x00/\x00[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:16] "[33mGET /admin.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:16] "[33mGET /index.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /default.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /Portal0000.htm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mPOST /sdk HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /inicio.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /__Additional HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /menu.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /index.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /start.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /nmaplowercheck1704467955 HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /main.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:17] "[33mGET /HNAP1 HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /index.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /server-status HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /base.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /MibD HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /readme.txt HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /base.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET / HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /admin.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /CSS/Miniweb.css HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /admin.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:18] "[33mGET /default.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET /index.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET /base.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET /admin.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET /localstart.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET / HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET /admin.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:19] "[33mGET /indice.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /indice.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /base.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /indice.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /base.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /indice.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:20] "[33mGET /admin.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /inicio.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /start.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /index.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /main.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /inicio.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /home.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:21] "[33mGET /start.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /base.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /base.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /index.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /start.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /.git/HEAD HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /main.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:22] "[33mGET /admin.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /inicio.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET http://www.google.com HTTP/1.0[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /base.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mHEAD http://www.google.com HTTP/1.0[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /base.inc HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /?=PHPE9568F36-D428-11d2-A769-00AA001ACF42 HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mCONNECT www.google.com:80 HTTP/1.0[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /base.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000 HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /home.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:23] "[33mGET /index.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET default.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET /main.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET /admin.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET /indice.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET /main.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET /inicio.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:24] "[33mGET /default.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[33mGET /indice.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[33mGET /localstart.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[33mGET /indice.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[33mGET /menu.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[33mGET /index.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:25] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03')
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:25] "[33mGET /indice.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:26] "[33mGET /main.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:26] "[33mGET /start.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:26] "[33mGET /index.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:26] "[33mGET /menu.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:26] "[33mGET /robots.txt HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:26] "[33mGET /admin.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /admin.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /indice.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /inicio.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /inicio.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /inicio.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /inicio.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:27] "[33mGET /home.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:28] "[33mGET /inicio.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:28] "[33mGET /inicio.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:28] "[33mGET /home.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:28] "[33mGET /admin.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:28] "[33mGET /localstart.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:28] "[33mGET /main.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /base.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /localstart.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /default.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /localstart.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /main.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /indice.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:29] "[33mGET /menu.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:30] "[33mGET /main.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:30] "[33mGET /indice.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:30] "[33mGET /menu.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:30] "[33mGET /start.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:30] "[33mGET /localstart.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:30] "[33mGET /menu.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:31] "[33mGET /start.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:31] "[33mGET /home.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:31] "[33mGET /default.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:31] "[33mGET /start.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:31] "[33mGET /start.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:31] "[33mGET /start.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /home.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /localstart.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /menu.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /localstart.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /home.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /home.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:32] "[33mGET /localstart.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /default.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /home.cgi HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /index.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] code 400, message Bad request syntax ('\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00bbbb0100000001')
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[35m[1m\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00bbbb0100000001[0m" HTTPStatus.BAD_REQUEST -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /main.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /base.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /start.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /index.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /main.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /default.aspx HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /default.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /localstart.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /default.jsa HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /home.jsp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /menu.cfm HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /menu.shtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /menu.pl HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /default.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /localstart.asp HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /menu.jhtml HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /home.php HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:33] "[33mGET /default.html HTTP/1.1[0m" 404 -
+139.162.7.59 - - [05/Jan/2024 23:19:34] "[33mGET / HTTP/1.1[0m" 404 -
+180.101.244.15 - - [06/Jan/2024 00:06:47] "[33mGET / HTTP/1.1[0m" 404 -
+180.101.245.248 - - [06/Jan/2024 00:08:45] "[33mGET / HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 01:27:33] code 400, message Bad request version ('À\x14À')
+3.8.114.37 - - [06/Jan/2024 01:27:33] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x17­\x99¢:îvX\x8d\x80~cÀýìú\x19¢Ø<k\x1dÚ\x95×¤Bø\x97½>\x94\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 01:32:21] code 400, message Bad request version ('À\x14À')
+3.8.114.37 - - [06/Jan/2024 01:32:21] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03\x86ñºE¢K¿\x0c\x08\x01Ù\x830\x1e!W\x15\x18ëá4\x87\x12ó¤\x90\x04&WÜQ\x8c\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 01:35:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 01:37:56] code 400, message Bad request version ('À\x14À')
+3.8.114.37 - - [06/Jan/2024 01:37:56] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03¤J÷\x9dã9\x1c\x1c}G\x82\x15*ð\x0bM\x9c\x1b5?tÿW\x04bï\x86\x86\x16\x18,s\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 01:40:49] "[33mGET /manage/account/login HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 01:44:00] code 400, message Bad request syntax ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03\x04\x89©yåz\x17|HZ\x1bQ')
+3.8.114.37 - - [06/Jan/2024 01:44:00] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03\x04\x89©yåz\x17|HZ\x1bQ[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 01:46:57] "[33mGET /admin/index.html HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 01:50:05] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03îá\\'\x10\x19\x84?\x08À×pßÈÜÞµÄÒê\x1bd\x80¤\x19e\x92\x90_ú¨°\x00\x00PÀ/À+À\x11À\x07À\x13À")
+3.8.114.37 - - [06/Jan/2024 01:50:05] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03îá\\'\x10\x19\x84?\x08À×pßÈÜÞµÄÒê\x1bd\x80¤\x19e\x92\x90_ú¨°\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 01:53:00] "[33mGET /index.html HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 01:56:29] code 400, message Bad request syntax ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03G[`CiüæOóÙ¨¿\x8c\x93¦®\x90í5\x8dççN*µ}ÙJ')
+3.8.114.37 - - [06/Jan/2024 01:56:29] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03G[`CiüæOóÙ¨¿\x8c\x93¦®\x90í5\x8dççN*µ}ÙJ[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 01:59:24] "[33mGET /+CSCOE+/logon.html HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 02:02:36] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03\x92pbÔi\x9a32\x02ÚHqç\x00ùµÀ¤<Y>ß\x05V\x8aª\xadÊÊ\x80'Þ\x00\x00PÀ/À+À\x11À\x07À\x13À")
+3.8.114.37 - - [06/Jan/2024 02:02:36] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03\x92pbÔi\x9a32\x02ÚHqç\x00ùµÀ¤<Y>ß\x05V\x8aª­ÊÊ\x80'Þ\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 02:05:37] "[33mGET /cgi-bin/login.cgi HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 02:08:44] code 400, message Bad request version ('À\x14À')
+3.8.114.37 - - [06/Jan/2024 02:08:44] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03ý!\x9c\x81éîG²\x92_ià\x87\\FGÈNR¡ï$W\x8cIô¹i\x16,v\x1e\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 02:11:38] "[33mGET /logon.htm HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 02:14:54] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03:w\x8f9e\x99HV%oAJÁûw\x03\x02ü¿º\x18?~3î¾¥`<ÕöI\x00\x00PÀ/À+À\x11À\x07À\x13À')
+3.8.114.37 - - [06/Jan/2024 02:14:54] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03:w\x8f9e\x99HV%oAJÁûw\x03\x02ü¿º\x18?~3î¾¥`<ÕöI\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 02:17:49] "[33mGET /login.jsp HTTP/1.1[0m" 404 -
+3.8.114.37 - - [06/Jan/2024 02:21:03] code 400, message Bad request version ('À\x14À')
+3.8.114.37 - - [06/Jan/2024 02:21:03] "[35m[1m\x16\x03\x01\x00±\x01\x00\x00­\x03\x03d«$P¿÷\x0dlÐO{\x04\x83ð/#+[3mXa{H\x19ã`\x06û\x101±\x00\x00PÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+3.8.114.37 - - [06/Jan/2024 02:24:00] "[33mGET / HTTP/1.1[0m" 404 -
+172.104.11.34 - - [06/Jan/2024 02:29:44] code 400, message Bad request version ('À\x14À')
+172.104.11.34 - - [06/Jan/2024 02:29:44] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03Ùº§Þ.\x7fLÊc>î$©\x9fì\x05\x8avÍl\x972N\x19öÕú\x1eÞðpø\x00\x00 À/À0À+À,Ì¨Ì©À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+167.248.133.51 - - [06/Jan/2024 07:10:56] "[33mGET / HTTP/1.1[0m" 404 -
+167.248.133.51 - - [06/Jan/2024 07:11:01] "[33mGET / HTTP/1.1[0m" 404 -
+167.248.133.51 - - [06/Jan/2024 07:11:01] code 505, message Invalid HTTP version (2.0)
+167.248.133.51 - - [06/Jan/2024 07:11:01] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.99.139.91 - - [06/Jan/2024 08:34:21] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:21] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00bbXcsXctst\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.99.139.91 - - [06/Jan/2024 08:34:26] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:26] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00bcc9rt9cYt\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.99.139.91 - - [06/Jan/2024 08:34:31] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:31] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cstttsYYtX\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.99.139.91 - - [06/Jan/2024 08:34:36] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:36] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00ctXsbtsbXb\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.99.139.91 - - [06/Jan/2024 08:34:41] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:41] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00btXcccbtXY\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.99.139.91 - - [06/Jan/2024 08:34:46] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:46] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x009Xrtsbtb\x00\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.99.139.91 - - [06/Jan/2024 08:34:52] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b')
+167.99.139.91 - - [06/Jan/2024 08:34:52] "[35m[1m\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00[\x8bc§ö\x9b\x1c\x88\x98w\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00trsXbsYt9\x00\x00\x00\x00\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+167.248.133.125 - - [06/Jan/2024 10:39:30] "[33mGET / HTTP/1.1[0m" 404 -
+167.248.133.125 - - [06/Jan/2024 10:39:33] "[33mGET / HTTP/1.1[0m" 404 -
+167.248.133.125 - - [06/Jan/2024 10:39:34] code 505, message Invalid HTTP version (2.0)
+167.248.133.125 - - [06/Jan/2024 10:39:34] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+123.160.221.143 - - [06/Jan/2024 10:43:51] "[33mGET / HTTP/1.1[0m" 404 -
+36.99.136.128 - - [06/Jan/2024 10:43:56] "[33mGET / HTTP/1.1[0m" 404 -
+87.236.176.7 - - [06/Jan/2024 12:11:05] "[33mGET / HTTP/1.1[0m" 404 -
+104.248.9.188 - - [06/Jan/2024 12:28:57] code 400, message Bad request version ('À\x14À')
+104.248.9.188 - - [06/Jan/2024 12:28:57] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03e`eÞöx/­²A¤[ø\x84 íÞWúSå\x1f+I1g¶Ôe:bç\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+104.248.9.188 - - [06/Jan/2024 12:28:57] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03?f:\x86ÄÊFÔ;4¼}\x11L6')
+104.248.9.188 - - [06/Jan/2024 12:28:57] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03?f:\x86ÄÊFÔ;4¼}\x11L6[0m" HTTPStatus.BAD_REQUEST -
+104.248.9.188 - - [06/Jan/2024 12:28:58] "[33mGET / HTTP/1.1[0m" 404 -
+104.248.9.188 - - [06/Jan/2024 12:28:58] code 400, message Bad request version ('À\x14À')
+104.248.9.188 - - [06/Jan/2024 12:28:58] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03Þ\x17\x9fqÒö\x9aêCÛ¥Û\x12\x8aB\x09a°ÿqED\x82ovú\x9aÈ®\x94Úó\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.78 - - [06/Jan/2024 13:10:10] "[33mGET / HTTP/1.1[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:15] "[33mGET http://43.159.41.149:8000/phpmyadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:15] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.4/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:24] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.10.0.2/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:25] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.10.3/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:35] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.9.2/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:36] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.11.0/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:24:47] "[33mGET http://43.159.41.149:8000/pma/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:07] "[33mGET http://43.159.41.149:8000/mysqladmin/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:18] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.5.5/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:24] "[33mGET http://43.159.41.149:8000/phpMyAdmin-2.5.7-pl1/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:27] "[33mGET http://43.159.41.149:8000/admin/pma/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:38] "[33mGET http://43.159.41.149:8000/webadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:39] "[33mGET http://43.159.41.149:8000/admin/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:25:49] "[33mGET http://43.159.41.149:8000/phpMyAdmin2/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:26:00] "[33mGET http://43.159.41.149:8000/webdb/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:26:11] "[33mGET http://43.159.41.149:8000/php/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:26:21] "[33mGET http://43.159.41.149:8000/sqlmanager/scripts/setup.php HTTP/1.0[0m" 404 -
+2.144.231.35 - - [06/Jan/2024 14:26:32] "[33mGET http://43.159.41.149:8000/php-myadmin/scripts/setup.php HTTP/1.0[0m" 404 -
+180.149.125.164 - - [06/Jan/2024 16:08:12] "[33mGET / HTTP/1.1[0m" 404 -
+216.219.89.139 - - [06/Jan/2024 16:54:42] "[33mCONNECT google.com:443 HTTP/1.1[0m" 404 -
+198.199.93.63 - - [06/Jan/2024 18:25:53] "[33mGET / HTTP/1.1[0m" 404 -
+84.54.51.33 - - [06/Jan/2024 19:17:19] "[33mCONNECT google.com:443 HTTP/1.1[0m" 404 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "OPTIONS /api/data_tool_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "OPTIONS /api/llm_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "OPTIONS /api/conversations/get_folder_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "OPTIONS /api/conversations/get_conversation_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "OPTIONS /api/tool_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "OPTIONS /api/file_system/get_path_tree HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "POST /api/data_tool_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "POST /api/tool_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:32] "POST /api/file_system/get_path_tree HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:45:33] "POST /api/llm_list HTTP/1.1" 200 -
+198.144.166.58 - - [06/Jan/2024 19:46:02] "[35m[1mPOST /api/conversations/get_conversation_list HTTP/1.1[0m" 500 -
+198.144.166.58 - - [06/Jan/2024 19:46:03] "[35m[1mPOST /api/conversations/get_folder_list HTTP/1.1[0m" 500 -
