@@ -15,7 +15,7 @@ const nextConfig = {
     return config;
   },
   // output: buildWithDocker ? 'standalone' : undefined,
-  output: i18n ? undefined : 'export', 
+  // output: i18n ? undefined : 'export', 
 };
 
 if (isExport) {
