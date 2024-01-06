@@ -314,9 +314,9 @@ const PluginList = ({
                     <Link
                       className="text-sm"
                       onClick={() => {
-                        window.open(
-                          'https://docs.xlang.ai/user-manual/plugins-agent-auth',
-                        );
+                        // window.open(
+                        //   '',
+                        // );
                       }}
                     >
                       Click here for instructions to get API key

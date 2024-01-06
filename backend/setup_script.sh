@@ -40,6 +40,7 @@ EOL
     sudo systemctl daemon-reload
     sudo systemctl start mongod
     #mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
+    #sudo systemctl status mongod
     sudo systemctl enable mongod
 
     # MongoDB collection creation

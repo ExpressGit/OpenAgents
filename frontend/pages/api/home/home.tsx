@@ -1897,8 +1897,8 @@ const Home = ({
       }}
     >
       <Head>
-        <title>HYSW</title>
-        <meta name="description" content="HYSW" />
+        <title>天机</title>
+        <meta name="description" content="天机" />
         <meta
           name="viewport"
           content="height=device-height ,width=device-width, initial-scale=1, user-scalable=no"
@@ -1936,7 +1936,7 @@ const Home = ({
                     <span className="font-[700]">Performance Limitations:&nbsp;</span>This chat interface is a prototype of our ongoing research preview and is not produced by a professional development team. Consequently, it may have limitations in its performance. We appreciate your understanding and patience as we continue to improve it.
                   </Typography>
                   <Typography variant="body1" className='font-[Montserrat] mt-5' align='right' gutterBottom>
-                    HYSW Team
+                  天机 Team
                   </Typography>
                 </div>
                 <IconButton

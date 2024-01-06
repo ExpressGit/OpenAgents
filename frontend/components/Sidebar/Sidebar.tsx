@@ -89,7 +89,7 @@ const Sidebar = <T,>({
               fontWeight: 400,
             }}
           >
-            HYSW
+            天机
           </span>
           <CloseSidebarButton onClick={toggleOpen} side={side} />
         </div>

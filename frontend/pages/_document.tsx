@@ -9,7 +9,7 @@ export default function Document(props: Props) {
     <Html lang='en'>
       <Head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="HYSW"></meta>
+        <meta name="apple-mobile-web-app-title" content="天机"></meta>
       </Head>
       <body>
         <Main />
