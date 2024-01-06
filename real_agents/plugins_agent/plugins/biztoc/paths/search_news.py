@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import requests
 
-
+# cankao neirong
 def call_api(input_json: Dict[str, Any]) -> Dict[str, Any]:
     response = requests.get("https://ai.biztoc.com/ai/news", params=input_json)
 
