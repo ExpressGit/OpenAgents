@@ -89,7 +89,6 @@ const Sidebar = <T,>({
               fontWeight: 400,
             }}
           >
-            天机
           </span>
           <CloseSidebarButton onClick={toggleOpen} side={side} />
         </div>
