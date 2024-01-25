@@ -14,8 +14,6 @@ def get_llm_list():
         {"id": llm, "name": llm} for llm in [
             "gpt-3.5-turbo-16k",
             "gpt-4",
-            "claude-v1",
-            "claude-2",
             "lemur-chat"
         ]
     ]
