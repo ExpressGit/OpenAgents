@@ -2,9 +2,9 @@
 
 # Install and setup Conda virtual environment
 echo "Setting up the conda environment..."
-# conda create -n openagents python=3.10 -y
+conda create -n openagents python=3.10 -y
 conda activate openagents
-# pip install -r requirements.txt
+pip install -r requirements.txt
 
 # Check if it's a macOS or Linux environment
 if [[ "$OSTYPE" == "darwin"* ]]; then

@@ -7,16 +7,66 @@
 2. 插件智能体-具有200多个日常工具，并且可供拓展；
 3. 网络智能体-用于自动上网。
 
-TianJiAgents可以分析数据，调用插件，像ChatGPT Plus一样控制浏览器，但完全开源，以：
-1. 易于部署
-2. 全栈代码
-3. 聊天Web UI
-4. 代理方法
-5. …
-   
-TianJiAgents使普通用户通过为快速响应和常见失败进行优化的web UI与智能体功能进行交互，同时为开发人员和研究人员在本地设置上提供无缝部署体验，为制作创新的语言代理和实现现实世界评估提供了基础。
-我们解释了挑战和有前景的机会，希望能为现实世界语言代理的未来研究和开发设置基础。
+## 服务端
 
+
+cd /root/OpenAgents
+
+- 环境自动安装
+
+bash backend/setup_script.sh
+
+- 激活虚拟坏境
+
+conda activate openagents
+
+
+
+- kaggle.json配置
+
+mkdir -p ~/.kaggle/
+
+cp kaggle.json ~/.kaggle/
+
+chmod 600 ~/.kaggle/kaggle.json
+
+
+- 环境变量：
+export OPENAI_API_KEY=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
+
+export 
+OPENAI_API_KEY=sk-O6Uo77vih1qwscIbBb343b430fA04b61B9Df08AbDa971404
+
+export VARIABLE_REGISTER_BACKEND=redis
+
+export MESSAGE_MEMORY_MANAGER_BACKEND=database
+
+export JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND=database
+
+export MONGO_SERVER=127.0.0.1
+
+export FLASK_APP=backend.main.py
+
+- 服务端启动
+
+#redis后台启动
+redis-server --daemonize yes
+
+cd /root/OpenAgents
+
+nohup flask run -p 8000 --host=0.0.0.0 &
+
+
+## 前端
+- 环境变量：
+export NEXT_PUBLIC_BACKEND_ENDPOINT=http://127.0.0.1:8000
+
+- 启动
+npm install (第一次初始化）
+
+npm run build （正式发布进行打包）
+
+npm start (生产环境启动）
 
 ## 🥑 TianJiAgents
 
