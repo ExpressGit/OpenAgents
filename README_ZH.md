@@ -59,7 +59,11 @@ nohup flask run -p 8000 --host=0.0.0.0 &
 
 ## 前端
 - 环境变量：
+本地：
 export NEXT_PUBLIC_BACKEND_ENDPOINT=http://127.0.0.1:8000
+
+线上：
+export NEXT_PUBLIC_BACKEND_ENDPOINT=http://43.159.41.149:8000
 
 - 启动
 npm install (第一次初始化）
