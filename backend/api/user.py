@@ -68,7 +68,7 @@ def get_user_info() -> Response:
 
 
 @app.route("/api/user/login", methods=["POST"])
-def get_user_info() -> Response:
+def login() -> Response:
     """Gets the user info."""
     request_json = request.get_json()
     username = request_json.get("username", None)
