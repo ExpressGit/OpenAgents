@@ -8,7 +8,7 @@ interface Props {
 export const CloseSidebarButton = ({ onClick, side }: Props) => {
   return (
     <>
-      <button className="pt-1 ml-[6rem]" onClick={onClick}>
+      <button className="pt-1 ml-[10rem]" onClick={onClick}>
         {side === 'right' ? <IconArrowBarRight /> : <IconArrowBarLeft />}
       </button>
     </>

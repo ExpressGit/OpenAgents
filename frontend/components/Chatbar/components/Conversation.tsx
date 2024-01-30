@@ -107,7 +107,7 @@ export const ConversationComponent = ({ conversation }: Props) => {
   return (
     <div className="relative flex items-center">
       {isRenaming && selectedConversation?.id === conversation.id ? (
-        <div className="flex w-full items-center rounded-lg bg-[#343541]/90 py-2 pl-[23.5px]">
+        <div className="flex w-full items-center rounded-lg bg-[#014FA1]/90 py-2 pl-[23.5px]">
           <ChatBubbleRoundedIcon sx={{ color: 'white', fontSize: 18 }} />
           <input
             className="mr-16 flex-1 pl-2 overflow-hidden overflow-ellipsis bg-transparent text-left text-white outline-none focus:border-neutral-100"
@@ -120,13 +120,11 @@ export const ConversationComponent = ({ conversation }: Props) => {
         </div>
       ) : (
         <button
-          className={`flex w-full cursor-pointer items-center rounded-lg py-2 pl-[23.5px] text-sm transition-colors duration-200 hover:bg-[#343541]/90 ${
-            messageIsStreaming ? 'disabled:cursor-not-allowed' : ''
-          } ${
-            selectedConversation?.id === conversation.id
-              ? 'bg-[#343541]/90'
+          className={`flex w-full cursor-pointer items-center rounded-lg py-2 pl-[23.5px] text-sm transition-colors duration-200 hover:bg-[#014FA1]/90 ${messageIsStreaming ? 'disabled:cursor-not-allowed' : ''
+            } ${selectedConversation?.id === conversation.id
+              ? 'bg-[#014FA1]/90'
               : ''
-          }`}
+            }`}
           onClick={() => handleSelectConversation(conversation)}
           disabled={messageIsStreaming}
           draggable="true"
@@ -135,9 +133,8 @@ export const ConversationComponent = ({ conversation }: Props) => {
           <ChatBubbleRoundedIcon sx={{ color: 'white', fontSize: 18 }} />
           <div
             title={conversation.name}
-            className={`relative max-h-5 pl-2 flex-1 overflow-hidden text-ellipsis whitespace-nowrap break-all text-left ${
-              selectedConversation?.id === conversation.id ? 'pr-12' : 'pr-1'
-            }`}
+            className={`relative max-h-5 pl-2 flex-1 overflow-hidden text-ellipsis whitespace-nowrap break-all text-left ${selectedConversation?.id === conversation.id ? 'pr-12' : 'pr-1'
+              }`}
           >
             {conversation.name}
           </div>

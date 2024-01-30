@@ -70,7 +70,7 @@ const Folder = ({
   };
 
   const highlightDrop = (e: any) => {
-    e.target.style.background = '#343541';
+    e.target.style.background = '#014FA1';
   };
 
   const removeHighlight = (e: any) => {

@@ -26,7 +26,7 @@ export const fallbackModelID = OpenAgentID.DATA_AGENT;
 export const OpenAgents: Record<OpenAgentID, OpenAgent> = {
   [OpenAgentID.DATA_AGENT]: {
     id: OpenAgentID.DATA_AGENT,
-    name: 'Data Agent',
+    name: 'Tools Agent',
     maxLength: 12000,
     tokenLimit: 4000,
     llm: undefined,
@@ -38,13 +38,13 @@ export const OpenAgents: Record<OpenAgentID, OpenAgent> = {
     tokenLimit: 4000,
     llm: undefined,
   },
-  [OpenAgentID.WEB_AGENT]: {
-    id: OpenAgentID.WEB_AGENT,
-    name: 'Web Agent',
-    maxLength: 1024,
-    tokenLimit: 4000,
-    llm: undefined,
-  },
+  // [OpenAgentID.WEB_AGENT]: {
+  //   id: OpenAgentID.WEB_AGENT,
+  //   name: 'Web Agent',
+  //   maxLength: 1024,
+  //   tokenLimit: 4000,
+  //   llm: undefined,
+  // },
 };
 
 export const OpenAgentList = Object.values(OpenAgents);

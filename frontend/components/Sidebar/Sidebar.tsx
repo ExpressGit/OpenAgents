@@ -66,19 +66,19 @@ const Sidebar = <T,>({
 
   const disableStyle: React.CSSProperties = messageIsStreaming
     ? {
-        pointerEvents: 'none',
-        cursor: 'not-allowed',
-      }
+      pointerEvents: 'none',
+      cursor: 'not-allowed',
+    }
     : {};
 
   return isOpen ? (
     <div style={disableStyle} className="bg-[#F3F3F3]">
       <div
-        className={`fixed rounded-3xl rounded-l-none top-0 ${side}-0 z-40 flex h-full w-[260px] flex-none flex-col space-y-2 bg-[#2766f5] p-2 text-[13px] sm:relative sm:top-0`}
+        className={`fixed rounded-3xl rounded-l-none top-0 ${side}-0 z-40 flex h-full w-[260px] flex-none flex-col space-y-2 bg-[#00143A] p-2 text-[13px] sm:relative sm:top-0`}
       >
         <div className="flex items-center leading-10 h-10 pt-1 pl-4">
           <a href="" target="_blank" rel="noreferrer">
-            <LogoIcon className="fixed top-5 left-5 w-10" />
+            <LogoIcon className="fixed top-5 left-5 w-14" />
           </a>
           <span
             className="pl-12 pt-1"
@@ -123,7 +123,7 @@ const Sidebar = <T,>({
         </div>
         <div className="flex items-center justify-center pb-1">
           <button
-            className={`flex w-[200px] flex-shrink-0 cursor-pointer select-none items-center justify-center gap-2 bg-[#4B2E83]
+            className={`flex w-[200px] flex-shrink-0 cursor-pointer select-none items-center justify-center gap-2 bg-[#014FA1]
              rounded-xl p-2 text-white font-[600]`}
             onClick={() => {
               handleCreateItem();
