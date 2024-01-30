@@ -28,6 +28,7 @@ from langchain.schema import (
     SystemMessage,
 )
 from langchain.utils import get_from_dict_or_env
+from backend.config.config import OpenaiSettings
 
 logger = logging.getLogger(__name__)
 
@@ -284,7 +285,7 @@ class ChatOpenAI(BaseChatModel):
             # Use the environment variable if neither is provided
             import os
 
-            openai_api_key = os.environ.get("OPENAI_API_KEY", None)
+            openai_api_key = os.environ.get("OPENAI_API_KEY", OpenaiSettings.OPENAI_API_KEY)
             openai.api_key = openai_api_key
 
         if self.stop is not None:
@@ -343,8 +344,8 @@ class ChatOpenAI(BaseChatModel):
 
         import openai
 
-        openai_api_base = os.environ.get("OPENAI_API_BASE", "https://api.openai.com/v1")
-        openai_api_key = os.environ.get("OPENAI_API_KEY", None)
+        openai_api_base = os.environ.get("OPENAI_API_BASE", OpenaiSettings.OPENAI_API_BASE)
+        openai_api_key = os.environ.get("OPENAI_API_KEY",  OpenaiSettings.OPENAI_API_KEY)
         openai.api_key = openai_api_key
         openai.api_base = openai_api_base
 

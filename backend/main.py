@@ -13,6 +13,7 @@ from backend.memory import (
 )
 
 warnings.filterwarnings("ignore", category=UserWarning)
+from backend.config.config import DataBaseSettings
 
 logger = init_log(
     error=os.path.join(".logging", "error.log"),
@@ -21,10 +22,16 @@ logger = init_log(
     trace=os.path.join(".logging", "trace.log"),
 )
 
-VARIABLE_REGISTER_BACKEND = os.environ.get("VARIABLE_REGISTER_BACKEND", "local")
-MESSAGE_MEMORY_MANAGER_BACKEND = os.environ.get("MESSAGE_MEMORY_MANAGER_BACKEND", "local")
+# VARIABLE_REGISTER_BACKEND = os.environ.get("VARIABLE_REGISTER_BACKEND", "local")
+# MESSAGE_MEMORY_MANAGER_BACKEND = os.environ.get("MESSAGE_MEMORY_MANAGER_BACKEND", "local")
+# API_KEY_MEMORY_MANAGER_BACKEND = os.environ.get("API_KEY_MEMORY_MANAGER_BACKEND", "local")
+# JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND = os.environ.get("JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND", "local")
+
+VARIABLE_REGISTER_BACKEND = os.environ.get("VARIABLE_REGISTER_BACKEND", DataBaseSettings.VARIABLE_REGISTER_BACKEND)
+MESSAGE_MEMORY_MANAGER_BACKEND = os.environ.get("MESSAGE_MEMORY_MANAGER_BACKEND", DataBaseSettings.MESSAGE_MEMORY_MANAGER_BACKEND)
 API_KEY_MEMORY_MANAGER_BACKEND = os.environ.get("API_KEY_MEMORY_MANAGER_BACKEND", "local")
-JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND = os.environ.get("JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND", "local")
+JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND = os.environ.get("JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND", DataBaseSettings.JUPYTER_KERNEL_MEMORY_MANAGER_BACKEND)
+
 
 message_pool: MessageMemoryManager = MessageMemoryManager(name="message_pool", backend=MESSAGE_MEMORY_MANAGER_BACKEND)
 grounding_source_pool: ChatMemoryManager = ChatMemoryManager()
