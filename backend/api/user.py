@@ -95,32 +95,31 @@ def login() -> Response:
 def add_and_update_user() -> Response:
     """Creates a new or update user."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", '')
+    user_id = request_json.get("user_id", "")
     db = get_user_storage()
-    if user_id and user != '':
+    if user_id and user_id != '':
         try:
-            user_id = user["id"]
             if user_id is not None and db.user.find_one(
                     {"_id": ObjectId(user_id)}):
                 updates = {
-                    "username": user["username"],
-                    "email": user["email"],
-                    "password": user["password"],
+                    "username": request_json.get("username"),
+                    "email": request_json.get("email"),
+                    "password": request_json.get("password"),
                     # "create_time": datetime.datetime.utcnow(),
-                    "remark": user["remark"],
-                    "user_type": user["user_type"]
+                    "remark": request_json.get("remark"),
+                    "user_type": request_json.get("user_type")
                 }
                 db.user.update_one({"_id": ObjectId(user_id)},
                                            {"$set": updates})
             else:
                 user = db.user.insert_one(
                     {
-                        "username": user["username"],
-                        "email": user["email"],
-                        "password": user["password"],
+                        "username": request_json.get("username"),
+                        "email": request_json.get("email"),
+                        "password": request_json.get("password"),
                         "create_time": datetime.datetime.utcnow(),
-                        "remark": user["remark"],
-                        "user_type": user["user_type"]
+                        "remark": request_json.get("remark"),
+                        "user_type": request_json.get("user_type")
                     }
                 )
                 user_id = str(user.inserted_id)
