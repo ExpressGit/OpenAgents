@@ -95,11 +95,11 @@ def login() -> Response:
 def add_and_update_user() -> Response:
     """Creates a new or update user."""
     request_json = request.get_json()
-    user_id = request_json.get("user_id", "")
+    user_id = request_json.get("user_id", None)
     db = get_user_storage()
-    if user_id and user_id != '':
+    if user_id is not None :
         try:
-            if user_id is not None and db.user.find_one(
+            if db.user.find_one(
                     {"_id": ObjectId(user_id)}):
                 updates = {
                     "username": request_json.get("username"),
