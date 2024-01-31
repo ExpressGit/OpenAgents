@@ -99,7 +99,7 @@ def add_and_update_user() -> Response:
     db = get_user_storage()
     if user_id is not None :
         try:
-            if db.user.find_one(
+            if user_id!="" and db.user.find_one(
                     {"_id": ObjectId(user_id)}):
                 updates = {
                     "username": request_json.get("username"),
