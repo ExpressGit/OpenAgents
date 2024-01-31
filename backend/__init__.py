@@ -14,4 +14,5 @@ from backend.api import (
     webot_instructions,
     data_tools,
     data_connector,
+    user,
 )
