@@ -96,8 +96,7 @@ def add_and_update_user() -> Response:
     """Creates a new or update user."""
     request_json = request.get_json()
     user_id = request_json.pop("user_id", '')
-    user = request_json.get("user", None)
-    if user:
+    if user_id and user != '':
         try:
             db = get_user_storage()
             user_id = user["id"]
