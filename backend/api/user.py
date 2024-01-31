@@ -92,7 +92,7 @@ def login() -> Response:
 
 
 @app.route("/api/user/add_and_update_user", methods=["POST"])
-def add_new_user() -> Response:
+def add_and_update_user() -> Response:
     """Creates a new or update user."""
     request_json = request.get_json()
     user_id = request_json.pop("user_id", '')
