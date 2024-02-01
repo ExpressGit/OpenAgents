@@ -95,24 +95,21 @@ export const SelectedCodeInterpreterPlugin = ({
                 {selectedConversation.selectedCodeInterpreterPlugins.map(
                   (plugin) => (
                     <div
-                      className={`overflow-hidden relative ${
-                        compact ? 'w-full h-full' : 'w-6 h-6'
-                      } flex items-center justify-center`}
+                      className={`overflow-hidden relative ${compact ? 'w-full h-full' : 'w-6 h-6'
+                        } flex items-center justify-center`}
                       key={plugin.id}
                     >
                       {plugin.icon ? (
                         <img
-                          className={`text-[#343541]  ${
-                            compact ? '!h-4 !w-4' : 'w-full h-full'
-                          }`}
+                          className={`text-[#343541]  ${compact ? '!h-4 !w-4' : 'w-full h-full'
+                            }`}
                           src={plugin.icon}
                           alt={plugin.name}
                         />
                       ) : (
                         <ExtensionOutlinedIcon
-                          className={`text-[#343541] ${
-                            compact ? '!h-4 !w-4' : 'w-full h-full'
-                          }`}
+                          className={`text-[#343541] ${compact ? '!h-4 !w-4' : 'w-full h-full'
+                            }`}
                         />
                       )}
                     </div>
@@ -122,7 +119,7 @@ export const SelectedCodeInterpreterPlugin = ({
             )}
           {selectedConversation &&
             selectedConversation.selectedCodeInterpreterPlugins.length ===
-              0 && (
+            0 && (
               <span
                 className={`flex items-center text-[15px] text-[#212121] pl-3`}
               >
@@ -195,12 +192,14 @@ const PluginList = ({
       if (element) element.scrollTop = element.scrollHeight;
     }
   }, [hoveredPlugin]);
-  useEffect(() => {}, [handleConfirm]);
+  useEffect(() => { }, [handleConfirm]);
 
   const languagePlugins = plugins.filter(
     (plugin) => plugin.type === 'language',
   );
   const toolPlugins = plugins.filter((plugin) => plugin.type === 'tool');
+
+  console.log({ languagePlugins });
 
   return (
     <div className="relative mt-3 w-[16rem]">
@@ -305,7 +304,7 @@ const PluginList = ({
             >
               {hoveredPlugin.description ?? 'No description'}
               {hoveredPlugin.require_api_key &&
-              hoveredPlugin.api_key == null ? (
+                hoveredPlugin.api_key == null ? (
                 <div
                   className="font-bold text-[#ff0000]]"
                   style={{ marginTop: 10, marginBottom: 10 }}
@@ -316,7 +315,7 @@ const PluginList = ({
                 <></>
               )}
               {hoveredPlugin.require_api_key &&
-              hoveredPlugin.api_key != null ? (
+                hoveredPlugin.api_key != null ? (
                 <div
                   className="font-bold text-[#343541]"
                   style={{ marginTop: 10, marginBottom: 10 }}

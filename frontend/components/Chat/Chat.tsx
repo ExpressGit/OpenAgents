@@ -69,6 +69,9 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     dispatch: homeDispatch,
   } = useContext(HomeContext);
 
+  console.log({ selectedConversation });
+
+
   const [currentMessage, setCurrentMessage] = useState<Message>();
   const [autoScrollEnabled, setAutoScrollEnabled] = useState<boolean>(true);
   const [showSettings, setShowSettings] = useState<boolean>(false);
@@ -308,7 +311,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   useEffect(() => {
     setShowInputBox(
       !(isStreamingError && isStreamingErrorChatID == chat_id) &&
-        !(isStopMessageStreaming && isStopChatID == chat_id),
+      !(isStopMessageStreaming && isStopChatID == chat_id),
     );
   }, [
     isStreamingError,
@@ -380,10 +383,10 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         )}
                         {selectedConversation.agent.id ==
                           'data-agent' && (
-                          <div className="absolute left-[10rem] top-[-4px]">
-                            <CodeInterpreterPluginSelect />
-                          </div>
-                        )}
+                            <div className="absolute left-[10rem] top-[-4px]">
+                              <CodeInterpreterPluginSelect />
+                            </div>
+                          )}
                         {selectedConversation.agent.id == 'web-agent' && (
                           <div className="absolute left-[10rem]">
                             Please follow the instructions{' '}
