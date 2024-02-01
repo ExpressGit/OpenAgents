@@ -9,7 +9,7 @@ import { useCreateReducer } from '@/hooks/useCreateReducer';
 import { FileItem } from '@/types/files'
 import { Plugin } from '@/types/plugin';
 import autoIconURL from '@/public/auto_icon_base64';
-
+import { useRouter } from 'next/router';
 
 import {
   cleanSelectedConversation,
@@ -40,7 +40,7 @@ import {
   updateConversationNameList,
 } from '@/utils/app/conversation';
 import { saveFolders } from '@/utils/app/folders';
-import {registerConversation} from '@/utils/app/conversation';
+import { registerConversation } from '@/utils/app/conversation';
 
 import {
   ChatBody,
@@ -81,6 +81,8 @@ const Home = ({
   const { t } = useTranslation('chat');
   const [selectedNode, setSelectedNode] = useState<FileItem | undefined>(undefined);
 
+  const router = useRouter();
+
   const contextValue = useCreateReducer<HomeInitialState>({
     initialState,
   });
@@ -112,669 +114,670 @@ const Home = ({
 
 
   const handleSend = async (
-      message: Message,
-      deleteCount = 0,
-      isEdited = false,
-      plugin: Plugin | null = null,
-      apiCall: any | null = null,
-      isRegenerate = false,
-    ) => {
-      if (selectedConversation) {
-        let updatedConversation: Conversation;
-        if (deleteCount) {
-          // TODO: Need to handle delete count logic for API calls
-          const updatedMessages = [...selectedConversation.messages];
-          for (let i = 0; i < deleteCount; i++) {
-            updatedMessages.pop();
-          }
+    message: Message,
+    deleteCount = 0,
+    isEdited = false,
+    plugin: Plugin | null = null,
+    apiCall: any | null = null,
+    isRegenerate = false,
+  ) => {
+    if (selectedConversation) {
+      let updatedConversation: Conversation;
+      if (deleteCount) {
+        // TODO: Need to handle delete count logic for API calls
+        const updatedMessages = [...selectedConversation.messages];
+        for (let i = 0; i < deleteCount; i++) {
+          updatedMessages.pop();
+        }
+        updatedConversation = {
+          ...selectedConversation,
+          messages: [...updatedMessages, message],
+        };
+      } else {
+        if (apiCall) {
+          updatedConversation = selectedConversation
+        } else {
           updatedConversation = {
             ...selectedConversation,
-            messages: [...updatedMessages, message],
+            messages: [...selectedConversation.messages, message],
           };
-        } else {
-          if (apiCall) {
-            updatedConversation = selectedConversation
-          } else {
-            updatedConversation = {
-              ...selectedConversation,
-              messages: [...selectedConversation.messages, message],
-            };
-          }
         }
+      }
 
-        dispatch({
-          field: 'selectedConversation',
-          value: updatedConversation,
-        });
-        dispatch({
-          field: 'isStreamingMessageId',
-          value: updatedConversation.messages.length,
-        });
-        dispatch({ field: 'loading', value: true });
-        dispatch({ field: 'messageIsStreaming', value: true });
-        const chatBody: ChatBody = {
-          agent: updatedConversation.agent,
-          key: apiKey,
-          messages: updatedConversation.messages,
-          prompt: updatedConversation.prompt,
-          temperature: updatedConversation.temperature,
-        };
+      dispatch({
+        field: 'selectedConversation',
+        value: updatedConversation,
+      });
+      dispatch({
+        field: 'isStreamingMessageId',
+        value: updatedConversation.messages.length,
+      });
+      dispatch({ field: 'loading', value: true });
+      dispatch({ field: 'messageIsStreaming', value: true });
+      const chatBody: ChatBody = {
+        agent: updatedConversation.agent,
+        key: apiKey,
+        messages: updatedConversation.messages,
+        prompt: updatedConversation.prompt,
+        temperature: updatedConversation.temperature,
+      };
 
-        dispatch({ field: 'followUpLoading', value: true });
+      dispatch({ field: 'followUpLoading', value: true });
 
-        let isNewConversation = true;
+      let isNewConversation = true;
 
-        const newConversation: Conversation = {
-          id: null,
-          name: t('New Conversation'),
-          messages: [],
-          agent: OpenAgents[defaultAgentId],
-          prompt: DEFAULT_SYSTEM_PROMPT,
-          temperature: DEFAULT_TEMPERATURE,
-          folderId: null,
-          selectedCodeInterpreterPlugins: defaultSelectedCodeInterpreterPlugins,
-          selectedPlugins: []
-        };
+      const newConversation: Conversation = {
+        id: null,
+        name: t('New Conversation'),
+        messages: [],
+        agent: OpenAgents[defaultAgentId],
+        prompt: DEFAULT_SYSTEM_PROMPT,
+        temperature: DEFAULT_TEMPERATURE,
+        folderId: null,
+        selectedCodeInterpreterPlugins: defaultSelectedCodeInterpreterPlugins,
+        selectedPlugins: []
+      };
 
-        if ((apiCall && updatedConversation.messages.length === 0) 
-            || ((! apiCall) && updatedConversation.messages.length === 1)) {
-            if (isCreateNewConversation) {
-              // create by clicking "New Conversation"
-              updatedConversation.id = selectedConversation.id;
-              dispatch({ field: 'isCreateNewConversation', value: false });
+      if ((apiCall && updatedConversation.messages.length === 0)
+        || ((!apiCall) && updatedConversation.messages.length === 1)) {
+        if (isCreateNewConversation) {
+          // create by clicking "New Conversation"
+          updatedConversation.id = selectedConversation.id;
+          dispatch({ field: 'isCreateNewConversation', value: false });
+        }
+        // create by clicking "Send"
+        if (!isStreamingError) {
+          let data;
+          try {
+            data = await registerConversation(updatedConversation);
+          } catch (error) {
+            toast.error((error as Error).message);
+            dispatch({ field: 'chat_id', value: '' });
+            dispatch({ field: 'selectedConversation', value: newConversation });
+            dispatch({ field: 'loading', value: false });
+            dispatch({ field: 'messageIsStreaming', value: false });
+            return;
+          }
+          updatedConversation.id = data.id;
+          dispatch({ field: 'chat_id', value: data.id });
+        }
+      }
+
+      const endpoint = getEndpoint(chatBody.agent);
+      let body;
+      let user_intent = ""
+      let parent_message_id: number | null = -1;
+      if (!plugin) {
+        if (apiCall || message.apiType == 'DataProfiling') {
+          // Did not input message into conversation
+          if (chatBody.messages.length > 0) {
+            parent_message_id =
+              chatBody.messages[chatBody.messages.length - 1].id;
+          }
+        } else {
+          // Append input message into conversation
+          if (chatBody.messages.length > 1) {
+            parent_message_id =
+              chatBody.messages[chatBody.messages.length - 2].id;
+          }
+          user_intent = chatBody.messages[chatBody.messages.length - 1].content
+        }
+        body = JSON.stringify({
+          user_intent: message.apiType == 'DataProfiling' ? '' : user_intent,
+          chat_id: updatedConversation.id,
+          parent_message_id: parent_message_id,
+          selected_plugins: selectedPlugins.map((plugin) => plugin.id),
+          code_interpreter_languages: selectedConversation.selectedCodeInterpreterPlugins.filter((plugin) => plugin.type === "language"),
+          code_interpreter_tools: selectedConversation.selectedCodeInterpreterPlugins.filter((plugin) => plugin.type === "tool"),
+          // TODO: need to handle other possible api calls in the future
+          api_call: message.apiType == 'DataProfiling' ? {
+            api_name: "DataProfiling",
+            args: {
+              activated_file: selectedNode,
+              chat_id: selectedConversation.id,
+              parent_message_id: parent_message_id
             }
-            // create by clicking "Send"
-            if (!isStreamingError) {
-              let data;
+          } : apiCall,
+          is_regenerate: isRegenerate,
+          llm_name: updatedConversation.agent?.llm?.name,
+          temperature: updatedConversation.temperature,
+          api_key: apiKey,
+        });
+      } else {
+        body = JSON.stringify({
+          ...chatBody,
+          googleAPIKey: pluginKeys
+            .find((key) => key.pluginId === 'google-search')
+            ?.requiredKeys.find((key) => key.key === 'GOOGLE_API_KEY')?.value,
+          googleCSEId: pluginKeys
+            .find((key) => key.pluginId === 'google-search')
+            ?.requiredKeys.find((key) => key.key === 'GOOGLE_CSE_ID')?.value,
+        });
+      }
+      const controller = new AbortController();
+      let response;
+      try {
+        response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          signal: controller.signal,
+          body,
+        });
+      } catch (error: unknown) {
+        toast.error((error as Error).message);
+        dispatch({ field: 'loading', value: false });
+        dispatch({ field: 'messageIsStreaming', value: false });
+        dispatch({ field: 'selectedConversation', value: newConversation });
+        return;
+      }
+      if (!response.ok) {
+        dispatch({ field: 'loading', value: false });
+        dispatch({ field: 'messageIsStreaming', value: false });
+        dispatch({ field: 'selectedConversation', value: newConversation });
+        toast.error(response.statusText);
+        return;
+      }
+      const data = response.body;
+      if (!data) {
+        dispatch({ field: 'loading', value: false });
+        dispatch({ field: 'messageIsStreaming', value: false });
+        dispatch({ field: 'selectedConversation', value: newConversation });
+        toast.error('Error streaming message!');
+        return;
+      }
+
+      if (!plugin) {
+        if (updatedConversation.messages.length === 1) {
+          const { content } = message;
+          let customName = content;
+          if (message.apiType == 'DataProfiling' && selectedNode) {
+            customName = selectedNode.text;
+          }
+          updatedConversation = {
+            ...updatedConversation,
+            name: customName,
+          };
+          if (!isStreamingError) {
+            (async () => {
+              const convs: ConversationNameListItem[] = [{
+                id: updatedConversation.id,
+                name: updatedConversation.name,
+                folderId: updatedConversation.folderId,
+              }]
               try {
-                data = await registerConversation(updatedConversation);
-              } catch(error) {
+                await updateConversationNameList(convs);
+              } catch (error) {
                 toast.error((error as Error).message);
-                dispatch({ field: 'chat_id', value: '' });
-                dispatch({ field: 'selectedConversation', value: newConversation });
                 dispatch({ field: 'loading', value: false });
                 dispatch({ field: 'messageIsStreaming', value: false });
+                dispatch({ field: 'selectedConversation', value: newConversation });
                 return;
               }
-              updatedConversation.id = data.id;
-              dispatch({ field: 'chat_id', value: data.id });
-            }
-        }
-
-        const endpoint = getEndpoint(chatBody.agent);
-        let body;
-        let user_intent = ""
-        let parent_message_id: number | null = -1;
-        if (!plugin) {
-          if (apiCall || message.apiType == 'DataProfiling') {
-            // Did not input message into conversation
-            if (chatBody.messages.length > 0) {
-              parent_message_id =
-                chatBody.messages[chatBody.messages.length - 1].id;
-            }
-          } else {
-            // Append input message into conversation
-            if (chatBody.messages.length > 1) {
-              parent_message_id =
-                chatBody.messages[chatBody.messages.length - 2].id;
-            }
-            user_intent = chatBody.messages[chatBody.messages.length - 1].content
+            })();
           }
-          body = JSON.stringify({
-            user_intent: message.apiType == 'DataProfiling' ? '' : user_intent,
-            chat_id: updatedConversation.id,
-            parent_message_id: parent_message_id,
-            selected_plugins: selectedPlugins.map((plugin) => plugin.id),
-            code_interpreter_languages: selectedConversation.selectedCodeInterpreterPlugins.filter((plugin) => plugin.type === "language"),
-            code_interpreter_tools: selectedConversation.selectedCodeInterpreterPlugins.filter((plugin) => plugin.type === "tool"),
-            // TODO: need to handle other possible api calls in the future
-            api_call: message.apiType == 'DataProfiling' ? {
-              api_name: "DataProfiling",
-              args: {
-                activated_file: selectedNode,
-                chat_id: selectedConversation.id,
-                parent_message_id: parent_message_id
-              }} : apiCall,
-            is_regenerate: isRegenerate,
-            llm_name: updatedConversation.agent?.llm?.name,
-            temperature: updatedConversation.temperature,
-            api_key: apiKey,
-          });
-        } else {
-          body = JSON.stringify({
-            ...chatBody,
-            googleAPIKey: pluginKeys
-              .find((key) => key.pluginId === 'google-search')
-              ?.requiredKeys.find((key) => key.key === 'GOOGLE_API_KEY')?.value,
-            googleCSEId: pluginKeys
-              .find((key) => key.pluginId === 'google-search')
-              ?.requiredKeys.find((key) => key.key === 'GOOGLE_CSE_ID')?.value,
-          });
         }
-        const controller = new AbortController();
-        let response;
-        try {
-          response = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            signal: controller.signal,
-            body,
-          });
-        } catch (error: unknown) {
-          toast.error((error as Error).message);
-          dispatch({ field: 'loading', value: false });
-          dispatch({ field: 'messageIsStreaming', value: false });
-          dispatch({ field: 'selectedConversation', value: newConversation });
-          return;
-        }
-        if (!response.ok) {
-          dispatch({ field: 'loading', value: false });
-          dispatch({ field: 'messageIsStreaming', value: false });
-          dispatch({ field: 'selectedConversation', value: newConversation });
-          toast.error(response.statusText);
-          return;
-        }
-        const data = response.body;
-        if (!data) {
-          dispatch({ field: 'loading', value: false });
-          dispatch({ field: 'messageIsStreaming', value: false });
-          dispatch({ field: 'selectedConversation', value: newConversation });
-          toast.error('Error streaming message!');
-          return;
-        }
+        const reader = data.getReader();
+        const decoder = new TextDecoder();
+        let done = false;
+        let isFirst = true;
+        let richContent: RichContent = {
+          intermediateSteps: [],
+          finalAnswer: [],
+        };
 
-        if (!plugin) {
-          if (updatedConversation.messages.length === 1) {
-            const { content } = message;
-            let customName = content;
-            if (message.apiType == 'DataProfiling' && selectedNode) {
-              customName = selectedNode.text;
-            }
-            updatedConversation = {
-              ...updatedConversation,
-              name: customName,
-            };
-            if (!isStreamingError) {
-              (async () => {
-                const convs: ConversationNameListItem[] = [{
-                  id: updatedConversation.id,
-                  name: updatedConversation.name,
-                  folderId: updatedConversation.folderId,
-                }]
-                try {
-                  await updateConversationNameList(convs);
-                } catch (error) {
-                  toast.error((error as Error).message);
-                  dispatch({ field: 'loading', value: false });
-                  dispatch({ field: 'messageIsStreaming', value: false });
-                  dispatch({ field: 'selectedConversation', value: newConversation });
-                  return;
+        let richMessage: Message = {
+          id: null,
+          role: 'assistant',
+          type: 'rich_message',
+          content: '',
+          richContent: null,
+        };
+
+        let concatIntermediateStepText = '';
+        let concatFinalAnswerText = '';
+        let finalAnswerText = ''
+
+        let stream_buffer: number[] = [];
+        let json_size = -1;
+
+        let aiMessageId: number | null = null;
+        let humanMessageId: number | null = null;
+
+        let isError = false;
+
+        while (!done) {
+          if (stopConversationRef.current === true) {
+            controller.abort();
+            done = true;
+            stopConversationRef.current = false;
+            // break;
+          }
+
+          const { value, done: doneReading } = await reader.read();
+          if (stream_buffer.length === 0 && value === undefined) {
+            break;
+          }
+          if (value !== undefined) {
+            value.forEach((element) => {
+              stream_buffer.push(element);
+            });
+          }
+
+          // We need read the first 4 bytes to get the size of the json
+          while (true) {
+            if (json_size === -1) {
+              // We need to read more bytes to get the size of the json
+              if (stream_buffer.length < 4) {
+                break;
+              } else {
+                let buffer = new ArrayBuffer(4);
+                let byteArray = new Uint8Array(buffer);
+                for (let i = 0; i < 4; i++) {
+                  byteArray[i] = stream_buffer[i];
                 }
-              })();
+                let dataView = new DataView(buffer);
+                json_size = dataView.getInt32(0, true);
+                stream_buffer = stream_buffer.slice(4);
+                continue;
+              }
             }
-          }
-          const reader = data.getReader();
-          const decoder = new TextDecoder();
-          let done = false;
-          let isFirst = true;
-          let richContent: RichContent = {
-            intermediateSteps: [],
-            finalAnswer: [],
-          };
-
-          let richMessage: Message = {
-            id: null,
-            role: 'assistant',
-            type: 'rich_message',
-            content: '',
-            richContent: null,
-          };
-
-          let concatIntermediateStepText = '';
-          let concatFinalAnswerText = '';
-          let finalAnswerText = ''
-
-          let stream_buffer: number[] = [];
-          let json_size = -1;
-
-          let aiMessageId: number | null = null;
-          let humanMessageId: number | null = null;
-
-          let isError = false;
-
-          while (!done) {
-            if (stopConversationRef.current === true) {
-              controller.abort();
-              done = true;
-              stopConversationRef.current = false;
-              // break;
-            }
-
-            const { value, done: doneReading } = await reader.read();
-            if (stream_buffer.length === 0 && value === undefined) {
+            // We need to read the json, but json is not complete now
+            else if (stream_buffer.length < json_size) {
               break;
             }
-            if (value !== undefined) {
-              value.forEach((element) => {
-                stream_buffer.push(element);
-              });
+            // We have complete json now
+
+            const chunkValue = decoder.decode(
+              new Uint8Array(stream_buffer.slice(0, json_size)),
+            );
+            stream_buffer = stream_buffer.slice(json_size);
+            json_size = -1;
+
+            let chunkValueJson = JSON.parse(chunkValue);
+            if (chunkValueJson?.intermediate_steps?.type == 'heartbeat') {
+              continue;
             }
 
-            // We need read the first 4 bytes to get the size of the json
-            while (true) {
-              if (json_size === -1) {
-                // We need to read more bytes to get the size of the json
-                if (stream_buffer.length < 4) {
+            if (chat_id in chunkValueJson && chunkValueJson['chat_id'] != updatedConversation.id) {
+              console.log(chunkValueJson, updatedConversation.id)
+              continue;
+            }
+
+            if ('success' in chunkValueJson && 'error' in chunkValueJson) {
+              let newAlertMessage: Message = {
+                id: null,
+                role: 'assistant',
+                type: 'alert_message',
+                content: '',
+                richContent: null,
+              };
+              switch (chunkValueJson['error']) {
+                case 'stop':
+                  // newAlertMessage.content = 'Stopped generation.';
+                  newAlertMessage = richMessage;
+                  controller.abort();
+                  dispatch({ field: 'isStopMessageStreaming', value: true });
+                  dispatch({ field: 'isStopChatID', value: chat_id });
                   break;
-                } else {
-                  let buffer = new ArrayBuffer(4);
-                  let byteArray = new Uint8Array(buffer);
-                  for (let i = 0; i < 4; i++) {
-                    byteArray[i] = stream_buffer[i];
-                  }
-                  let dataView = new DataView(buffer);
-                  json_size = dataView.getInt32(0, true);
-                  stream_buffer = stream_buffer.slice(4);
-                  continue;
-                }
+                case 'timeout':
+                  newAlertMessage.content = 'Timeout. Please try again later.';
+                  break;
+                case 'internal':
+                  if ('error_msg' in chunkValueJson) newAlertMessage.content = chunkValueJson['error_msg'];
+                  else newAlertMessage.content = 'Server internal error. Please try again later.';
+                  break;
               }
-              // We need to read the json, but json is not complete now
-              else if (stream_buffer.length < json_size) {
-                break;
-              }
-              // We have complete json now
-
-              const chunkValue = decoder.decode(
-                new Uint8Array(stream_buffer.slice(0, json_size)),
-              );
-              stream_buffer = stream_buffer.slice(json_size);
-              json_size = -1;
-
-              let chunkValueJson = JSON.parse(chunkValue);
-              if (chunkValueJson?.intermediate_steps?.type == 'heartbeat') {
-                continue;
-              }
-
-              if (chat_id in chunkValueJson && chunkValueJson['chat_id'] != updatedConversation.id) {
-                console.log(chunkValueJson, updatedConversation.id)
-                continue;
-              }
-
-              if ('success' in chunkValueJson && 'error' in chunkValueJson) {
-                let newAlertMessage : Message = {
-                  id: null,
-                  role: 'assistant',
-                  type: 'alert_message',
-                  content: '',
-                  richContent: null,
-                };
-                switch (chunkValueJson['error']) {
-                  case 'stop':
-                    // newAlertMessage.content = 'Stopped generation.';
-                    newAlertMessage = richMessage;
-                    controller.abort();
-                    dispatch({ field: 'isStopMessageStreaming', value: true });
-                    dispatch({ field: 'isStopChatID', value: chat_id });
-                    break;
-                  case 'timeout':
-                    newAlertMessage.content = 'Timeout. Please try again later.';
-                    break;
-                  case 'internal':
-                    if ('error_msg' in chunkValueJson) newAlertMessage.content = chunkValueJson['error_msg'];
-                    else newAlertMessage.content = 'Server internal error. Please try again later.';
-                    break;
-                }
-                let newConversation : Conversation;
-                let newMessages : Message[] = updatedConversation.messages;
-                if (newMessages.length == 0) {
-                  // the current user message has not been stored in selectedConversation
-                  newMessages.push(message);
-                } else {
-                  // if using data summary, we sent a dummy message to the server
-                  // selectedConversation has a user message containing table info
-                  if (newMessages[newMessages.length - 1].apiType != 'DataProfiling') {
-                    // if not, no dummy message, so replace
-                    // if ai message is already partly inserted (in case of timeout), don't replace
-                    if (newMessages[newMessages.length - 1].id == message.id) {
-                      newMessages[newMessages.length - 1] = message;
-                    }
-                  }
-                }
-                if (newMessages[newMessages.length - 1].role == 'assistant') {
-                  newMessages[newMessages.length - 1] = newAlertMessage;
-                } else {
-                  newMessages.push(newAlertMessage);
-                }
-                newConversation = {
-                  ...selectedConversation,
-                  messages: newMessages,
-                }
-                dispatch({ field: 'selectedConversation', value: newConversation });
-                dispatch({ field: 'isStreamingError', value: true });
-                dispatch({ field: 'isStreamingErrorChatID', value: chat_id });
-                done = true;
-                isError = true;
-                break;
-              }
-              
-              if (
-                'ai_message_id' in chunkValueJson &&
-                'human_message_id' in chunkValueJson
-              ) {
-                aiMessageId = chunkValueJson['ai_message_id'];
-                humanMessageId = chunkValueJson['human_message_id'];
-                if (humanMessageId) {
-                  updatedConversation.messages[
-                    updatedConversation.messages.length - 1
-                  ].id = chunkValueJson['human_message_id'];
-                }
+              let newConversation: Conversation;
+              let newMessages: Message[] = updatedConversation.messages;
+              if (newMessages.length == 0) {
+                // the current user message has not been stored in selectedConversation
+                newMessages.push(message);
               } else {
-                // Block-level Streaming Method
-                if (
-                  !('streaming_method' in chunkValueJson) ||
-                  chunkValueJson['streaming_method'] === 'block'
-                ) {
+                // if using data summary, we sent a dummy message to the server
+                // selectedConversation has a user message containing table info
+                if (newMessages[newMessages.length - 1].apiType != 'DataProfiling') {
+                  // if not, no dummy message, so replace
+                  // if ai message is already partly inserted (in case of timeout), don't replace
+                  if (newMessages[newMessages.length - 1].id == message.id) {
+                    newMessages[newMessages.length - 1] = message;
+                  }
+                }
+              }
+              if (newMessages[newMessages.length - 1].role == 'assistant') {
+                newMessages[newMessages.length - 1] = newAlertMessage;
+              } else {
+                newMessages.push(newAlertMessage);
+              }
+              newConversation = {
+                ...selectedConversation,
+                messages: newMessages,
+              }
+              dispatch({ field: 'selectedConversation', value: newConversation });
+              dispatch({ field: 'isStreamingError', value: true });
+              dispatch({ field: 'isStreamingErrorChatID', value: chat_id });
+              done = true;
+              isError = true;
+              break;
+            }
+
+            if (
+              'ai_message_id' in chunkValueJson &&
+              'human_message_id' in chunkValueJson
+            ) {
+              aiMessageId = chunkValueJson['ai_message_id'];
+              humanMessageId = chunkValueJson['human_message_id'];
+              if (humanMessageId) {
+                updatedConversation.messages[
+                  updatedConversation.messages.length - 1
+                ].id = chunkValueJson['human_message_id'];
+              }
+            } else {
+              // Block-level Streaming Method
+              if (
+                !('streaming_method' in chunkValueJson) ||
+                chunkValueJson['streaming_method'] === 'block'
+              ) {
+                if (chunkValueJson['intermediate_steps']) {
+                  const updatedIntermediateSteps = [
+                    ...richContent.intermediateSteps,
+                    ...chunkValueJson['intermediate_steps']?.map(
+                      (
+                        step_content: {
+                          type: string;
+                          text: string;
+                          id: string;
+                        },
+                        index: number,
+                      ) => {
+                        return {
+                          id: step_content.id,
+                          message_id: aiMessageId,
+                          content: step_content.text,
+                          type: step_content.type,
+                        };
+                      },
+                    ),
+                  ];
+                  richContent.intermediateSteps = updatedIntermediateSteps;
+                }
+                if (chunkValueJson['final_answer']) {
+                  const updatedFinalAnswer = [
+                    ...richContent.finalAnswer,
+                    ...chunkValueJson['final_answer']?.map(
+                      (
+                        step_content: {
+                          type: string;
+                          text: string;
+                          id: string;
+                        },
+                        index: number,
+                      ) => {
+                        return {
+                          id: step_content.id,
+                          message_id: aiMessageId,
+                          content: step_content.text,
+                          type: step_content.type,
+                        };
+                      },
+                    ),
+                  ];
+                  richContent.finalAnswer = updatedFinalAnswer;
+                }
+                richMessage = {
+                  id: aiMessageId,
+                  role: 'assistant',
+                  type: 'rich_message',
+                  content: '',
+                  richContent: richContent,
+                };
+              } else if (chunkValueJson['streaming_method'] === 'card_info') {
+                if (chunkValueJson['final_answer']) {
+                  const content = chunkValueJson['final_answer'];
+                  finalAnswerText = content.text;
+                  const updatedFinalAnswer = [
+                    ...richContent.finalAnswer,
+                    {
+                      id: content.id,
+                      message_id: aiMessageId,
+                      content: finalAnswerText,
+                      type: content.type,
+                    },
+                  ];
+                  richContent.finalAnswer = updatedFinalAnswer;
+                }
+                richMessage = {
+                  id: aiMessageId,
+                  role: 'assistant',
+                  type: 'rich_message',
+                  content: '',
+                  richContent: richContent,
+                };
+              } else {
+                // char
+                if (chunkValueJson['is_block_first']) {
                   if (chunkValueJson['intermediate_steps']) {
+                    const step_content = chunkValueJson['intermediate_steps'];
+                    concatIntermediateStepText = step_content.text;
                     const updatedIntermediateSteps = [
                       ...richContent.intermediateSteps,
-                      ...chunkValueJson['intermediate_steps']?.map(
-                        (
-                          step_content: {
-                            type: string;
-                            text: string;
-                            id: string;
-                          },
-                          index: number,
-                        ) => {
-                          return {
-                            id: step_content.id,
-                            message_id: aiMessageId,
-                            content: step_content.text,
-                            type: step_content.type,
-                          };
-                        },
-                      ),
+                      {
+                        id: step_content.id,
+                        message_id: aiMessageId,
+                        content: concatIntermediateStepText,
+                        type: step_content.type,
+                      },
                     ];
                     richContent.intermediateSteps = updatedIntermediateSteps;
                   }
                   if (chunkValueJson['final_answer']) {
+                    const step_content = chunkValueJson['final_answer'];
+                    concatFinalAnswerText = step_content.text;
                     const updatedFinalAnswer = [
                       ...richContent.finalAnswer,
-                      ...chunkValueJson['final_answer']?.map(
-                        (
-                          step_content: {
-                            type: string;
-                            text: string;
-                            id: string;
-                          },
-                          index: number,
-                        ) => {
-                          return {
-                            id: step_content.id,
-                            message_id: aiMessageId,
-                            content: step_content.text,
-                            type: step_content.type,
-                          };
-                        },
-                      ),
+                      {
+                        id: step_content.id,
+                        message_id: aiMessageId,
+                        content: concatFinalAnswerText,
+                        type: step_content.type,
+                      },
                     ];
                     richContent.finalAnswer = updatedFinalAnswer;
                   }
-                  richMessage = {
-                    id: aiMessageId,
-                    role: 'assistant',
-                    type: 'rich_message',
-                    content: '',
-                    richContent: richContent,
-                  };
-                } else if (chunkValueJson['streaming_method'] === 'card_info'){
-                  if (chunkValueJson['final_answer']) {
-                    const content = chunkValueJson['final_answer'];
-                    finalAnswerText = content.text;
-                    const updatedFinalAnswer = [
-                        ...richContent.finalAnswer,
-                        {
-                          id: content.id,
-                          message_id: aiMessageId,
-                          content: finalAnswerText,
-                          type: content.type,
-                        },
-                      ];
-                    richContent.finalAnswer = updatedFinalAnswer;
+                } else {
+                  if (chunkValueJson['intermediate_steps']) {
+                    const step_content = chunkValueJson['intermediate_steps'];
+                    concatIntermediateStepText += step_content.text;
+                    const updatedIntermediateSteps =
+                      richContent.intermediateSteps.map((step, index) => {
+                        if (
+                          index ===
+                          richContent.intermediateSteps.length - 1
+                        ) {
+                          return {
+                            ...step,
+                            content: concatIntermediateStepText,
+                          };
+                        }
+                        return step;
+                      });
+                    richContent.intermediateSteps = updatedIntermediateSteps;
                   }
-                  richMessage = {
-                    id: aiMessageId,
-                    role: 'assistant',
-                    type: 'rich_message',
-                    content: '',
-                    richContent: richContent,
-                  };
-                } else {
-                  // char
-                  if (chunkValueJson['is_block_first']) {
-                    if (chunkValueJson['intermediate_steps']) {
-                      const step_content = chunkValueJson['intermediate_steps'];
-                      concatIntermediateStepText = step_content.text;
-                      const updatedIntermediateSteps = [
-                        ...richContent.intermediateSteps,
-                        {
-                          id: step_content.id,
-                          message_id: aiMessageId,
-                          content: concatIntermediateStepText,
-                          type: step_content.type,
-                        },
-                      ];
-                      richContent.intermediateSteps = updatedIntermediateSteps;
-                    }
-                    if (chunkValueJson['final_answer']) {
-                      const step_content = chunkValueJson['final_answer'];
-                      concatFinalAnswerText = step_content.text;
-                      const updatedFinalAnswer = [
-                        ...richContent.finalAnswer,
-                        {
-                          id: step_content.id,
-                          message_id: aiMessageId,
-                          content: concatFinalAnswerText,
-                          type: step_content.type,
-                        },
-                      ];
-                      richContent.finalAnswer = updatedFinalAnswer;
-                    }
-                  } else {
-                    if (chunkValueJson['intermediate_steps']) {
-                      const step_content = chunkValueJson['intermediate_steps'];
-                      concatIntermediateStepText += step_content.text;
-                      const updatedIntermediateSteps =
-                        richContent.intermediateSteps.map((step, index) => {
-                          if (
-                            index ===
-                            richContent.intermediateSteps.length - 1
-                          ) {
-                            return {
-                              ...step,
-                              content: concatIntermediateStepText,
-                            };
-                          }
-                          return step;
-                        });
-                      richContent.intermediateSteps = updatedIntermediateSteps;
-                    }
-                    if (chunkValueJson['final_answer']) {
-                      const step_content = chunkValueJson['final_answer'];
-                      concatFinalAnswerText += step_content.text;
-                      let updatedFinalAnswer
-                      updatedFinalAnswer = richContent.finalAnswer.map(
-                          (step, index) => {
-                            if (index === richContent.finalAnswer.length - 1) {
-                              return {
-                                ...step,
-                                content: concatFinalAnswerText,
-                              };
-                            }
-                            return step;
-                          },
-                        );
-                      richContent.finalAnswer = updatedFinalAnswer
-                      }
-                    }
-                  
-                  richMessage = {
-                    id: aiMessageId,
-                    role: 'assistant',
-                    type: 'rich_message',
-                    content: '',
-                    richContent: richContent,
-                  };
+                  if (chunkValueJson['final_answer']) {
+                    const step_content = chunkValueJson['final_answer'];
+                    concatFinalAnswerText += step_content.text;
+                    let updatedFinalAnswer
+                    updatedFinalAnswer = richContent.finalAnswer.map(
+                      (step, index) => {
+                        if (index === richContent.finalAnswer.length - 1) {
+                          return {
+                            ...step,
+                            content: concatFinalAnswerText,
+                          };
+                        }
+                        return step;
+                      },
+                    );
+                    richContent.finalAnswer = updatedFinalAnswer
+                  }
                 }
-              } // End of ai_message_id and human_message_id check
-              if (
-                !(
-                  'ai_message_id' in chunkValueJson &&
-                  'human_message_id' in chunkValueJson
-                )
-              ) {
-                if (isFirst) {
-                  isFirst = false;
-                  richMessage.id = aiMessageId;
-                  const updatedMessages: Message[] = [
-                    ...updatedConversation.messages,
-                    richMessage,
-                  ];
-                  updatedConversation = {
-                    ...updatedConversation,
-                    messages: updatedMessages,
-                  };
 
-                  dispatch({ field: 'loading', value: false });
-                  dispatch({
-                    field: 'selectedConversation',
-                    value: updatedConversation,
-                  });
-                } else {
-                  const updatedMessages: Message[] =
-                    updatedConversation.messages.map((message, index) => {
-                      if (index === updatedConversation.messages.length - 1) {
-                        return {
-                          ...message,
-                          richContent: richContent,
-                        };
-                      }
-                      return message;
-                    });
-
-                  updatedConversation = {
-                    ...updatedConversation,
-                    messages: updatedMessages,
-                  };
-                  dispatch({
-                    field: 'selectedConversation',
-                    value: updatedConversation,
-                  });
-                }
-              } // End of ai_message_id and human_message_id check
-            }
-
-            // No more content in buffer and no new data, we are done
-            if (stream_buffer.length === 0 && doneReading) break;
-          }
-
-          const updatedConversationNameList: ConversationNameListItem[] = conversationNameList.map(
-            (conversation) => {
-              if (conversation.id === selectedConversation.id) {
-                isNewConversation = false
-                return {
-                  id: updatedConversation.id,
-                  folderId: null,
-                  name: updatedConversation.name,
+                richMessage = {
+                  id: aiMessageId,
+                  role: 'assistant',
+                  type: 'rich_message',
+                  content: '',
+                  richContent: richContent,
                 };
               }
-              return conversation;
-            },
-          );
-          
-          if (isNewConversation) {
-            if (updatedConversation.id && 
-              !updatedConversationNameList.find((c) => c.id === updatedConversation.id)) {
-              updatedConversationNameList.push({
+            } // End of ai_message_id and human_message_id check
+            if (
+              !(
+                'ai_message_id' in chunkValueJson &&
+                'human_message_id' in chunkValueJson
+              )
+            ) {
+              if (isFirst) {
+                isFirst = false;
+                richMessage.id = aiMessageId;
+                const updatedMessages: Message[] = [
+                  ...updatedConversation.messages,
+                  richMessage,
+                ];
+                updatedConversation = {
+                  ...updatedConversation,
+                  messages: updatedMessages,
+                };
+
+                dispatch({ field: 'loading', value: false });
+                dispatch({
+                  field: 'selectedConversation',
+                  value: updatedConversation,
+                });
+              } else {
+                const updatedMessages: Message[] =
+                  updatedConversation.messages.map((message, index) => {
+                    if (index === updatedConversation.messages.length - 1) {
+                      return {
+                        ...message,
+                        richContent: richContent,
+                      };
+                    }
+                    return message;
+                  });
+
+                updatedConversation = {
+                  ...updatedConversation,
+                  messages: updatedMessages,
+                };
+                dispatch({
+                  field: 'selectedConversation',
+                  value: updatedConversation,
+                });
+              }
+            } // End of ai_message_id and human_message_id check
+          }
+
+          // No more content in buffer and no new data, we are done
+          if (stream_buffer.length === 0 && doneReading) break;
+        }
+
+        const updatedConversationNameList: ConversationNameListItem[] = conversationNameList.map(
+          (conversation) => {
+            if (conversation.id === selectedConversation.id) {
+              isNewConversation = false
+              return {
                 id: updatedConversation.id,
                 folderId: null,
                 name: updatedConversation.name,
+              };
+            }
+            return conversation;
+          },
+        );
+
+        if (isNewConversation) {
+          if (updatedConversation.id &&
+            !updatedConversationNameList.find((c) => c.id === updatedConversation.id)) {
+            updatedConversationNameList.push({
+              id: updatedConversation.id,
+              folderId: null,
+              name: updatedConversation.name,
+            });
+          }
+        }
+
+        if (!isError) {
+          dispatch({ field: 'isStreamingError', value: false });
+          dispatch({ field: 'isStreamingErrorChatID', value: '' });
+          if (isStopMessageStreaming) {
+            dispatch({ field: 'isStopMessageStreaming', value: false });
+            dispatch({ field: 'isStopChatID', value: '' });
+          }
+        }
+        dispatch({
+          field: 'conversationNameList',
+          value: updatedConversationNameList,
+        });
+        dispatch({ field: 'messageIsStreaming', value: false });
+        dispatch({ field: 'loading', value: false });
+
+        if (!isError) {
+          // update follow up questions
+          if (message.apiType != 'DataProfiling') {
+            try {
+              const qEndpoint = getRecommendationEndpoint();
+              const body = JSON.stringify({
+                user_intent: message.content,
+                chat_id: updatedConversation.id,
+                llm_name: updatedConversation?.agent?.llm?.name,
+                temperature: updatedConversation?.temperature,
+                parent_message_id: parent_message_id,
+                api_key: apiKey,
               });
-            }
-          }
 
-          if (!isError) {
-            dispatch({ field: 'isStreamingError', value: false });
-            dispatch({ field: 'isStreamingErrorChatID', value: '' });
-            if (isStopMessageStreaming) {
-              dispatch({ field: 'isStopMessageStreaming', value: false });
-              dispatch({ field: 'isStopChatID', value: '' });
-            }
-          }
-          dispatch({
-            field: 'conversationNameList',
-            value: updatedConversationNameList,
-          });
-          dispatch({ field: 'messageIsStreaming', value: false });
-          dispatch({ field: 'loading', value: false });
+              dispatch({ field: 'followUpLoading', value: true });
 
-          if (!isError) {
-            // update follow up questions
-            if (message.apiType != 'DataProfiling') {
-              try {
-                const qEndpoint = getRecommendationEndpoint();
-                const body = JSON.stringify({
-                  user_intent: message.content,
-                  chat_id: updatedConversation.id,
-                  llm_name: updatedConversation?.agent?.llm?.name,
-                  temperature: updatedConversation?.temperature,
-                  parent_message_id: parent_message_id,
-                  api_key: apiKey,
-                });
-  
+              const qResponse = await fetch(qEndpoint, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin': '*',
+                },
+                body,
+              });
+
+              if (!qResponse.ok) {
                 dispatch({ field: 'followUpLoading', value: true });
-  
-                const qResponse = await fetch(qEndpoint, {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                  },
-                  body,
-                });
-  
-                if (!qResponse.ok) {
-                  dispatch({ field: 'followUpLoading', value: true });
-                }
-                dispatch({ field: 'followUpLoading', value: false });
-  
-                const data = await qResponse.json();
-  
-                if (!data) {
-                  dispatch({ field: 'followUpQuestions', value: [] });
-                } else {
-                  const updatedQStrings = data.recommend_questions;
-                  dispatch({
-                    field: 'followUpQuestions',
-                    value: updatedQStrings,
-                  });
-                  dispatch({ field: 'recommendChatID', value: data.chat_id });
-                }
-              } catch (error) {
-                toast.error((error as Error).message);
-                dispatch({ field: 'followUpQuestions', value: [] });
-                dispatch({ field: 'loading', value: false });
-                dispatch({ field: 'messageIsStreaming', value: false });
-                dispatch({ field: 'selectedConversation', value: newConversation });
-                return;
               }
+              dispatch({ field: 'followUpLoading', value: false });
+
+              const data = await qResponse.json();
+
+              if (!data) {
+                dispatch({ field: 'followUpQuestions', value: [] });
+              } else {
+                const updatedQStrings = data.recommend_questions;
+                dispatch({
+                  field: 'followUpQuestions',
+                  value: updatedQStrings,
+                });
+                dispatch({ field: 'recommendChatID', value: data.chat_id });
+              }
+            } catch (error) {
+              toast.error((error as Error).message);
+              dispatch({ field: 'followUpQuestions', value: [] });
+              dispatch({ field: 'loading', value: false });
+              dispatch({ field: 'messageIsStreaming', value: false });
+              dispatch({ field: 'selectedConversation', value: newConversation });
+              return;
             }
           }
         }
       }
-    };
+    }
+  };
 
 
 
@@ -799,7 +802,7 @@ const Home = ({
 
     dispatch({ field: 'selectedConversation', value: conversation });
     dispatch({ field: 'selectedPlugins', value: conversation?.selectedPlugins });
-    dispatch({ field: 'selectedCodeInterpreterPlugins', value: conversation?.selectedCodeInterpreterPlugins});
+    dispatch({ field: 'selectedCodeInterpreterPlugins', value: conversation?.selectedCodeInterpreterPlugins });
   };
 
   // FOLDER OPERATIONS  --------------------------------------------
@@ -829,7 +832,7 @@ const Home = ({
       toast.error(response.statusText);
       return;
     }
-    
+
     const data = await response.json()
     if (!data || data["success"] === false) {
       toast.error('Error creating folder!');
@@ -863,7 +866,7 @@ const Home = ({
       toast.error(response.statusText);
       return;
     }
-    
+
     const data = await response.json()
     if (!data || data["success"] === false) {
       toast.error('Error deleting folder!');
@@ -934,7 +937,7 @@ const Home = ({
       toast.error(response.statusText);
       return;
     }
-    
+
     const data = await response.json()
     if (!data || data["success"] === false) {
       toast.error("Error updating folder!");
@@ -979,10 +982,12 @@ const Home = ({
     dispatch({ field: 'selectedPlugins', value: [] });
     dispatch({ field: 'selectedCodeInterpreterPlugins', value: defaultSelectedCodeInterpreterPlugins });
     dispatch({ field: 'pluginsIsSelected', value: {} });
-    dispatch({ field: 'codeInterpreterPluginsIsSelected', value: {
-      "0c135359-af7e-473b-8425-1393d2943b57": true,   // python
-      "8f8e8dbc-ae5b-4950-9f4f-7f5238978806": true,   // data profiling
-    } });
+    dispatch({
+      field: 'codeInterpreterPluginsIsSelected', value: {
+        "0c135359-af7e-473b-8425-1393d2943b57": true,   // python
+        "8f8e8dbc-ae5b-4950-9f4f-7f5238978806": true,   // data profiling
+      }
+    });
 
     const updatedConversationNameList: ConversationNameListItem[] = JSON.parse(
       JSON.stringify(conversationNameList),
@@ -1087,7 +1092,8 @@ const Home = ({
         toast.error(data["message"], {
           style: {
             wordBreak: 'break-all'
-          }})
+          }
+        })
         return;
       }
 
@@ -1128,7 +1134,8 @@ const Home = ({
         toast.error(data["message"], {
           style: {
             wordBreak: 'break-all'
-          }})
+          }
+        })
         return;
       }
       handleFetchDataPath(chat_id, []);
@@ -1174,17 +1181,17 @@ const Home = ({
           }
         });
 
-          // Event listener for response received
-          xhr.addEventListener('load', async () => {
-            if (xhr.status == 401) {
-              dispatch({ field: 'loading', value: false });
-              dispatch({ field: 'messageIsStreaming', value: false });
-              dispatch({ field: 'isFileUpload', value: false });
-              return;
-            }
+        // Event listener for response received
+        xhr.addEventListener('load', async () => {
+          if (xhr.status == 401) {
+            dispatch({ field: 'loading', value: false });
+            dispatch({ field: 'messageIsStreaming', value: false });
+            dispatch({ field: 'isFileUpload', value: false });
+            return;
+          }
 
-            // Process the response just fetch's `res.body`
-            const data = xhr.response;
+          // Process the response just fetch's `res.body`
+          const data = xhr.response;
 
           if (!data) {
             dispatch({ field: 'loading', value: false });
@@ -1193,30 +1200,30 @@ const Home = ({
             return;
           }
 
-            // Since XMLHttpRequest doesn't return a stream, we create one from the response text
-            const responseStream = new ReadableStream({
-              start(controller) {
-                controller.enqueue(new TextEncoder().encode(data));
-                controller.close();
-              },
-            });
+          // Since XMLHttpRequest doesn't return a stream, we create one from the response text
+          const responseStream = new ReadableStream({
+            start(controller) {
+              controller.enqueue(new TextEncoder().encode(data));
+              controller.close();
+            },
+          });
 
-            const reader = responseStream.getReader();
-            const decoder = new TextDecoder();
+          const reader = responseStream.getReader();
+          const decoder = new TextDecoder();
 
-            let updatedConversation: Conversation;
-            dispatch({ field: 'loading', value: false });
-            const { value, done: doneReading } = await reader.read();
-            const chunkValue = decoder.decode(value);
+          let updatedConversation: Conversation;
+          dispatch({ field: 'loading', value: false });
+          const { value, done: doneReading } = await reader.read();
+          const chunkValue = decoder.decode(value);
 
-            // Non-streaming Control
-            let response;
-            try {
-              response = JSON.parse(chunkValue);
-            } catch (e: any) {
-              reject(e);
-              return;
-            }
+          // Non-streaming Control
+          let response;
+          try {
+            response = JSON.parse(chunkValue);
+          } catch (e: any) {
+            reject(e);
+            return;
+          }
 
           handleFetchDataPath(chat_id, []);
 
@@ -1273,7 +1280,7 @@ const Home = ({
         toast.error(response.statusText);
         return;
       }
-      
+
       const blob = await response.blob();
       return blob;
     }
@@ -1294,11 +1301,11 @@ const Home = ({
           data = await registerConversation(selectedConversation);
         } catch (error: unknown) {
           toast.error((error as Error).message);
-        dispatch({ field: 'isSettingGroundingSource', value: false });
+          dispatch({ field: 'isSettingGroundingSource', value: false });
           return false;
         }
         selectedConversation.id = data.id;
-    }
+      }
       if (selectedConversation.messages?.length > 0) {
         parent_message_id =
           selectedConversation.messages[selectedConversation.messages.length - 1].id;
@@ -1346,11 +1353,12 @@ const Home = ({
               border: '1px solid #713200',
               padding: '16px',
               color: '#713200',
-          },
-          iconTheme: {
-            primary: '#713200',
-            secondary: '#FFFAEE',
-          }})
+            },
+            iconTheme: {
+              primary: '#713200',
+              secondary: '#FFFAEE',
+            }
+          })
         dispatch({ field: 'isSettingGroundingSource', value: false });
         return false;
       }
@@ -1383,7 +1391,7 @@ const Home = ({
                   text: string;
                   id: string;
                 },
-                index: number) => {
+                  index: number) => {
                   return {
                     content: step_content.text,
                     type: step_content.type,
@@ -1398,7 +1406,7 @@ const Home = ({
                   text: string;
                   id: string;
                 },
-                index: number) => {
+                  index: number) => {
                   return {
                     content: step_content.text,
                     type: step_content.type,
@@ -1412,7 +1420,7 @@ const Home = ({
           apiType: 'DataProfiling',
         };
       }
-    
+
       const updatedMessages: Message[] = [
         ...selectedConversation.messages,
         fileApplyMessage,
@@ -1439,6 +1447,13 @@ const Home = ({
       dispatch({ field: 'showChatbar', value: false });
     }
   }, [selectedConversation]);
+
+  useEffect(() => {
+    const userId = localStorage.getItem('user_id');
+    if (!userId) {
+      router.push('/login')
+    }
+  }, [])
 
   useEffect(() => {
     if (!selectedConversation?.id) return;
@@ -1470,11 +1485,11 @@ const Home = ({
     // fetch 1st page of conversation name list on load
     (async () => {
       try {
-          const conversationNameList = await getConversationNameList(1);
-          dispatch({
-            field: 'conversationNameList',
-            value: conversationNameList,
-          });
+        const conversationNameList = await getConversationNameList(1);
+        dispatch({
+          field: 'conversationNameList',
+          value: conversationNameList,
+        });
       } catch (error: unknown) {
         toast.error((error as Error).message);
         return;
@@ -1496,10 +1511,12 @@ const Home = ({
     if (anthropicKey) {
       document.cookie = `anthropicKey=${anthropicKey}; expires=${expireDate}; path=/`;
     }
-    dispatch({ field: 'apiKey', value: {
-      openai: openaiKey,
-      anthropic: anthropicKey,
-    } });
+    dispatch({
+      field: 'apiKey', value: {
+        openai: openaiKey,
+        anthropic: anthropicKey,
+      }
+    });
   }, [chat_id]);
 
   useEffect(() => {
@@ -1521,7 +1538,7 @@ const Home = ({
           return;
         }
         if (data["success"])
-          dispatch({field: 'folders', value: data["data"]});
+          dispatch({ field: 'folders', value: data["data"] });
       } catch (error: unknown) {
         toast.error((error as Error).message);
       }
@@ -1614,10 +1631,10 @@ const Home = ({
         });
       } catch (error: unknown) {
         toast.error((error as Error).message);
-      dispatch({ field: 'codeInterpreterPluginListLoading', value: false });
+        dispatch({ field: 'codeInterpreterPluginListLoading', value: false });
         return;
       }
-      
+
       if (!response.ok) {
         toast.error(response.statusText);
         return;
@@ -1661,10 +1678,10 @@ const Home = ({
         });
       } catch (error: unknown) {
         toast.error((error as Error).message);
-      dispatch({ field: 'pluginListLoading', value: false });
+        dispatch({ field: 'pluginListLoading', value: false });
         return;
       }
-      
+
       if (!response.ok) {
         toast.error(response.statusText);
         return;
@@ -1723,7 +1740,7 @@ const Home = ({
         toast.error('Error getting LLM list!');
         return;
       }
-      
+
       if (!response.ok) {
         toast.error(response.statusText);
         return;
@@ -1743,7 +1760,7 @@ const Home = ({
       const defaultLLM = Object.values(llmList).find(llm => llm.id == defaultLLMId);
       dispatch({ field: 'llmList', value: Object.values(llmList) });
       dispatch({ field: 'defaultLLM', value: defaultLLM });
-      
+
       // update agents
       agents.forEach(agent => {
         agent.llm = defaultLLM;
@@ -1811,7 +1828,8 @@ const Home = ({
         toast.error(data["message"], {
           style: {
             wordBreak: 'break-all'
-          }})
+          }
+        })
         return false;
       }
 
@@ -1911,41 +1929,41 @@ const Home = ({
         >
           <Modal
             open={showTerms}
-            onClose={() => {dispatch({ field: 'showTerms', value: false })}}
+            onClose={() => { dispatch({ field: 'showTerms', value: false }) }}
           >
             <div
-              className="bg-white p-4 rounded-lg w-fit h-fit absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-auto"  
+              className="bg-white p-4 rounded-lg w-fit h-fit absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-auto"
             >
-                <div className='w-full p-4'>
-                  <Typography variant="h4" align='center' className='font-[Montserrat]' gutterBottom>
-                    Terms of Use
-                  </Typography>
-                  <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
-                    By using this chat interface, you accept the following terms and conditions:
-                  </Typography>
-                  <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
-                    <span className="font-[700]">Generated Information:&nbsp;</span>Please be aware that the information provided by this chat interface, powered by the Language Learning Models (LLM), is generated based on pre-existing data up to a certain cutoff point. As such, it may contain inaccuracies, outdated information, potential toxicity, bias or inconsistencies.
-                  </Typography>
-                  <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
-                    <span className="font-[700]">Data Collection and Use:&nbsp;</span>Please notice that we collect and store your interactions with this chat interface to help us improve its performance and accuracy. We may use these interactions for evaluation, research, and further training of our models. We always prioritize your privacy and we will make efforts to filter out and remove sensitive and private information from the collected data.
-                  </Typography>
-                  <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
-                    <span className="font-[700]">Privacy:&nbsp;</span>While we aim to safeguard your privacy, we advise against sharing sensitive personal information such as Social Security numbers, credit card details, and health information. Our team does not have the means to ensure complete security of such data.
-                  </Typography>
-                  <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
-                    <span className="font-[700]">Performance Limitations:&nbsp;</span>This chat interface is a prototype of our ongoing research preview and is not produced by a professional development team. Consequently, it may have limitations in its performance. We appreciate your understanding and patience as we continue to improve it.
-                  </Typography>
-                  <Typography variant="body1" className='font-[Montserrat] mt-5' align='right' gutterBottom>
+              <div className='w-full p-4'>
+                <Typography variant="h4" align='center' className='font-[Montserrat]' gutterBottom>
+                  Terms of Use
+                </Typography>
+                <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
+                  By using this chat interface, you accept the following terms and conditions:
+                </Typography>
+                <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
+                  <span className="font-[700]">Generated Information:&nbsp;</span>Please be aware that the information provided by this chat interface, powered by the Language Learning Models (LLM), is generated based on pre-existing data up to a certain cutoff point. As such, it may contain inaccuracies, outdated information, potential toxicity, bias or inconsistencies.
+                </Typography>
+                <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
+                  <span className="font-[700]">Data Collection and Use:&nbsp;</span>Please notice that we collect and store your interactions with this chat interface to help us improve its performance and accuracy. We may use these interactions for evaluation, research, and further training of our models. We always prioritize your privacy and we will make efforts to filter out and remove sensitive and private information from the collected data.
+                </Typography>
+                <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
+                  <span className="font-[700]">Privacy:&nbsp;</span>While we aim to safeguard your privacy, we advise against sharing sensitive personal information such as Social Security numbers, credit card details, and health information. Our team does not have the means to ensure complete security of such data.
+                </Typography>
+                <Typography variant="body1" className='font-[Montserrat] mt-5' gutterBottom>
+                  <span className="font-[700]">Performance Limitations:&nbsp;</span>This chat interface is a prototype of our ongoing research preview and is not produced by a professional development team. Consequently, it may have limitations in its performance. We appreciate your understanding and patience as we continue to improve it.
+                </Typography>
+                <Typography variant="body1" className='font-[Montserrat] mt-5' align='right' gutterBottom>
                   天机 Team
-                  </Typography>
-                </div>
-                <IconButton
-                  aria-label="close"
-                  onClick={() => {dispatch({ field: 'showTerms', value: false })}}
-                  className='absolute top-0 right-0'
-                >
-                  <CloseIcon className='text-3xl' />
-                </IconButton>
+                </Typography>
+              </div>
+              <IconButton
+                aria-label="close"
+                onClick={() => { dispatch({ field: 'showTerms', value: false }) }}
+                className='absolute top-0 right-0'
+              >
+                <CloseIcon className='text-3xl' />
+              </IconButton>
             </div>
           </Modal>
 

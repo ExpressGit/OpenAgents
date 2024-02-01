@@ -35,6 +35,7 @@
     "chonky-icon-fontawesome": "^2.3.2",
     "clipboard-copy": "^4.0.1",
     "codemirror": "^6.0.1",
+    "dayjs": "^1.11.10",
     "echarts": "^5.4.2",
     "eventsource-parser": "^0.1.0",
     "handsontable": "^12.3.3",

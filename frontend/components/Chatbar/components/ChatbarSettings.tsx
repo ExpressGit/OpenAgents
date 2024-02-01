@@ -2,6 +2,8 @@ import { IconFileExport, IconFileText, IconKey } from '@tabler/icons-react';
 import { IconPlus } from '@tabler/icons-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import Avatar from '@mui/material/Avatar';
+import { useRouter } from 'next/router';
 
 import { useTranslation } from 'next-i18next';
 
@@ -10,6 +12,7 @@ import dataURLToBlob, {
   MAX_FILE_UPLOAD_SIZE,
   MAX_FILE_UPLOAD_SIZE_STRING,
 } from '@/utils/app/upload';
+import { getUserInfoApi } from '@/utils/app/user';
 
 import HomeContext from '@/pages/api/home/home.context';
 
@@ -42,8 +45,12 @@ export const ChatbarSettings = <T,>({
 }: Props<T>) => {
   const { t } = useTranslation('sidebar');
 
+  const router = useRouter()
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [fileNames, setFileNames] = useState<string[]>([]);
+
+  const [userName, setUserName] = useState('')
 
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -98,6 +105,23 @@ export const ChatbarSettings = <T,>({
     }
     handleFetchDataPath(chat_id, []);
   };
+
+  const getUserInfo = async () => {
+    const userId = localStorage.getItem('user_id');
+    if (!userId) {
+      return
+    }
+
+    const result = await getUserInfoApi(userId);
+    const { username = '' } = result || {}
+    if (username) {
+      setUserName(username)
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo()
+  }, [])
 
   const handleUpload = () => {
     if (!fileInputRef.current?.files?.length) return;
@@ -213,6 +237,11 @@ export const ChatbarSettings = <T,>({
     };
   }, [isOpen, setIsOpen, menuRef, buttonRef]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('user_id');
+    router.push('/login')
+  }
+
   return (
     <>
       <div className="flex flex-col space-y-1 border-t border-white/50 pt-1 text-sm">
@@ -260,6 +289,13 @@ export const ChatbarSettings = <T,>({
       </div>
       <div className="flex flex-col items-center space-y-1 border-t border-white/20 pt-1 text-sm">
         <div className="w-full relative">
+          <div className='pt-2 flex justify-between cursor-pointer'>
+            <div className='flex'>
+              <Avatar alt="TIAN JI" className="w-6 h-6 ml-2" src="https://v4.mui.com/static/images/avatar/1.jpg" />
+              <div className='ml-2 mr-2'>{userName}</div>
+            </div>
+            <div className='ml-2 mr-2 text-red-500 font-bold' onClick={handleLogout}>Logout</div>
+          </div>
           {isOpen && (
             <div
               className="absolute bottom-full left-0 z-20 mb-2 w-full overflow-hidden rounded-md bg-[#050509] py-1.5 outline-none"
