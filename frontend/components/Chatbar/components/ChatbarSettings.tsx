@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import Avatar from '@mui/material/Avatar';
 import { useRouter } from 'next/router';
 import LiveHelpOutlinedIcon from '@mui/icons-material/LiveHelpOutlined';
-
+import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'next-i18next';
 
 import { API_CREATE_FILE_FOLDER } from '@/utils/app/const';
@@ -293,13 +293,17 @@ export const ChatbarSettings = <T,>({
           <div className='pt-2 flex justify-between cursor-pointer'>
             <div className='flex'>
               <Avatar alt="TIAN JI" className="w-6 h-6 ml-2" src="https://v4.mui.com/static/images/avatar/1.jpg" />
-              <div className='w-20 ml-2 mr-2 overflow-hidden whitespace-nowrap text-ellipsis'>{userName}</div>
+              <div className='w-20 ml-2 mr-2 truncate'>{userName}</div>
             </div>
-            <a className='flex' href='https://w1l3qi32ze.feishu.cn/wiki/KZDOwyrzbi2dxNkR86icCPQonTd?from=from_copylink' target='_blank'>
-              <LiveHelpOutlinedIcon fontSize="small" />
-              <span className='ml-1'>Help</span>
-            </a>
-            <div className='ml-2 mr-2 text-red-500 font-bold' onClick={handleLogout}>Logout</div>
+            <Tooltip title="Click To View Help Document.">
+              <a className='flex' href='https://w1l3qi32ze.feishu.cn/wiki/KZDOwyrzbi2dxNkR86icCPQonTd?from=from_copylink' target='_blank'>
+                <LiveHelpOutlinedIcon fontSize="small" />
+                <span className='ml-1'>Help</span>
+              </a>
+            </Tooltip>
+            <Tooltip title="Click To Logout.">
+              <div className='ml-2 mr-2 text-red-500 font-bold' onClick={handleLogout}>Logout</div>
+            </Tooltip>
           </div>
           {isOpen && (
             <div

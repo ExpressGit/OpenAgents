@@ -39,6 +39,14 @@ export default function Login() {
 
     const router = useRouter();
 
+    React.useEffect(() => {
+        // 如果user_id存在，则直接跳转到首页
+        const userId = localStorage.getItem('user_id')
+        if (userId) {
+            router.push('/');
+        }
+    }, [])
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);

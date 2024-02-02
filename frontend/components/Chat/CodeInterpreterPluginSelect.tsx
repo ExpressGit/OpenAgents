@@ -1,6 +1,7 @@
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { useTranslation } from 'next-i18next';
 
 import { API_POST_API_KEY } from '@/utils/app/const';
@@ -62,7 +63,7 @@ export const CodeInterpreterPluginSelect = () => {
 
   return (
     <div className="flex flex-col">
-      <SelectedCodeInterpreterPlugin />
+      {/* <SelectedCodeInterpreterPlugin /> */}
       <PluginList
         plugins={codeInterpreterPluginList}
         pluginsIsSelected={codeInterpreterPluginsIsSelected}
@@ -86,7 +87,7 @@ export const SelectedCodeInterpreterPlugin = ({
   const { t } = useTranslation('chat');
 
   return (
-    <div className="relative flex rounded-xl w-[16rem] h-8 bg-transparent border border-[#c4c4c4] overflow-hidden">
+    <div className="relative flex rounded-xl w-[16rem] h-8 bg-transparent overflow-hidden">
       <button onClick={onClick}>
         <span className="flex w-[12.5rem] leading-8 h-8 pr-6 overflow-hidden">
           {selectedConversation &&
@@ -127,7 +128,7 @@ export const SelectedCodeInterpreterPlugin = ({
               </span>
             )}
         </span>
-        <ArrowDropUpIcon className="w-[2rem] text-[#757575] absolute top-1 right-[2px] cursor-default" />
+        {/* <ArrowDropUpIcon className="w-[2rem] text-[#757575] absolute top-1 right-[2px] cursor-default" /> */}
       </button>
     </div>
   );
@@ -192,6 +193,7 @@ const PluginList = ({
       if (element) element.scrollTop = element.scrollHeight;
     }
   }, [hoveredPlugin]);
+
   useEffect(() => { }, [handleConfirm]);
 
   const languagePlugins = plugins.filter(
@@ -201,85 +203,129 @@ const PluginList = ({
 
   console.log({ languagePlugins });
 
+  const DetailTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#fff',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 260,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
+
   return (
-    <div className="relative mt-3 w-[16rem]">
-      <div className="rounded-xl bg-white border border-[#c4c4c4] flex max-h-[11rem] w-full max-w-xs flex-col overflow-hidden text-base focus:outline-none sm:text-sm md:w-[100%]">
+    <div className="relative mt-3">
+      {/* <div className="rounded-xl bg-white border border-[#c4c4c4] flex max-h-[11rem] w-full max-w-xs flex-col overflow-hidden text-base focus:outline-none sm:text-sm md:w-[100%]"> */}
+      <div>
         {codeInterpreterPluginListLoading ? (
           <div className="flex justify-center items-center h-32">
             <div className="h-4 w-4 animate-spin rounded-full border-t-2 border-neutral-800 opacity-60"></div>
           </div>
         ) : (
-          <ul className="overflow-auto">
-            <li
-              className="group relative flex h-[50px] cursor-pointer select-none items-center overflow-hidden border-b border-black/10 pl-5 last:border-0 hover:bg-[#ececf1]/70 transition-colors"
+          <>
+            <div
+              className="group pl-5 font-bold transition-colors"
               key="language-plugins"
             >
               Programming Languages
-            </li>
-            {languagePlugins.map((plugin) => (
-              <li
-                className="group relative flex h-[50px] cursor-pointer select-none items-center overflow-hidden border-b border-black/10 pl-5 last:border-0 text-[#202123] hover:bg-[#ececf1]/70 transition-colors"
-                key={plugin.id}
-                onClick={() => {
-                  togglePluginSelection(plugin);
-                }}
-                onMouseEnter={() => handleMouseEnter(plugin)}
-              >
-                <span className="flex items-center gap-2 truncate ml-1">
-                  <span className="h-6 w-6 shrink-0">
-                    <img src={plugin.icon} alt={plugin.nameForHuman} />
-                  </span>
-                  <span className="flex items-center gap-1 text-[#343541]">
-                    {plugin.nameForHuman}
-                  </span>
-                </span>
-                <span className="absolute inset-y-0 right-0 flex items-center pr-5 text-[#343541]">
-                  {pluginsIsSelected[plugin.id] ? (
-                    <CheckBoxIcon />
-                  ) : (
-                    <CheckBoxOutlineBlankIcon />
-                  )}
-                </span>
-              </li>
-            ))}
-            <li
-              className="group relative flex h-[50px] cursor-pointer select-none items-center overflow-hidden border-b border-black/10 pl-5 pr-12 last:border-0 text-[#202123] hover:bg-[#ececf1]/70 transition-colors"
-              key="language-plugins"
+            </div>
+            <ul className="flex w-full flex-wrap">
+              {languagePlugins.map((plugin) => (
+                <DetailTooltip placement='top-start' key={plugin.id} title={
+                  <Fragment>
+                    <div className='flex items-center'>
+                      <div className='border border-black/10 w-fit h-fit p-1 rounded-lg'>
+                        <img className='h-6 w-6 shrink-0' src={plugin.icon} alt={plugin.nameForHuman} />
+                      </div>
+                      <p className='font-bold text-lg text-[#343541] ml-2'>{plugin.nameForHuman}</p>
+                    </div>
+
+                    <p className='text-base'>{plugin.description ?? 'No description'}</p>
+                  </Fragment>
+                }>
+                  <li
+                    className="group relative flex flex-col justify-center items-center h-[100px] w-[115px] m-4 cursor-pointer select-none text-[#202123] hover:bg-[#ececf1]/70 transition-colors"
+                    key={plugin.id}
+                    onClick={() => {
+                      togglePluginSelection(plugin);
+                    }}
+                    onMouseEnter={() => handleMouseEnter(plugin)}
+                  >
+
+                    <span className="h-15 w-15 shrink-0">
+                      <img src={plugin.icon} className='h-[64px] w-[64px]' alt={plugin.nameForHuman} />
+                    </span>
+
+                    <span className="truncate w-[110px] text-base text-center gap-1 text-[#343541]">
+                      {plugin.nameForHuman}
+                    </span>
+
+                    <span className="absolute left-0 top-0 text-[#343541]">
+                      {pluginsIsSelected[plugin.id] ? (
+                        <CheckBoxIcon />
+                      ) : (
+                        <CheckBoxOutlineBlankIcon />
+                      )}
+                    </span>
+                  </li>
+                </DetailTooltip>
+              ))}
+            </ul>
+            <div
+              className="group font-bold pl-5"
+              key="data-tools"
             >
               Data Tools
-            </li>
-            {toolPlugins.map((plugin) => (
-              <li
-                className="group relative flex h-[50px] cursor-pointer select-none items-center overflow-hidden border-b border-black/10 pl-5 pr-12 last:border-0 text-[#202123] hover:bg-[#ececf1]/70 transition-colors"
-                key={plugin.id}
-                onClick={() => {
-                  togglePluginSelection(plugin);
-                }}
-                onMouseEnter={() => handleMouseEnter(plugin)}
-              >
-                <span className="flex items-center gap-2 truncate ml-1">
-                  <span className="h-6 w-6 shrink-0">
-                    <img src={plugin.icon} alt={plugin.nameForHuman} />
-                  </span>
-                  <span className="flex h-6 items-center gap-1 text-[#343541]">
-                    {plugin.nameForHuman}
-                  </span>
-                </span>
-                <span className="absolute inset-y-0 right-0 flex items-center pr-5 text-[#343541]">
-                  {pluginsIsSelected[plugin.id] ? (
-                    <CheckBoxIcon />
-                  ) : (
-                    <CheckBoxOutlineBlankIcon />
-                  )}
-                </span>
-              </li>
-            ))}
-            <PluginStore />
-          </ul>
+            </div>
+            <ul className="flex w-full flex-wrap">
+              {toolPlugins.map((plugin) => (
+                <DetailTooltip placement='top-start' key={plugin.id} title={
+                  <Fragment>
+                    <div className='flex items-center'>
+                      <div className='border border-black/10 w-fit h-fit p-1 rounded-lg'>
+                        <img className='h-6 w-6 shrink-0' src={plugin.icon} alt={plugin.nameForHuman} />
+                      </div>
+                      <p className='font-bold text-lg text-[#343541] ml-2'>{plugin.nameForHuman}</p>
+                    </div>
+
+                    <p className='text-base'>{plugin.description ?? 'No description'}</p>
+                  </Fragment>
+                }>
+                  <li
+                    className="group relative flex flex-col justify-center items-center h-[100px] w-[115px] m-4 cursor-pointer select-none text-[#202123] hover:bg-[#ececf1]/70 transition-colors"
+                    key={plugin.id}
+                    onClick={() => {
+                      togglePluginSelection(plugin);
+                    }}
+                    onMouseEnter={() => handleMouseEnter(plugin)}
+                  >
+                    <span className="h-15 w-15 shrink-0">
+                      <img src={plugin.icon} alt={plugin.nameForHuman} />
+                    </span>
+
+                    <span className="truncate w-[110px] text-base text-center gap-1 text-[#343541]">
+                      {plugin.nameForHuman}
+                    </span>
+
+                    <span className="absolute left-0 top-0 text-[#343541]">
+                      {pluginsIsSelected[plugin.id] ? (
+                        <CheckBoxIcon />
+                      ) : (
+                        <CheckBoxOutlineBlankIcon />
+                      )}
+                    </span>
+                  </li>
+                </DetailTooltip>
+              ))}
+              {/* <PluginStore /> */}
+            </ul>
+          </>
         )}
       </div>
 
-      <div className="absolute top-[-2.8rem] w-[16rem] left-[19rem] z-[999] rounded-xl bg-white border border-[#c4c4c4] w-60 bg-white rounded-lg p-2 flex flex-col gap-2 h-[13.75rem]">
+      {/* <div className="absolute top-[-2.8rem] w-[16rem] left-[19rem] z-[999] rounded-xl bg-white border border-[#c4c4c4] w-60 bg-white rounded-lg p-2 flex flex-col gap-2 h-[13.75rem]">
         {hoveredPlugin ? (
           <>
             <div className="flex space-x-2 items-center">
@@ -348,7 +394,7 @@ const PluginList = ({
             </div>
           </>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

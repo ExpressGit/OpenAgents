@@ -1,8 +1,8 @@
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-
 import { useTranslation } from 'next-i18next';
-
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { API_POST_API_KEY } from '@/utils/app/const';
 
 import { Plugin } from '@/types/plugin';
@@ -29,25 +29,27 @@ export const PluginSelect = () => {
 
   const togglePluginSelection = (plugin: Plugin) => {
     const pluginID = plugin.id;
-    if (plugin.require_api_key && plugin.api_key == null) {
+    // 如果需要输入api-key，不输入不允许勾选，目前先注释
+    // if (plugin.require_api_key && plugin.api_key == null) {
+    //   return
+    // } else {
+    let updatedPluginsIsSelected: Record<string, boolean | undefined> = {};
+    if (pluginID == 'AUTO' && !pluginsIsSelected[pluginID]) {
+      updatedPluginsIsSelected = { AUTO: true };
     } else {
-      let updatedPluginsIsSelected: Record<string, boolean | undefined> = {};
-      if (pluginID == 'AUTO' && !pluginsIsSelected[pluginID]) {
-        updatedPluginsIsSelected = { AUTO: true };
-      } else {
-        updatedPluginsIsSelected = {
-          ...pluginsIsSelected,
-          [pluginID]: !pluginsIsSelected[pluginID],
-        };
-      }
-      homeDispatch({
-        field: 'pluginsIsSelected',
-        value: updatedPluginsIsSelected,
-      });
-      console.log(pluginsIsSelected);
-      console.log(pluginID);
-      return;
+      updatedPluginsIsSelected = {
+        ...pluginsIsSelected,
+        [pluginID]: !pluginsIsSelected[pluginID],
+      };
     }
+    homeDispatch({
+      field: 'pluginsIsSelected',
+      value: updatedPluginsIsSelected,
+    });
+    console.log(pluginsIsSelected);
+    console.log(pluginID);
+    return;
+    // }
   };
 
   useEffect(() => {
@@ -69,7 +71,7 @@ export const PluginSelect = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <SelectedPlugin />
+      {/* <SelectedPlugin /> */}
       <PluginList
         plugins={pluginList}
         pluginsIsSelected={pluginsIsSelected}
@@ -92,7 +94,7 @@ export const SelectedPlugin = ({
   const { t } = useTranslation('chat');
 
   return (
-    <div className="relative flex rounded-xl w-[16rem] h-8 bg-transparent border border-[#c4c4c4] overflow-hidden">
+    <div className="relative flex rounded-xl w-[16rem] h-8 bg-transparent overflow-hidden">
       <button onClick={onClick}>
         <span className="flex w-[12.5rem] leading-8 h-8 pr-6 overflow-hidden">
           {selectedConversation &&
@@ -100,24 +102,21 @@ export const SelectedPlugin = ({
               <div className="flex gap-1 w-full h-full items-center pl-3">
                 {selectedConversation.selectedPlugins.map((plugin) => (
                   <div
-                    className={`overflow-hidden relative ${
-                      compact ? 'w-full h-full' : 'w-6 h-6'
-                    } flex items-center justify-center`}
+                    className={`overflow-hidden relative ${compact ? 'w-full h-full' : 'w-6 h-6'
+                      } flex items-center justify-center`}
                     key={plugin.id}
                   >
                     {plugin.icon ? (
                       <img
-                        className={`text-[#343541] ${
-                          compact ? '!h-4 !w-4' : 'w-full h-full'
-                        }`}
+                        className={`text-[#343541] ${compact ? '!h-4 !w-4' : 'w-full h-full'
+                          }`}
                         src={plugin.icon}
                         alt={plugin.nameForHuman}
                       />
                     ) : (
                       <ExtensionOutlinedIcon
-                        className={`text-[#343541] ${
-                          compact ? '!h-4 !w-4' : 'w-full h-full'
-                        }`}
+                        className={`text-[#343541] ${compact ? '!h-4 !w-4' : 'w-full h-full'
+                          }`}
                       />
                     )}
                   </div>
@@ -132,7 +131,7 @@ export const SelectedPlugin = ({
             </span>
           )}
         </span>
-        <ArrowDropUpIcon className="w-[2rem] text-[#757575] absolute top-1 right-[2px] cursor-default" />
+        {/* <ArrowDropUpIcon className="w-[2rem] text-[#757575] absolute top-1 right-[2px] cursor-default" /> */}
       </button>
     </div>
   );
@@ -202,75 +201,100 @@ const PluginList = ({
       if (element) element.scrollTop = element.scrollHeight;
     }
   }, [hoveredPlugin]);
-  useEffect(() => {}, [handleConfirm]);
+
+  useEffect(() => { }, [handleConfirm]);
+
+  const DetailTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#fff',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 260,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
 
   return (
-    <div className="relative mt-3 w-[16rem]">
-      <div className="rounded-xl bg-white border border-[#c4c4c4] flex max-h-[11rem] w-full max-w-xs flex-col overflow-hidden text-base focus:outline-none sm:text-sm md:w-[100%]">
+    <div className="relative mt-3">
+      <div className="">
         {pluginListLoading ? (
           <div className="flex justify-center items-center h-32">
             <div className="h-4 w-4 animate-spin rounded-full border-t-2 border-neutral-800 opacity-60"></div>
           </div>
         ) : (
-          <ul className="overflow-auto">
+          <ul className="flex w-full flex-wrap">
             {plugins.map((plugin) => {
               let disable: boolean;
               disable =
-                ((plugin.name != 'auto' && pluginsIsSelected['AUTO']) ||
+                ((plugin.name !== 'auto' && pluginsIsSelected['AUTO']) ||
                   (selectedConversation?.selectedPlugins.length == 5 &&
                     !selectedConversation?.selectedPlugins.includes(plugin))) ??
                 false;
               return (
-                <li
-                  key={plugin.id}
-                  className={`group relative flex h-[50px] select-none items-center overflow-hidden border-b border-black/10 pl-5 pr-12 last:border-0 text-[#202123] hover:bg-[#ececf1]/70 transition-colors ${
-                    disable ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-                  } `}
-                  onClick={() => {
-                    if (disable) {
-                      if (pluginsIsSelected['AUTO']) {
-                        toast.error(
-                          "You can't select auto and other plugins at the same time.",
-                        );
+                <DetailTooltip placement='top-start' key={plugin.id} title={
+                  <Fragment>
+                    <div className='flex items-center'>
+                      <div className='border border-black/10 w-fit h-fit p-1 rounded-lg'>
+                        <img className='h-6 w-6 shrink-0' src={plugin.icon} alt={plugin.nameForHuman} />
+                      </div>
+                      <p className='font-bold text-lg text-[#343541] ml-2'>{plugin.nameForHuman}</p>
+                    </div>
+
+                    <p className='text-base'>{plugin.description ?? 'No description'}</p>
+                  </Fragment>
+                }>
+                  <li
+                    key={plugin.id}
+                    className={`group relative flex flex-col justify-center items-center h-[100px] w-[115px] m-4 cursor-pointer select-none text-[#202123] hover:bg-[#ececf1]/70 transition-colors ${disable ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                      } `}
+                    onClick={() => {
+                      if (disable) {
+                        if (pluginsIsSelected['AUTO']) {
+                          toast.error(
+                            "You can't select auto and other plugins at the same time.",
+                          );
+                        } else {
+                          toast.error("You can't select more than 5 plugins.");
+                        }
                       } else {
-                        toast.error("You can't select more than 5 plugins.");
+                        togglePluginSelection(plugin);
                       }
-                    } else {
-                      togglePluginSelection(plugin);
-                    }
-                  }}
-                  onMouseEnter={(e) => handleMouseEnter(plugin)}
-                >
-                  <span className="flex items-center gap-2 truncate">
-                    <span className="h-6 w-6 shrink-0">
+                    }}
+                    onMouseEnter={(e) => handleMouseEnter(plugin)}
+                  >
+                    <span className="h-15 w-15 shrink-0">
                       {plugin.icon.startsWith('data:image') ? (
-                        <img src={plugin.icon} alt={plugin.nameForHuman} />
+                        <img src={plugin.icon} className='h-[64px] w-[64px]' alt={plugin.nameForHuman} />
                       ) : (
                         <ExtensionOutlinedIcon className="text-[#343541]" />
                       )}
                     </span>
-                    <span className="flex items-center gap-1 text-[#343541]">
+
+                    <span className="truncate w-[110px] text-base text-center gap-1 text-[#343541]">
                       {plugin.nameForHuman}
                     </span>
-                  </span>
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-5 text-[#343541]">
-                    {pluginsIsSelected[plugin.id] ? (
-                      <CheckBoxIcon />
-                    ) : (
-                      <CheckBoxOutlineBlankIcon
-                        className={disable ? `text-gray-400` : ''}
-                      />
-                    )}
-                  </span>
-                </li>
+
+                    <span className="absolute left-0 top-0 text-[#343541]">
+                      {pluginsIsSelected[plugin.id] ? (
+                        <CheckBoxIcon />
+                      ) : (
+                        <CheckBoxOutlineBlankIcon
+                          className={disable ? `text-gray-400` : ''}
+                        />
+                      )}
+                    </span>
+                  </li>
+                </DetailTooltip>
               );
             })}
-            <PluginStore />
+            {/* <PluginStore /> */}
           </ul>
         )}
       </div>
 
-      <div className="absolute top-[-2.8rem] w-[16rem] left-[19rem] z-[999] rounded-xl bg-white border border-[#c4c4c4] w-60 bg-white rounded-lg p-2 flex flex-col gap-2 h-[13.75rem]">
+      {/* <div className="absolute top-[-2.8rem] w-[16rem] left-[19rem] z-[999] rounded-xl bg-white border border-[#c4c4c4] w-60 bg-white rounded-lg p-2 flex flex-col gap-2 h-[13.75rem]">
         {hoveredPlugin ? (
           <>
             <div className="flex space-x-2 items-center">
@@ -295,7 +319,7 @@ const PluginList = ({
             >
               {hoveredPlugin.description ?? 'No description'}
               {hoveredPlugin.require_api_key &&
-              hoveredPlugin.api_key == null ? (
+                hoveredPlugin.api_key == null ? (
                 <div>
                   <div
                     className="font-bold text-[#ff0000] text-sm"
@@ -327,7 +351,7 @@ const PluginList = ({
                 <></>
               )}
               {hoveredPlugin.require_api_key &&
-              hoveredPlugin.api_key != null ? (
+                hoveredPlugin.api_key != null ? (
                 <div
                   className="font-bold text-[#343541]"
                   style={{ marginTop: 10, marginBottom: 10 }}
@@ -360,7 +384,7 @@ const PluginList = ({
             </div>
           </>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
