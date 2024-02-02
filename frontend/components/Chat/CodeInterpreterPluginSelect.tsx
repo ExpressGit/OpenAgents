@@ -201,8 +201,6 @@ const PluginList = ({
   );
   const toolPlugins = plugins.filter((plugin) => plugin.type === 'tool');
 
-  console.log({ languagePlugins });
-
   const DetailTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({

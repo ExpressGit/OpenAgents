@@ -6,11 +6,12 @@ import {
   useEffect,
   useRef,
   useState,
-  MouseEvent
 } from 'react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'next-i18next';
-import Popover from '@mui/material/Popover';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 
 import {
   API_CHAT_XLANG_WEBOT_RESET_STATUS,
@@ -35,7 +36,7 @@ import { TemperatureSlider } from './Temperature';
 import { HelpOutlineOutlined } from '@mui/icons-material';
 import ExtensionOutlinedIcon from '@mui/icons-material/ExtensionOutlined';
 import Paper from '@mui/material/Paper';
-import Tooltip from '@mui/material/Tooltip';
+
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -70,7 +71,6 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   } = useContext(HomeContext);
 
   console.log({ selectedConversation });
-
 
   const [currentMessage, setCurrentMessage] = useState<Message>();
   const [autoScrollEnabled, setAutoScrollEnabled] = useState<boolean>(true);
@@ -321,66 +321,79 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     isStopChatID,
   ]);
 
+  const ConfigTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#fff',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 700,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
+
+  const [open, setOpen] = useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
   const TemperatureRender = () => {
-    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
 
     console.log({ open });
 
-
     return (
-      <div>
-        {/* <Tooltip placement='top'  title="Click To Set The Temperature"> */}
-        <SettingsIcon aria-describedby={id} onClick={handleClick} className='absolute right-[0] top-[0] cursor-pointer' />
-        {/* </Tooltip > */}
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-        >
-          <div className="flex items-center p-[20px] w-[45rem]">
-            <span className="font-[500]">Temperature</span>
-            <Tooltip
-              title={
-                <span className="font-[Montserrat]">
-                  {tooltips['Temperature']}
-                </span>
-              }
-              className="font-[Montserrat] w-5 z-[9999999]"
-              placement="bottom"
-            >
-              <HelpOutlineOutlined className='ml-[5px]' />
-            </Tooltip>
-            <TemperatureSlider
-              onChangeTemperature={(temperature) =>
-                handleUpdateConversation(
-                  selectedConversation,
-                  {
-                    key: 'temperature',
-                    value: temperature,
-                  },
-                  false,
-                )
-              }
-            />
-          </div>
-        </Popover>
-      </div >
+      <ClickAwayListener onClickAway={handleTooltipClose}>
+        <div>
+          <ConfigTooltip
+            PopperProps={{
+              disablePortal: true,
+            }}
+            onClose={handleTooltipClose}
+            open={open}
+            disableFocusListener
+            disableHoverListener
+            disableTouchListener
+            placement='top-end'
+            title={
+              <div className="flex items-center p-[30px] w-[45rem]">
+                <span className="font-[500] text-base">Temperature</span>
+                <Tooltip
+                  title={
+                    <span className="font-[Montserrat]">
+                      {tooltips['Temperature']}
+                    </span>
+                  }
+                  className="font-[Montserrat] w-5 z-[9999999]"
+                  placement="bottom"
+                >
+                  <HelpOutlineOutlined className='ml-[5px]' />
+                </Tooltip>
+                <TemperatureSlider
+                  value={selectedConversation?.temperature}
+                  onChangeTemperature={(temperature) =>
+                    handleUpdateConversation(
+                      selectedConversation,
+                      {
+                        key: 'temperature',
+                        value: temperature,
+                      },
+                      false,
+                    )
+                  }
+                />
+              </div>
+            }>
+            <SettingsIcon onClick={handleTooltipOpen} className='absolute right-[0] top-[0] cursor-pointer' />
+          </ConfigTooltip>
+        </div>
+      </ClickAwayListener>
     )
   }
 
@@ -490,7 +503,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             ) : (
               <>
                 <div className="fixed top-0 h-[3.6rem] leading-[3.6rem] z-10 flex items-center justify-center space-x-20 bg-[#F3F3F3] text-base text-[#666666]">
-                  <div>
+                  {/* <div>
                     <span className="font-[600]">{t('Agent')}:</span>
                     <span className="ml-2">
                       {selectedConversation?.agent.name}
@@ -501,8 +514,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     <span className="ml-2">
                       {selectedConversation?.agent?.llm?.name}
                     </span>
-                  </div>
-                  <div className="flex items-center justify-center">
+                  </div> */}
+                  <div className="flex items-center justify-center ml-3 pr-4">
                     <span className="font-[600]">{t('Enabled Plugins')}:</span>
                     <div className="ml-2 flex space-x-1">
                       {selectedConversation?.agent.id == 'data-agent' &&

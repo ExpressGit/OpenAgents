@@ -8,6 +8,7 @@ export const OPENAI_API_HOST =
 export const BACKEND_ENDPOINT =
   process.env.NEXT_PUBLIC_BACKEND_ENDPOINT ||
   ('http://localhost:8000' as const);
+
 export const API_ENDPOINT = `${BACKEND_ENDPOINT}/api` as const;
 
 export const API_UPLOAD = `${API_ENDPOINT}/upload` as const;
