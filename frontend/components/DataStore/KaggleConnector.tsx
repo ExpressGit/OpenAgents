@@ -22,7 +22,10 @@ const KaggleConnector: FC<Props> = memo(({ content }) => {
   const [downloading, setDownloading] = useState(false);
 
   const onFinish = (values: any) => {
+    const user_id = localStorage.getItem('user_id')
+
     values.chat_id = chat_id;
+    values.user_id = user_id;
     homeDispatch({
       field: 'messageIsStreaming',
       value: true,

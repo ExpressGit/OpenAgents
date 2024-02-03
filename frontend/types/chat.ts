@@ -52,6 +52,7 @@ export interface ChatBody {
 }
 
 export interface Conversation {
+  user_id?: string | null;
   id: string | null;
   name: string;
   messages: Message[];

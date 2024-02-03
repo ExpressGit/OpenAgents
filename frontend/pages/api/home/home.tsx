@@ -78,6 +78,12 @@ const Home = ({
   serverSidePluginKeysSet,
   defaultAgentId,
 }: Props) => {
+  // next.js中 localStorage 不存在，需要判断下，防止报错：ReferenceError: localStorage is not defined
+  const isBrowser = typeof window !== 'undefined';
+
+  const user_id = isBrowser ? localStorage.getItem('user_id') || '' : ''
+  console.log({ user_id });
+
   const { t } = useTranslation('chat');
   const [selectedNode, setSelectedNode] = useState<FileItem | undefined>(undefined);
 
@@ -223,6 +229,7 @@ const Home = ({
           user_intent = chatBody.messages[chatBody.messages.length - 1].content
         }
         body = JSON.stringify({
+          user_id,
           user_intent: message.apiType == 'DataProfiling' ? '' : user_intent,
           chat_id: updatedConversation.id,
           parent_message_id: parent_message_id,
@@ -246,6 +253,7 @@ const Home = ({
       } else {
         body = JSON.stringify({
           ...chatBody,
+          user_id,
           googleAPIKey: pluginKeys
             .find((key) => key.pluginId === 'google-search')
             ?.requiredKeys.find((key) => key.key === 'GOOGLE_API_KEY')?.value,
@@ -729,6 +737,7 @@ const Home = ({
             try {
               const qEndpoint = getRecommendationEndpoint();
               const body = JSON.stringify({
+                user_id,
                 user_intent: message.content,
                 chat_id: updatedConversation.id,
                 llm_name: updatedConversation?.agent?.llm?.name,
@@ -821,6 +830,7 @@ const Home = ({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          user_id,
           folder: newFolder,
         })
       });
@@ -954,6 +964,7 @@ const Home = ({
   const handleNewConversation = async () => {
     const newConversation: Conversation = {
       id: null,
+      user_id,
       name: t('New Conversation'),
       messages: [],
       agent: {
@@ -1074,7 +1085,8 @@ const Home = ({
         body: JSON.stringify({
           chat_id: chat_id,
           node: node,
-          rename_value: renameValue
+          rename_value: renameValue,
+          user_id,
         }),
       });
 
@@ -1118,6 +1130,7 @@ const Home = ({
         body: JSON.stringify({
           chat_id: chat_id,
           node: node,
+          user_id,
         }),
       });
       if (!response.ok) {
@@ -1162,6 +1175,7 @@ const Home = ({
         const formData = new FormData();
         formData.append('file', file);
         formData.append('chat_id', chat_id);
+        formData.append('user_id', user_id);
         formData.append('parent_id', String(parent_id))
         formData.append('accessToken', localStorage.getItem('accessToken') || '')
 
@@ -1261,6 +1275,7 @@ const Home = ({
       let body = JSON.stringify({
         chat_id: selectedConversation.id,
         node: selectedNode,
+        user_id,
       });
       let response;
       try {
@@ -1315,6 +1330,7 @@ const Home = ({
         activated_file: selectedNode,
         chat_id: selectedConversation.id,
         parent_message_id: parent_message_id,
+        user_id,
       });
       let response;
       try {
@@ -1527,6 +1543,7 @@ const Home = ({
           headers: {
             'Content-Type': 'application/json',
           },
+          body: JSON.stringify({ user_id })
         });
         if (!response.ok) {
           toast.error("Error getting folder list!");
@@ -1812,6 +1829,7 @@ const Home = ({
         body: JSON.stringify({
           chat_id: chat_id,
           nodes: nodes,
+          user_id,
         }),
       });
       if (!response.ok) {
@@ -1854,6 +1872,7 @@ const Home = ({
         body: JSON.stringify({
           chat_id: chat_id,
           highlighted_files: highlighted_files,
+          user_id,
         }),
       });
       if (!response.ok) {

@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import {
   Conversation,
   ConversationNameListItem,
@@ -11,11 +13,9 @@ import {
   API_GET_CONVERSATION,
   API_IMPORT_CONVERSATIONS,
   API_REGISTER_CONVERSATION,
-  API_UPDATE_CONVERSATION,
   API_STOP_CONVERSATION,
+  API_UPDATE_CONVERSATION,
 } from './const';
-import toast from 'react-hot-toast';
-
 
 export const updateConversation = (
   updatedConversation: Conversation,
@@ -77,20 +77,20 @@ export const registerConversation = async (conversation: Conversation) => {
   let response;
   try {
     response = await fetch(API_REGISTER_CONVERSATION, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({
-          conversation: conversation,
-        }),
-      });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        conversation: conversation,
+      }),
+    });
   } catch (error: unknown) {
     toast.error('Error registering conversation!');
     throw error;
   }
-  
+
   if (!response.ok) {
     toast.error(response.statusText);
     return {
@@ -124,19 +124,21 @@ export const stopConversation = async (chat_id: string) => {
     toast.error('Error stopping conversation!');
     throw error;
   }
-  
+
   if (!response.ok) {
     toast.error(response.statusText);
     return;
   }
   const data = await response.json();
-  if (!data || !data["success"]) {
-    toast.error("Error stopping conversation!");
+  if (!data || !data['success']) {
+    toast.error('Error stopping conversation!');
   }
   return;
 };
 
-export const updateConversationNameList = async (conversationsToUpdate: Conversation[] | ConversationNameListItem[]) => {
+export const updateConversationNameList = async (
+  conversationsToUpdate: Conversation[] | ConversationNameListItem[],
+) => {
   let response;
   try {
     response = await fetch(API_UPDATE_CONVERSATION, {
@@ -153,36 +155,37 @@ export const updateConversationNameList = async (conversationsToUpdate: Conversa
     toast.error('Error updating conversations!');
     throw error;
   }
-    
+
   if (!response.ok) {
     toast.error(response.statusText);
     return;
   }
   const data = await response.json();
-  if (!data || !data["success"]) {
-    toast.error(data["message"]);
+  if (!data || !data['success']) {
+    toast.error(data['message']);
   }
-}
-
+};
 
 export const getConversationNameList = async (page: number = 1) => {
   let response;
+  const user_id = localStorage.getItem('user_id');
   try {
     response = await fetch(API_CONVERSATION_LIST, {
       method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({
-          page: page
-        }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        page: page,
+        user_id,
+      }),
     });
   } catch (error: unknown) {
     toast.error('Error getting conversation list!');
     throw error;
   }
-  
+
   if (!response.ok) {
     toast.error(response.statusText);
     return [];
@@ -193,26 +196,30 @@ export const getConversationNameList = async (page: number = 1) => {
 
 export const clearAllConversations = async () => {
   let response;
+  const user_id = localStorage.getItem('user_id');
   try {
     response = await fetch(API_CLEAR_CONVERSATIONS, {
       method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        user_id,
+      }),
     });
   } catch (error: unknown) {
     toast.error('Error clearing all conversations!');
     throw error;
   }
-  
+
   if (!response.ok) {
     toast.error(response.statusText);
     return;
   }
   const data = await response.json();
-  if (!data || !data["success"]) {
-    toast.error("Error clearing all conversations!");
+  if (!data || !data['success']) {
+    toast.error('Error clearing all conversations!');
     return;
   }
 };
@@ -233,59 +240,55 @@ export const deleteConversation = async (
   try {
     response = await fetch(API_DELETE_CONVERSATION, {
       method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({
-          chat_id: conversation.id
-        }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        chat_id: conversation.id,
+      }),
     });
   } catch (error: unknown) {
     toast.error('Error deleting conversation!');
     throw error;
   }
-  
+
   if (!response.ok) {
     toast.error(response.statusText);
     return;
   }
   const data = await response.json();
-  if (!data || !data["success"]) {
-    toast.error("Error deleting conversation!");
+  if (!data || !data['success']) {
+    toast.error('Error deleting conversation!');
     return;
   }
-}
+};
 
-
-export const getConversation = async (
-  conversation_id: string | null,
-) => {
+export const getConversation = async (conversation_id: string | null) => {
   let response;
   try {
     response = await fetch(API_GET_CONVERSATION, {
       method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({
-          chat_id: conversation_id
-        }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        chat_id: conversation_id,
+      }),
     });
   } catch (error: unknown) {
     toast.error('Error getting conversation!');
     throw error;
   }
-  
+
   if (!response.ok) {
     toast.error(response.statusText);
-    return undefined
+    return undefined;
   }
   const conversation: Conversation = await response.json();
   if (!conversation.selectedCodeInterpreterPlugins)
-    conversation.selectedCodeInterpreterPlugins= []
-  if (!conversation.selectedPlugins)
-    conversation.selectedPlugins = []
+    conversation.selectedCodeInterpreterPlugins = [];
+  if (!conversation.selectedPlugins) conversation.selectedPlugins = [];
   return conversation;
 };

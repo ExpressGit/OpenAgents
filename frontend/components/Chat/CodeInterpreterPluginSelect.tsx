@@ -159,12 +159,15 @@ const PluginList = ({
 
   const handleConfirm = useCallback(
     async (apiKey: string) => {
+      const user_id = localStorage.getItem('user_id');
+
       homeDispatch({ field: 'apiKeyUploading', value: true });
       const endpoint = API_POST_API_KEY;
       const body = JSON.stringify({
         tool_id: hoveredPlugin?.id,
         tool_name: hoveredPlugin?.name,
         api_key: apiKey,
+        user_id,
       });
       let response;
       try {

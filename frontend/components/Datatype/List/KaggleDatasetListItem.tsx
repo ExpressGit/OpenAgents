@@ -21,6 +21,8 @@ const KaggleDatasetListItem: FC<Props> = memo(({ item }) => {
   } = useContext(HomeContext);
 
   const handleDownload = () => {
+    const user_id = localStorage.getItem('user_id')
+
     homeDispatch({
       field: 'messageIsStreaming',
       value: true,
@@ -33,6 +35,7 @@ const KaggleDatasetListItem: FC<Props> = memo(({ item }) => {
       body: JSON.stringify({
         chat_id: chat_id,
         url: item.id,
+        user_id,
       }),
     })
       .then((response) => response.json())

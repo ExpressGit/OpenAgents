@@ -78,6 +78,11 @@ export const ChatbarSettings = <T,>({
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // next.js中 localStorage 不存在，需要判断下，防止报错：ReferenceError: localStorage is not defined
+  const isBrowser = typeof window !== 'undefined';
+
+  const user_id = isBrowser ? localStorage.getItem('user_id') || '' : ''
+
   const handleCreateFolder = async (chat_id: string) => {
     let response;
     try {
@@ -88,6 +93,7 @@ export const ChatbarSettings = <T,>({
         },
         body: JSON.stringify({
           chat_id: chat_id,
+          user_id,
         }),
       });
     } catch (error: unknown) {

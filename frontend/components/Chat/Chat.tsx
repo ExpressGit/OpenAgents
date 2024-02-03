@@ -103,8 +103,15 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     isStopChatID,
     isStopMessageStreaming,
   ]);
+
+  // next.js中 localStorage 不存在，需要判断下，防止报错：ReferenceError: localStorage is not defined
+  const isBrowser = typeof window !== 'undefined';
+
+  const user_id = isBrowser ? localStorage.getItem('user_id') || '' : ''
+
   const resetWebot = async () => {
     let res;
+
     try {
       res = await fetch(API_CHAT_XLANG_WEBOT_RESET_STATUS, {
         method: 'POST',
@@ -114,6 +121,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
         },
         body: JSON.stringify({
           chat_id: chat_id,
+          user_id,
         }),
       });
     } catch (error) {
@@ -163,6 +171,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             },
             body: JSON.stringify({
               chat_id: chat_id,
+              user_id,
             }),
           });
         } catch (error) {
