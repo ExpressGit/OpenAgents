@@ -9,7 +9,7 @@ IS_PROD = os.environ.get("IS_PROD", False)
 
 # 邮箱配置
 class OpenaiSettings:
-    OPENAI_API_KEY = "sk-PiTeiCfgOqKr72sR27E228312cFe4a7f8139094f0dB3E12c"  
+    OPENAI_API_KEY = "sk-2Hgn5SLJuY0xeTKk1c313c227e894cCc8887D6C64e1a50Ce"  
     OPENAI_API_BASE = "http://api.aiadvice.top/v1"
     # OPENAI_API_BASE = "https://api.openai.com/v1"             
 
