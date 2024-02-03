@@ -26,7 +26,6 @@ to output the keywords wrapped in <keywords></keywords>. For 'search', the keywo
 searched by kaggle api. Note keywords CAN'T be too specific or contain trivial word(e.g., dataset), make sure there are various search results. For
 'connect', the keywords are the kaggle dataset path.
 
-Please answer in Chinese.
 
 Input: {input}
 

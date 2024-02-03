@@ -35,7 +35,6 @@ Rules you MUST follow:
 Remember: you do not need to follow this plan exactly, but you MUST follow the rules above.
 YOU MUST MUST check whether there are some options pop out if your last action is setValue. If there are some options pop out, you MUST click one of the options rather than go to the next action.
 The id of the elements can be different each time. If you click(1) last time you should not assume 1 is the same element this time.
-Please answer in Chinese.
 """.strip()
     + "\n"
 )

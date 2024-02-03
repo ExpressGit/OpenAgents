@@ -16,7 +16,7 @@ Answer: "Final answer here"
 Only use the tables listed below.
 {table_info}
 Question: {question}
-Please answer in Chinese."""
+"""
 PROMPT = PromptTemplate(
     input_variables=["chat_history", "question", "table_info", "dialect"],
     template=_DEFAULT_TEMPLATE,
@@ -32,9 +32,8 @@ Question: "Question here"
 SQLQuery: "SQL Query to run"
 SQLResult: "Result of the SQLQuery"
 Answer: "Final answer here"
-Please answer in Chinese.
 Here are some examples you can follow:"""
-EXAMPLE_PROMPT_TEMPLATE = """{table_info}\nQuestion: {question}\nSQLQuery: {query}\nPlease answer in Chinese"""
+EXAMPLE_PROMPT_TEMPLATE = """{table_info}\nQuestion: {question}\nSQLQuery: {query}\n"""
 EXAMPLE_PROMPT = PromptTemplate(
     input_variables=["table_info", "question", "query"],
     template=EXAMPLE_PROMPT_TEMPLATE,

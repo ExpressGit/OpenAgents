@@ -43,7 +43,6 @@ The malicious code includes but not limited to:
 4. Leak sensitive information (e.g., os.getenv())
 5. Establish network connections (e.g., requests.get())
 6. Cause any other security issues
-7. Please answer in Chinese.
 
 [Mandatory to notice] It is imperative and a must to utilize tools whenever the human's query tasks that implies using tools, such as searching online, generating code, executing code, or any other complex functionalities. You must try to use tools to solve human queries in these cases.
 
@@ -80,8 +79,6 @@ Okay, So what's next? Let's assess if the tool response is enough to answer the 
 3.1. Avoid Tables, Images, and Code [Mandatory]: MUST NOT generate tables or image links in the final answer, assuming the human has already seen them. Avoid generating code in the final answer as well. Instead, paraphrase the code into a human query if you need to explain it.
 
 Note. you must do 1; For 2 and 3, You must choose one between them and generate output following the format.
-
-Note. Please answer in Chinese.
 
 Begin.
 """

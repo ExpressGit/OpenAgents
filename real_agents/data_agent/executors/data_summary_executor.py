@@ -21,7 +21,7 @@ class TableSummaryExecutor(DataSummaryExecutor):
     SUMMARY_PROMPT_TEMPLATE = """
 {table_info}
 
-Provide a succinct yet meaningful summary of the table with less than 20 words, encapsulating its essence beyond just enumerating the columns. Please ensure your summary is a complete sentence and include it within <summary></summary> tags.Please answer in Chinese."
+Provide a succinct yet meaningful summary of the table with less than 20 words, encapsulating its essence beyond just enumerating the columns. Please ensure your summary is a complete sentence and include it within <summary></summary> tags."
 Note the table actually far more rows than shown above, so you MUST NOT make any rash conclusions based on the shown table rows or cells."
 Then provide {num_insights} insightful and interesting suggestions in natural language that users can directly say to analyze the table. The suggestions should be able to be solved by python/sql."
 The final results should be markdown '+' bullet point list, e.g., + The first suggestion.
@@ -120,7 +120,7 @@ class ImageSummaryExecutor(DataSummaryExecutor):
     SUMMARY_PROMPT_TEMPLATE = """
 {img_info}
 
-Provide a succinct summary of the uploaded file with less than 20 words. Please ensure your summary is a complete sentence and include it within <summary></summary> tags. For image, just show its name is basically enough.Please answer in Chinese."
+Provide a succinct summary of the uploaded file with less than 20 words. Please ensure your summary is a complete sentence and include it within <summary></summary> tags. For image, just show its name is basically enough."
 Then provide {num_insights} very simple and basic suggestions in natural language about further processing with the data. The suggestions should be able to be solved by python(e.g., grayscale, rescale, rotation, etc). The final results should be markdown '+' bullet point list, e.g., + The first suggestion."
 
 Begin.

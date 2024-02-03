@@ -17,7 +17,5 @@ history_dict = {{
 """
 final format:
 user_prompt + reference_prompt + history_prompt
-
-Please answer in Chinese
 """
 
