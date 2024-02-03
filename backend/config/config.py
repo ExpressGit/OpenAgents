@@ -11,7 +11,7 @@ IS_PROD = os.environ.get("IS_PROD", False)
 class OpenaiSettings:
     OPENAI_API_KEY = "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"  
     # OPENAI_API_BASE = "http://api.aiadvice.top/v1"
-    OPENAI_API_BASE = "https://api.openai.com/v1"             
+    OPENAI_API_BASE = "https://api.openai.com/v1"
 
 class DataBaseSettings:
     VARIABLE_REGISTER_BACKEND = 'redis'
