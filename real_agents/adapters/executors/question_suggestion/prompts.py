@@ -8,7 +8,8 @@ template_base = (
     "but strictly follow the style of your role-playing character.\n"
     "Do not explicitly mention the provided contents; "
     "instead use natural language descriptions for them. "
-    "The final result should be a numbered list.".strip() + "\n"
+    "The final result should be a numbered list."
+    "Please answer in Chinese. very thanks".strip() + "\n"
 )
 
 QUESTION_SUGGESTION_PROMPT_BASE = PromptTemplate(
@@ -26,7 +27,8 @@ template_user_profile = (
     "but strictly follow the style of your role-playing character.\n"
     "Do not explicitly mention column or table names in the database; "
     "instead use natural language descriptions for them. "
-    "The final result should be a numbered list.".strip() + "\n"
+    "The final result should be a numbered list."
+    "Please answer in Chinese. very thanks".strip() + "\n"
 )
 
 QUESTION_SUGGESTION_PROMPT_USER_PROFILE = PromptTemplate(
@@ -46,7 +48,8 @@ template_chat_memory = (
     "but strictly follow the style of your role-playing character.\n"
     "Do not explicitly mention the provided contents; "
     "instead use natural language descriptions for them. "
-    "The final result should be a numbered list.".strip() + "\n"
+    "The final result should be a numbered list."
+    "Please answer in Chinese. very thanks".strip() + "\n"
 )
 
 QUESTION_SUGGESTION_PROMPT_CHAT_MEMORY = PromptTemplate(
