@@ -227,49 +227,51 @@ def register_conversation() -> Response:
     request_json = request.get_json()
     user_id = request_json.pop("user_id", DEFAULT_USER_ID)
     conversation = request_json.get("conversation", None)
-    db = get_user_conversation_storage()
-    conversation_id = conversation["id"]
-    try:
-        if conversation_id is not None and db.conversation.find_one(
-                {"_id": ObjectId(conversation_id)}):
-            updates = {
-                "name": conversation["name"],
-                "agent": conversation["agent"],
-                "prompt": conversation["prompt"],
-                "temperature": conversation["temperature"],
-                "folder_id": conversation["folderId"],
-                "bookmarked_message_ids": conversation.get("bookmarkedMessagesIds",
-                                                            None),
-                "selected_code_interpreter_plugins": conversation[
-                    "selectedCodeInterpreterPlugins"],
-                "selected_plugins": conversation["selectedPlugins"],
-            }
-            db.conversation.update_one({"_id": ObjectId(conversation_id)},
-                                        {"$set": updates})
-        else:
-            conversation = db.conversation.insert_one(
-                {
+    if conversation:
+        try:
+            db = get_user_conversation_storage()
+            conversation_id = conversation["id"]
+            if conversation_id is not None and db.conversation.find_one(
+                    {"_id": ObjectId(conversation_id)}):
+                updates = {
                     "name": conversation["name"],
                     "agent": conversation["agent"],
                     "prompt": conversation["prompt"],
                     "temperature": conversation["temperature"],
                     "folder_id": conversation["folderId"],
-                    "bookmarked_message_ids": conversation.get(
-                        "bookmarkedMessagesIds", None),
-                    "hashed_api_key": "",
-                    "user_id": user_id,
+                    "bookmarked_message_ids": conversation.get("bookmarkedMessagesIds",
+                                                               None),
                     "selected_code_interpreter_plugins": conversation[
                         "selectedCodeInterpreterPlugins"],
                     "selected_plugins": conversation["selectedPlugins"],
-                    "timestamp": datetime.datetime.utcnow(),
                 }
-            )
-            conversation_id = str(conversation.inserted_id)
-        return jsonify({"id": conversation_id})
-    except Exception as e:
-        return Response(response=None,
-                        status=f"{INTERNAL} error register conversation")
-    
+                db.conversation.update_one({"_id": ObjectId(conversation_id)},
+                                           {"$set": updates})
+            else:
+                conversation = db.conversation.insert_one(
+                    {
+                        "name": conversation["name"],
+                        "agent": conversation["agent"],
+                        "prompt": conversation["prompt"],
+                        "temperature": conversation["temperature"],
+                        "folder_id": conversation["folderId"],
+                        "bookmarked_message_ids": conversation.get(
+                            "bookmarkedMessagesIds", None),
+                        "hashed_api_key": "",
+                        "user_id": user_id,
+                        "selected_code_interpreter_plugins": conversation[
+                            "selectedCodeInterpreterPlugins"],
+                        "selected_plugins": conversation["selectedPlugins"],
+                        "timestamp": datetime.datetime.utcnow(),
+                    }
+                )
+                conversation_id = str(conversation.inserted_id)
+            return jsonify({"id": conversation_id})
+        except Exception as e:
+            return Response(response=None,
+                            status=f"{INTERNAL} error register conversation")
+    else:
+        return Response(response=None, status=f"{UNFOUND} missing conversation")
 
 
 @app.route("/api/conversations/delete_conversation", methods=["POST"])
