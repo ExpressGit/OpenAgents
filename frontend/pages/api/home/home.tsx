@@ -1691,6 +1691,7 @@ const Home = ({
           headers: {
             'Content-Type': 'application/json',
           },
+          body: JSON.stringify({ user_id }),
           signal: controller.signal,
         });
       } catch (error: unknown) {
