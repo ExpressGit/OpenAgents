@@ -41,6 +41,10 @@ export default function Login() {
     const router = useRouter();
 
     React.useEffect(() => {
+        document.title = "天机——任务型交互式 Agent"
+    }, [])
+
+    React.useEffect(() => {
         // 如果user_id存在，则直接跳转到首页
         const userId = localStorage.getItem('user_id')
         if (userId) {

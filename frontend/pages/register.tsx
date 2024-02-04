@@ -43,6 +43,10 @@ export default function Register() {
 
     const router = useRouter();
 
+    React.useEffect(() => {
+        document.title = "天机——任务型交互式 Agent"
+    }, [])
+
     const isEmailValid = (email: string) => {
         // 用邮箱格式正则校验
         return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
