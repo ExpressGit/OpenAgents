@@ -195,7 +195,7 @@ const Home = ({
         if (!isStreamingError) {
           let data;
           try {
-            data = await registerConversation(updatedConversation);
+            data = await registerConversation({ ...updatedConversation, user_id });
           } catch (error) {
             toast.error((error as Error).message);
             dispatch({ field: 'chat_id', value: '' });
@@ -1313,7 +1313,7 @@ const Home = ({
       if (selectedConversation.messages.length === 0) {
         let data;
         try {
-          data = await registerConversation(selectedConversation);
+          data = await registerConversation({ ...selectedConversation, user_id });
         } catch (error: unknown) {
           toast.error((error as Error).message);
           dispatch({ field: 'isSettingGroundingSource', value: false });
