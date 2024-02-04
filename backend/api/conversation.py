@@ -226,13 +226,16 @@ def register_conversation() -> Response:
     """Creates a new conversation."""
     request_json = request.get_json()
     user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    print(user_id)
     conversation = request_json.get("conversation", None)
     if conversation:
         try:
             db = get_user_conversation_storage()
             conversation_id = conversation["id"]
+            print(conversation_id)
             if conversation_id is not None and db.conversation.find_one(
                     {"_id": ObjectId(conversation_id)}):
+                print(11111)
                 updates = {
                     "name": conversation["name"],
                     "agent": conversation["agent"],
@@ -248,6 +251,7 @@ def register_conversation() -> Response:
                 db.conversation.update_one({"_id": ObjectId(conversation_id)},
                                            {"$set": updates})
             else:
+                print(2222)
                 conversation = db.conversation.insert_one(
                     {
                         "name": conversation["name"],
@@ -266,6 +270,7 @@ def register_conversation() -> Response:
                     }
                 )
                 conversation_id = str(conversation.inserted_id)
+            print("conversation_id:"+ conversation_id)
             return jsonify({"id": conversation_id})
         except Exception as e:
             return Response(response=None,
