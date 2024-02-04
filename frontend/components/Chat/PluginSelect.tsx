@@ -127,7 +127,7 @@ export const SelectedPlugin = ({
             <span
               className={`flex items-center text-[15px] text-[#212121] pl-3`}
             >
-              {t('No plugins enabled')}
+              {t('未启用插件')}
             </span>
           )}
         </span>

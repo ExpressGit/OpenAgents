@@ -93,10 +93,10 @@ const Sidebar = <T,>({
           <CloseSidebarButton onClick={toggleOpen} side={side} />
         </div>
         <span className="border-t border-white/50 pt-3 pl-3 text-white font-[500] text-lg">
-          Chats
+          对话
         </span>
         <Search
-          placeholder="Search Chat"
+          placeholder="搜索对话"
           searchTerm={searchTerm}
           onSearch={handleSearchTerm}
         />
@@ -116,7 +116,7 @@ const Sidebar = <T,>({
             <div className="mt-8 select-none text-center text-white">
               <IconMistOff className="mx-auto mb-3" />
               <span className="text-[14px] leading-normal">
-                {t('No data.')}
+                {t('暂无数据')}
               </span>
             </div>
           )}

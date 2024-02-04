@@ -162,9 +162,9 @@ export const ChatMessage: FC<Props> = memo(
             curToolEndIndex == -1
               ? message.richContent.intermediateSteps.slice(curIndex)
               : message.richContent.intermediateSteps.slice(
-                  curIndex,
-                  curToolEndIndex,
-                );
+                curIndex,
+                curToolEndIndex,
+              );
           let allEnabledPlugins = [
             ...selectedConversation.selectedPlugins,
             ...selectedConversation.selectedCodeInterpreterPlugins,
@@ -229,11 +229,10 @@ export const ChatMessage: FC<Props> = memo(
           }
           result.push(
             <div
-              className={`${
-                showChatbar
-                  ? 'w-[calc(100vw-260px-21.5rem)]'
-                  : 'w-[calc(100vw-26.8rem)]'
-              } ml-[-3px]`}
+              className={`${showChatbar
+                ? 'w-[calc(100vw-260px-21.5rem)]'
+                : 'w-[calc(100vw-26.8rem)]'
+                } ml-[-3px]`}
             >
               <ToolCollapse
                 content={
@@ -328,16 +327,14 @@ export const ChatMessage: FC<Props> = memo(
 
         <Paper
           elevation={3}
-          className={`relative w-fit ${
-            showChatbar
-              ? 'max-w-[calc(100vw-260px-20.4rem)]'
-              : 'max-w-[calc(100vw-25.7rem)]'
-          } my-4 flex items-center p-3 text-base rounded-2xl
-          ${
-            message.role === 'user'
+          className={`relative w-fit ${showChatbar
+            ? 'max-w-[calc(100vw-260px-20.4rem)]'
+            : 'max-w-[calc(100vw-25.7rem)]'
+            } my-4 flex items-center p-3 text-base rounded-2xl
+          ${message.role === 'user'
               ? 'bg-[#E2E2E2] mr-4 ml-40'
               : 'bg-white ml-4 mr-40'
-          }`}
+            }`}
         >
           {message.role === 'user' && (
             <div className="w-full">
@@ -363,7 +360,7 @@ export const ChatMessage: FC<Props> = memo(
                     >
                       <IconCircleCheck size={20} color="#7B7B7B" />
                       <span className="text-xs text-[#7B7B7B] font-[600] mt-[3px]">
-                        Submit
+                        提交
                       </span>
                     </button>
                     <button
@@ -376,7 +373,7 @@ export const ChatMessage: FC<Props> = memo(
                     >
                       <IconCircleX size={20} color="#7B7B7B" />
                       <span className="text-xs text-[#7B7B7B] font-[600] mt-[3px]">
-                        Cancel
+                        取消
                       </span>
                     </button>
                   </div>
@@ -412,17 +409,17 @@ export const ChatMessage: FC<Props> = memo(
               {!isEditing && message.type !== 'rich_message' && showButtons && (
                 <div className="flex z-[999] absolute bottom-[-23px] right-1">
                   {!messageIsStreaming && (
-                    <button className="flex" onClick={toggleEditing}>
+                    <button className="flex w-[53px]" onClick={toggleEditing}>
                       <IconEdit color="#7B7B7B" size={20} />
                       <span className="text-xs text-[#7B7B7B] font-[600] ml-1 mt-[3px]">
-                        Edit
+                        编辑
                       </span>
                     </button>
                   )}
-                  <button className="flex ml-3" onClick={handleCopyMessage}>
+                  <button className="flex w-[53px]" onClick={handleCopyMessage}>
                     <IconCopy color="#7B7B7B" size={20} />
                     <span className="text-xs text-[#7B7B7B] font-[600] ml-1 mt-[3px]">
-                      Copy
+                      复制
                     </span>
                   </button>
                 </div>
@@ -506,7 +503,7 @@ export const ChatMessage: FC<Props> = memo(
                   <button className="flex" onClick={handleCopyMessage}>
                     <IconCopy color="#7B7B7B" size={20} />
                     <span className="text-xs text-[#7B7B7B] font-[600] ml-1 mt-[3px]">
-                      Copy
+                      复制
                     </span>
                   </button>
                   {!messageIsStreaming &&
@@ -515,7 +512,7 @@ export const ChatMessage: FC<Props> = memo(
                       <button className="flex ml-3" onClick={onRegenerate}>
                         <IconRepeat color="#7B7B7B" size={20} />
                         <span className="text-xs text-[#7B7B7B] font-[600] ml-1 mt-[3px]">
-                          Retry
+                          重试
                         </span>
                       </button>
                     )}

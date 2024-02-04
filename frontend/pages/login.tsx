@@ -19,9 +19,10 @@ import { useRouter } from 'next/router';
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            {/* {'Copyright © '} */}
+            {'Powered by '}
+            <Link color="inherit" href="" target='_blank'>
+                天机 Team
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -55,7 +56,7 @@ export default function Login() {
         const password = data.get('password')
 
         if (!username || !password) {
-            toast.error('Please fill in all fields');
+            toast.error('请输入完整信息');
             return
         }
 
@@ -74,11 +75,11 @@ export default function Login() {
         const result = await userLoginApi({ username, password }).finally(() => setIsLoading(false))
         const { id } = result
         if (id) {
-            toast.success('Login Success');
+            toast.success('登录成功');
             localStorage.setItem('user_id', id);
             router.push('/');
         } else {
-            toast.error('Login Failed');
+            toast.error('登录失败');
         }
     };
 
@@ -97,29 +98,29 @@ export default function Login() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        登录
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
                             error={usernameError}
-                            helperText={usernameError ? 'Please Input Correct Username! Length: 2-10' : ''}
+                            helperText={usernameError ? '请填写正确用户名! 长度: 2-10位' : ''}
                             margin="normal"
                             required
                             fullWidth
                             id="username"
-                            label="User Name"
+                            label="用户名"
                             name="username"
                             autoComplete="username"
                             autoFocus
                         />
                         <TextField
                             error={passwordError}
-                            helperText={passwordError ? 'Please Input Correct Password! Length: 6-20' : ''}
+                            helperText={passwordError ? '请填写正确的密码! 长度: 6-20位' : ''}
                             margin="normal"
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label="密码"
                             type="password"
                             id="password"
                             autoComplete="current-password"
@@ -136,7 +137,7 @@ export default function Login() {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign In
+                            登录
                         </LoadingButton>
                         <Grid container justifyContent="flex-end">
                             {/* <Grid item xs>
@@ -146,13 +147,13 @@ export default function Login() {
                             </Grid> */}
                             <Grid item>
                                 <Link href="/register" variant="body2" className=''>
-                                    {"Don't have an account? Sign Up"}
+                                    还没有账号？去注册
                                 </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
-                {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
+                <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </ThemeProvider>
     );

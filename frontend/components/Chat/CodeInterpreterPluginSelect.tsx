@@ -124,7 +124,7 @@ export const SelectedCodeInterpreterPlugin = ({
               <span
                 className={`flex items-center text-[15px] text-[#212121] pl-3`}
               >
-                {t('No plugins enabled')}
+                {t('未启用插件')}
               </span>
             )}
         </span>
@@ -230,7 +230,7 @@ const PluginList = ({
               className="group pl-5 font-bold transition-colors"
               key="language-plugins"
             >
-              Programming Languages
+              编程语言
             </div>
             <ul className="flex w-full flex-wrap">
               {languagePlugins.map((plugin) => (
@@ -278,7 +278,7 @@ const PluginList = ({
               className="group font-bold pl-5"
               key="data-tools"
             >
-              Data Tools
+              数据工具
             </div>
             <ul className="flex w-full flex-wrap">
               {toolPlugins.map((plugin) => (

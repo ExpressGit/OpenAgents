@@ -131,9 +131,8 @@ export const ChatInput = ({
     if (textareaRef && textareaRef.current) {
       textareaRef.current.style.height = 'inherit';
       textareaRef.current.style.height = `${textareaRef.current?.scrollHeight}px`;
-      textareaRef.current.style.overflow = `${
-        textareaRef?.current?.scrollHeight > 350 ? 'auto' : 'hidden'
-      }`;
+      textareaRef.current.style.overflow = `${textareaRef?.current?.scrollHeight > 350 ? 'auto' : 'hidden'
+        }`;
     }
   }, [content]);
 
@@ -217,13 +216,12 @@ export const ChatInput = ({
                 resize: 'none',
                 bottom: `${textareaRef?.current?.scrollHeight}px`,
                 maxHeight: '350px',
-                overflow: `${
-                  textareaRef.current && textareaRef.current.scrollHeight > 350
-                    ? 'auto'
-                    : 'hidden'
-                }`,
+                overflow: `${textareaRef.current && textareaRef.current.scrollHeight > 350
+                  ? 'auto'
+                  : 'hidden'
+                  }`,
               }}
-              placeholder={'Send a message'}
+              placeholder={'发送消息...'}
               value={content}
               rows={1}
               onCompositionStart={() => setIsTyping(true)}

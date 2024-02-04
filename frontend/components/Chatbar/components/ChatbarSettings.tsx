@@ -252,9 +252,9 @@ export const ChatbarSettings = <T,>({
   return (
     <>
       <div className="flex flex-col space-y-1 border-t border-white/50 pt-1 text-sm">
-        <span className="pl-3 pt-1 text-white font-[500] text-lg">Files</span>
+        <span className="pl-3 pt-1 text-white font-[500] text-lg">文件</span>
         <Search
-          placeholder="Search File"
+          placeholder="搜索文件"
           searchTerm={searchTerm}
           onSearch={handleSearchTerm}
         />
@@ -281,7 +281,7 @@ export const ChatbarSettings = <T,>({
             }}
           >
             <IconPlus size={16} />
-            {t('Upload')}
+            {t('上传文件')}
           </button>
 
           <button
@@ -304,11 +304,11 @@ export const ChatbarSettings = <T,>({
             <Tooltip title="Click To View Help Document.">
               <a className='flex' href='https://w1l3qi32ze.feishu.cn/wiki/KZDOwyrzbi2dxNkR86icCPQonTd?from=from_copylink' target='_blank'>
                 <LiveHelpOutlinedIcon fontSize="small" />
-                <span className='ml-1'>Help</span>
+                <span className='ml-1'>帮助</span>
               </a>
             </Tooltip>
             <Tooltip title="Click To Logout.">
-              <div className='ml-2 mr-2 text-red-500 font-bold' onClick={handleLogout}>Logout</div>
+              <div className='ml-2 mr-2 text-red-500 font-bold' onClick={handleLogout}>登出</div>
             </Tooltip>
           </div>
           {isOpen && (

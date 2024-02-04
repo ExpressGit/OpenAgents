@@ -422,10 +422,10 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                 <div className="flex flex-col space-y-5 w-full h-full">
                   <div className="pl-20 pt-16 space-y-5">
                     <div className="text-left text-3xl font-[500] text-gray-800">
-                      Hi!
+                      你好！
                     </div>
                     <div className="text-left text-lg font-[500] text-gray-800">
-                      Please choose your Agent & Plugins to continue
+                      请先选择 Agent & Plugins，再开始。
                     </div>
                   </div>
 
@@ -450,7 +450,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         </div>
 
                         <div className="absolute right-[12rem] top-[-4px] flex items-center">
-                          <span>Selected: </span>
+                          <span>已选择: </span>
                           {
                             selectedConversation.agent.id === 'data-agent' &&
                             <SelectedCodeInterpreterPlugin />
@@ -524,8 +524,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                       {selectedConversation?.agent?.llm?.name}
                     </span>
                   </div> */}
-                  <div className="flex items-center justify-center ml-3 pr-4">
-                    <span className="font-[600]">{t('Enabled Plugins')}:</span>
+                  <div className="flex items-center justify-center ml-10 pr-4">
+                    <span className="font-[600]">{t('已启用的插件')}:</span>
                     <div className="ml-2 flex space-x-1">
                       {selectedConversation?.agent.id == 'data-agent' &&
                         selectedConversation.selectedCodeInterpreterPlugins.map(

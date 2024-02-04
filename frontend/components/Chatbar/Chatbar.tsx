@@ -277,7 +277,7 @@ export const Chatbar = () => {
       <Sidebar<ConversationNameListItem>
         side={'left'}
         isOpen={showChatbar}
-        addItemButtonTitle={t('New Chat')}
+        addItemButtonTitle={t('新建对话')}
         itemComponent={
           <Conversations conversationNameList={filteredConversations} />
         }
@@ -289,7 +289,7 @@ export const Chatbar = () => {
         }
         toggleOpen={handleToggleChatbar}
         handleCreateItem={handleNewConversation}
-        handleCreateFolder={() => handleCreateFolder(t('New folder'), 'chat')}
+        handleCreateFolder={() => handleCreateFolder(t('新文件夹'), 'chat')}
         handleDrop={handleDrop}
         footerComponent={
           <ChatbarSettings

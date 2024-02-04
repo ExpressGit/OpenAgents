@@ -21,9 +21,10 @@ import { useRouter } from 'next/router';
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            {/* {'Copyright © '} */}
+            {'Powered by '}
+            <Link color="inherit" href="" target='_blank'>
+                天机 Team
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -56,7 +57,7 @@ export default function Register() {
         const username = data.get('userName');
 
         if (!email || !password || !username) {
-            toast.error('Please fill in all fields');
+            toast.error('请输入完整信息');
             return
         }
 
@@ -86,12 +87,12 @@ export default function Register() {
         const result = await userRegisterApi({ username, email, password }).finally(() => setIsLoading(false));
         const { id } = result || {}
         if (id) {
-            toast.success('Register Success, Redirect to Login Page in 3 Seconds');
+            toast.success('注册成功，将在3秒后自动跳转到登录页');
             setTimeout(() => {
                 router.push('/login')
             }, 3000);
         } else {
-            toast.error('Register Failed');
+            toast.error('注册失败');
         }
 
     };
@@ -112,31 +113,31 @@ export default function Register() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        注册
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
                                     error={usernameError}
-                                    helperText={usernameError ? 'Please Input Correct Username! Length: 2-10' : ''}
+                                    helperText={usernameError ? '请填写正确用户名! 长度: 2-10位' : ''}
                                     autoComplete="user-name"
                                     name="userName"
                                     required
                                     fullWidth
                                     id="userName"
-                                    label="User Name"
+                                    label="用户名"
                                     autoFocus
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     error={emailError}
-                                    helperText={emailError ? 'Please Input Correct Email!' : ''}
+                                    helperText={emailError ? '请填写正确的邮箱格式!' : ''}
                                     required
                                     fullWidth
                                     id="email"
-                                    label="Email Address"
+                                    label="邮箱"
                                     name="email"
                                     autoComplete="email"
                                 />
@@ -144,11 +145,11 @@ export default function Register() {
                             <Grid item xs={12}>
                                 <TextField
                                     error={passwordError}
-                                    helperText={passwordError ? 'Please Input Correct Password! Length: 6-20' : ''}
+                                    helperText={passwordError ? '请填写正确的密码! 长度: 6-20位' : ''}
                                     required
                                     fullWidth
                                     name="password"
-                                    label="Password"
+                                    label="密码"
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
@@ -169,18 +170,18 @@ export default function Register() {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign Up
+                            注册
                         </LoadingButton>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
                                 <Link href="/login" variant="body2">
-                                    Already have an account? Sign in
+                                    已经有账号？去登录
                                 </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
-                {/* <Copyright sx={{ mt: 5 }} /> */}
+                <Copyright sx={{ mt: 5 }} />
             </Container>
         </ThemeProvider >
     );
