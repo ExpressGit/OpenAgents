@@ -20,7 +20,8 @@ def get_tool_list() -> Response:
         api_key: the api key of the plugin, None if no api key
     }]
     """
-    user_id = DEFAULT_USER_ID
+    request_json = request.get_json()
+    user_id = request_json["user_id"]
     api_key_info = api_key_pool.get_pool_info_with_id(user_id, [])
     tool_list = []
     for plugin in plugins:
@@ -52,7 +53,7 @@ def post_tool_api_key() -> Response:
     }
     """
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     tool_id = request_json["tool_id"]
     tool_name = request_json["tool_name"]
     api_key = request_json["api_key"]

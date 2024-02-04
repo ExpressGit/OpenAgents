@@ -313,7 +313,7 @@ def delete_files() -> Response:
 def download_files() -> Response:
     """Downloads a file to local."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     root_path = create_personal_folder(user_id)
     node = request_json["node"]
 
@@ -457,7 +457,7 @@ def set_default_examples() -> Response:
     try:
         # Should be called after auth is verified
         request_json = request.get_json()
-        user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+        user_id = request_json["user_id"]
         root_path = create_personal_folder(user_id)
         example_dir = os.path.dirname(os.path.dirname(app.config["UPLOAD_FOLDER"]))
         example_path = os.path.join(example_dir, "data/examples/")

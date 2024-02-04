@@ -14,7 +14,7 @@ api.authenticate()
 def kaggle_dataset_download() -> dict | Response:
     """Use Kaggle-api to connect. """
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     url = request_json["url"]
     if url.startswith("http"):
         return {"success": False,

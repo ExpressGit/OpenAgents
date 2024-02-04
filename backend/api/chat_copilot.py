@@ -319,7 +319,7 @@ def chat() -> Response | Dict:
     try:
         # Get request parameters
         request_json = request.get_json()
-        user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+        user_id = request_json["user_id"]
         chat_id = request_json["chat_id"]
         user_intent = request_json["user_intent"]
         parent_message_id = int(request_json["parent_message_id"])
@@ -367,7 +367,7 @@ def chat() -> Response | Dict:
                         user_intent=gs,
                         human_message_id=None,
                         ai_message_id=ai_message_id,
-                        user_id=DEFAULT_USER_ID,
+                        user_id=user_id,
                         chat_id=api_call["args"]["chat_id"],
                         message_list=activated_message_list,
                         parent_message_id=api_call["args"]["parent_message_id"],

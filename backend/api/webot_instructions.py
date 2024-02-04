@@ -9,7 +9,7 @@ from backend.api.chat_webot import get_webot_from_redis, \
 @app.route("/api/webot/instructions", methods=["POST"])
 def get_instruction() -> Response:
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     webot = get_webot_from_redis(user_id=user_id, chat_id=chat_id)
     return jsonify({
@@ -22,7 +22,7 @@ def get_instruction() -> Response:
 @app.route("/api/webot/webot_status", methods=["POST"])
 def get_webot_status() -> Response:
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     webot_status_json = get_webot_status_from_redis(user_id=user_id, chat_id=chat_id)
     return jsonify(webot_status_json) if webot_status_json is not None else jsonify(
@@ -32,7 +32,7 @@ def get_webot_status() -> Response:
 @app.route("/api/webot/reset_status", methods=["POST"])
 def reset_status() -> Response:
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     reset_webot_status(user_id=user_id, chat_id=chat_id)
     return jsonify({

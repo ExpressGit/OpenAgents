@@ -85,13 +85,13 @@ class VariableRegister:
 
 
 def get_user_and_chat_id_from_request_json(request_json: Dict) -> Tuple[str, str]:
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     return user_id, chat_id
 
 
 def get_user_and_chat_id_from_request(request: Request) -> Tuple[str, str]:
-    user_id = request.form.get("user_id", DEFAULT_USER_ID)
+    user_id = request.form.get("user_id")
     chat_id = request.form.get("chat_id")
     return user_id, chat_id
 

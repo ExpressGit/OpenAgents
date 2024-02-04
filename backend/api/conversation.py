@@ -16,7 +16,7 @@ from backend.schemas import INTERNAL, UNFOUND
 def get_conversation_list() -> Response:
     """Gets the history conversations."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     conversations = []
     try:
         # Login with API Key, then retrieve the user history based
@@ -40,7 +40,8 @@ def get_conversation_list() -> Response:
 @app.route("/api/conversations/get_folder_list", methods=["POST"])
 def get_folder_list() -> Response:
     """Gets the folder list."""
-    user_id = DEFAULT_USER_ID
+    request_json = request.get_json()
+    user_id = request_json['user_id']
     folders = []
     try:
         db = get_user_conversation_storage()
@@ -207,7 +208,7 @@ def update_folder() -> Response:
 def register_folder() -> Response:
     """Creates a new folder."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     folder = request_json.get("folder", None)
     if folder:
         try:
@@ -317,7 +318,7 @@ def delete_folder() -> Response:
 def clear_all_conversation() -> Response:
     """Clears all previous conversations."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     if user_id:
         try:
             db = get_user_conversation_storage()

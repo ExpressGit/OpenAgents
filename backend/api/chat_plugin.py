@@ -191,7 +191,7 @@ def chat_xlang_plugin() -> Dict:
     try:
         # Get request parameters
         request_json = request.get_json()
-        user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+        user_id = request_json["user_id"]
         chat_id = request_json["chat_id"]
         user_intent = request_json["user_intent"]
         parent_message_id = request_json["parent_message_id"]

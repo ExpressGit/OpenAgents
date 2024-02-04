@@ -10,7 +10,7 @@ from backend.api.language_model import get_llm
 def get_action() -> Response:
     """Gets the next action to take for a given the current page HTML."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     webot = get_webot_from_redis(user_id=user_id, chat_id=chat_id)
     # Get request parameters
@@ -31,7 +31,7 @@ def get_action() -> Response:
 def interrupt() -> Response:
     """Interrupts the current webot."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     interrupt = request_json["interrupt"]
     if interrupt:
@@ -49,7 +49,7 @@ def interrupt() -> Response:
 def error() -> Response:
     """Appends action 'error' to the current webot."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
+    user_id = request_json["user_id"]
     chat_id = request_json["chat_id"]
     error = request_json["error"]
     if error:
