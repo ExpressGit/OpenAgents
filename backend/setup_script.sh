@@ -19,7 +19,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # MongoDB collection creation
     echo "Creating MongoDB collections..."
-    mongosh --eval 'db = db.getSiblingDB("xlang"); db.createCollection("user"); db.createCollection("message"); db.createCollection("conversation"); db.createCollection("folder"); db.getCollectionNames();'
+    mongosh --eval 'db = db.getSiblingDB("tianji"); db.createCollection("user"); db.createCollection("message"); db.createCollection("conversation"); db.createCollection("folder"); db.getCollectionNames();'
 
     # Redis setup for macOS
     echo "Setting up Redis for macOS..."
@@ -45,7 +45,7 @@ EOL
 
     # MongoDB collection creation
     echo "Creating MongoDB collections..."
-    mongosh --eval 'db = db.getSiblingDB("xlang"); db.createCollection("user"); db.createCollection("message"); db.createCollection("conversation"); db.createCollection("folder"); db.getCollectionNames();'
+    mongosh --eval 'db = db.getSiblingDB("tianji"); db.createCollection("user"); db.createCollection("message"); db.createCollection("conversation"); db.createCollection("folder"); db.getCollectionNames();'
 
     # Redis setup for Linux
     # echo "Setting up Redis for Linux..."
