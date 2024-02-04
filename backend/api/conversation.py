@@ -225,10 +225,11 @@ def register_folder() -> Response:
 def register_conversation() -> Response:
     """Creates a new conversation."""
     request_json = request.get_json()
-    user_id = request_json.pop("user_id", DEFAULT_USER_ID)
-    print(user_id)
+    user_id = ''
     conversation = request_json.get("conversation", None)
     if conversation:
+        user_id = conversation['user_id']
+        print(user_id)
         try:
             db = get_user_conversation_storage()
             conversation_id = conversation["id"]
