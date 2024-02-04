@@ -77,6 +77,8 @@ def secure_filename(filename: str) -> str:
 @app.route("/api/upload", methods=["POST"])
 def create_upload_file() -> dict | Response:
     """Uploads a new file."""
+    user_id = ''
+    chat_id = ''
     try:
         if "file" not in request.files:
             return {"error": "No file part in the request"}
