@@ -16,7 +16,8 @@ import React, {
 } from 'react';
 import toast from 'react-hot-toast';
 import ReactMarkdown from 'react-markdown';
-
+import SmartToySharpIcon from '@mui/icons-material/SmartToySharp';
+import AccessibilityNewRoundedIcon from '@mui/icons-material/AccessibilityNewRounded';
 import { useTranslation } from 'next-i18next';
 
 import { saveConversation } from '@/utils/app/conversation';
@@ -318,11 +319,14 @@ export const ChatMessage: FC<Props> = memo(
         onMouseLeave={handleMouseLeave}
       >
         {message.role === 'assistant' && (
-          <RobotIcon
-            className={`rounded-full ml-28 mb-[13px]`}
-            width={30}
-            height={30}
-          />
+          // <RobotIcon
+          //   className={`rounded-full ml-28 mb-[13px]`}
+          //   width={30}
+          //   height={30}
+          // />
+          <span className='w-[30px] h-[30px] flex items-center justify-center rounded-full ml-28 mb-[13px] bg-[#00143a]'>
+            <SmartToySharpIcon htmlColor='#fff' fontSize="medium" />
+          </span>
         )}
 
         <Paper
@@ -523,7 +527,10 @@ export const ChatMessage: FC<Props> = memo(
         </Paper>
 
         {message.role === 'user' && (
-          <PersonIcon className="bg-[#4B2E83] w-8 h-8 text-white p-1 rounded-full mr-28 mb-[13px]" />
+          // <PersonIcon className="bg-[#4B2E83] w-8 h-8 text-white p-1 rounded-full mr-28 mb-[13px]" />
+          <div className='w-[30px] h-[30px] flex items-center justify-center rounded-full mr-28 mb-[13px] bg-[#024996]'>
+            <AccessibilityNewRoundedIcon htmlColor='#fff' fontSize="medium" />
+          </div>
         )}
       </div>
     );

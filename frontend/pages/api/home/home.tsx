@@ -1935,13 +1935,13 @@ const Home = ({
       }}
     >
       <Head>
-        <title>天机</title>
+        <title>天机——任务型交互式 Agent</title>
         <meta name="description" content="天机" />
         <meta
           name="viewport"
           content="height=device-height ,width=device-width, initial-scale=1, user-scalable=no"
         />
-        <link rel="icon" href="/xlang.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       {selectedConversation && (
         <main
