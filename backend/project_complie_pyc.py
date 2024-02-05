@@ -14,7 +14,7 @@ src_project_path = Path(os.path.join(project_dir,'backend'))
 print(src_project_path)
 
 # 定义目标项目根目录
-dest_project_path = Path(os.path.join(project_dir,'backend_ist'))
+dest_project_path = Path(os.path.join(project_dir,'backend_dist'))
 
 # 清除项目中所有现有的 .pyc 文件
 def clear_pyc_files(path):
